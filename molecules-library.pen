@@ -1,0 +1,946 @@
+{
+  "version": "2.11",
+  "children": [
+    {
+      "type": "frame",
+      "id": "1tuf7",
+      "x": 0,
+      "y": 0,
+      "name": "Molecules Library",
+      "width": 1440,
+      "fill": "$color-background",
+      "layout": "vertical",
+      "gap": 64,
+      "padding": 64,
+      "children": [
+        {
+          "type": "frame",
+          "id": "2Gkl9",
+          "name": "hdr",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 8,
+          "children": [
+            {
+              "type": "text",
+              "id": "zI6se",
+              "fill": "$color-neutral-800",
+              "content": "Molecules Library",
+              "fontFamily": "Plus Jakarta Sans",
+              "fontSize": 48,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "1JB0O",
+              "fill": "$color-neutral-500",
+              "content": "Composite UI components assembled from Atoms — built on Design Token System v1.0",
+              "fontFamily": "Plus Jakarta Sans",
+              "fontSize": 16
+            }
+          ]
+        },
+        {
+          "type": "rectangle",
+          "id": "34EKH",
+          "fill": "$color-neutral-200",
+          "width": "fill_container",
+          "height": 1
+        },
+        {
+          "type": "frame",
+          "id": "Hdb6b",
+          "name": "sec1",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 24,
+          "children": [
+            {
+              "type": "text",
+              "id": "uC0hp",
+              "fill": "$color-neutral-800",
+              "content": "01 — Search Bar",
+              "fontFamily": "Plus Jakarta Sans",
+              "fontSize": 24,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "NIawP",
+              "fill": "$color-neutral-500",
+              "content": "Text input + search icon. Icon uses color-primary.",
+              "fontFamily": "Plus Jakarta Sans",
+              "fontSize": 12
+            },
+            {
+              "type": "frame",
+              "id": "ooruj",
+              "name": "Molecule/SearchBar",
+              "reusable": true,
+              "width": 400,
+              "fill": "$color-surface",
+              "cornerRadius": "$radius-soft",
+              "stroke": {
+                "align": "inside",
+                "thickness": 1.5,
+                "fill": "$color-neutral-300"
+              },
+              "gap": 10,
+              "padding": [
+                10,
+                14
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "xFyoa",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "search",
+                  "iconFontFamily": "lucide",
+                  "fill": "$color-primary"
+                },
+                {
+                  "type": "text",
+                  "id": "pDCe8",
+                  "fill": "$color-neutral-400",
+                  "content": "Search...",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 14
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "La1yH",
+              "name": "Molecule/SearchBar/Focused",
+              "reusable": true,
+              "width": 400,
+              "fill": "$color-surface",
+              "cornerRadius": "$radius-soft",
+              "stroke": {
+                "align": "inside",
+                "thickness": 2,
+                "fill": "$color-primary"
+              },
+              "gap": 10,
+              "padding": [
+                10,
+                14
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "PGtKJ",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "search",
+                  "iconFontFamily": "lucide",
+                  "fill": "$color-primary"
+                },
+                {
+                  "type": "text",
+                  "id": "bWS8S",
+                  "fill": "$color-neutral-800",
+                  "content": "Tes kepribadian...",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 14
+                },
+                {
+                  "type": "icon_font",
+                  "id": "VAIo8",
+                  "width": 14,
+                  "height": 14,
+                  "iconFontName": "x",
+                  "iconFontFamily": "lucide",
+                  "fill": "$color-neutral-400"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "rectangle",
+          "id": "zntXS",
+          "fill": "$color-neutral-200",
+          "width": "fill_container",
+          "height": 1
+        },
+        {
+          "type": "frame",
+          "id": "8OkTh",
+          "name": "sec2",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 24,
+          "children": [
+            {
+              "type": "text",
+              "id": "K2LvM",
+              "fill": "$color-neutral-800",
+              "content": "02 — Form Field Group",
+              "fontFamily": "Plus Jakarta Sans",
+              "fontSize": 24,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "Ey28v",
+              "fill": "$color-neutral-500",
+              "content": "Label + Input + Helper text — vertical stack with 8pt spacing.",
+              "fontFamily": "Plus Jakarta Sans",
+              "fontSize": 12
+            },
+            {
+              "type": "frame",
+              "id": "z3lPS",
+              "name": "formFieldRow",
+              "width": "fill_container",
+              "gap": 48,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "HioG9",
+                  "name": "Molecule/FormField/Default",
+                  "reusable": true,
+                  "width": 320,
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "W1Spq",
+                      "fill": "$color-neutral-700",
+                      "content": "Full Name",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "qzPH5",
+                      "name": "inputFieldDefault",
+                      "width": "fill_container",
+                      "fill": "$color-surface",
+                      "cornerRadius": "$radius-soft",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1.5,
+                        "fill": "$color-neutral-300"
+                      },
+                      "padding": [
+                        10,
+                        14
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "G1Ole",
+                          "fill": "$color-neutral-400",
+                          "content": "Enter your full name",
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 14
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "c0MyQ",
+                      "fill": "$color-neutral-400",
+                      "content": "This will appear on your certificate",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 11
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "3EnuP",
+                  "name": "Molecule/FormField/Error",
+                  "reusable": true,
+                  "width": 320,
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "iLYQr",
+                      "fill": "$color-error",
+                      "content": "Email Address",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "khl3C",
+                      "name": "inputFieldError",
+                      "width": "fill_container",
+                      "fill": "$color-surface",
+                      "cornerRadius": "$radius-soft",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1.5,
+                        "fill": "$color-error"
+                      },
+                      "padding": [
+                        10,
+                        14
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "2FyOE",
+                          "fill": "$color-neutral-800",
+                          "content": "invalid@",
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 14
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "MZbyW",
+                      "name": "errRow",
+                      "gap": 4,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "4WjKy",
+                          "width": 12,
+                          "height": 12,
+                          "iconFontName": "circle-alert",
+                          "iconFontFamily": "lucide",
+                          "fill": "$color-error"
+                        },
+                        {
+                          "type": "text",
+                          "id": "Wggrq",
+                          "fill": "$color-error",
+                          "content": "Please enter a valid email address",
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 11
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "rectangle",
+          "id": "1hWLb",
+          "fill": "$color-neutral-200",
+          "width": "fill_container",
+          "height": 1
+        },
+        {
+          "type": "frame",
+          "id": "d3WNv",
+          "name": "sec3",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 24,
+          "children": [
+            {
+              "type": "text",
+              "id": "63SQy",
+              "fill": "$color-neutral-800",
+              "content": "03 — Psychometric Progress Card",
+              "fontFamily": "Plus Jakarta Sans",
+              "fontSize": 24,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "N2UtP",
+              "fill": "$color-neutral-500",
+              "content": "Card with title, 60% progress bar, and status badge.",
+              "fontFamily": "Plus Jakarta Sans",
+              "fontSize": 12
+            },
+            {
+              "type": "frame",
+              "id": "2tpea",
+              "name": "Molecule/ProgressCard",
+              "reusable": true,
+              "width": 360,
+              "fill": "$color-surface",
+              "cornerRadius": "$radius-soft",
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "#285ccc33",
+                "offset": {
+                  "x": 0,
+                  "y": 4
+                },
+                "blur": 16
+              },
+              "layout": "vertical",
+              "gap": 16,
+              "padding": 24,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "oB8Hw",
+                  "name": "cardTop",
+                  "width": "fill_container",
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "a6bH9",
+                      "fill": "$color-neutral-800",
+                      "content": "Tes Kepribadian Dasar",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "m0tYz",
+                      "name": "badgeInProgress",
+                      "fill": "$color-primary-light",
+                      "cornerRadius": "$radius-full",
+                      "gap": 6,
+                      "padding": [
+                        4,
+                        10
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "ellipse",
+                          "id": "9mEs6",
+                          "fill": "$color-primary",
+                          "width": 6,
+                          "height": 6
+                        },
+                        {
+                          "type": "text",
+                          "id": "XYauO",
+                          "fill": "$color-primary",
+                          "content": "In Progress",
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 11,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "ySKsF",
+                  "name": "progressBarWrap",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "gxA24",
+                      "name": "progressTrack",
+                      "width": "fill_container",
+                      "height": 8,
+                      "fill": "$color-neutral-200",
+                      "cornerRadius": "$radius-full",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "WRstQ",
+                          "width": 216,
+                          "height": 8,
+                          "fill": "$color-primary",
+                          "cornerRadius": "$radius-full"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "srt6o",
+                      "name": "progressFooter",
+                      "width": "fill_container",
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "l2FLx",
+                          "fill": "$color-neutral-500",
+                          "content": "60% selesai",
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 11
+                        },
+                        {
+                          "type": "text",
+                          "id": "dfvIi",
+                          "fill": "$color-neutral-400",
+                          "content": "6 / 10 soal",
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 11
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "xOGjO",
+                  "name": "cardFooter",
+                  "width": "fill_container",
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "PDhxY",
+                      "fill": "$color-neutral-400",
+                      "content": "Terakhir dikerjakan: 20 Apr 2026",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 11
+                    },
+                    {
+                      "type": "frame",
+                      "id": "iH6uc",
+                      "name": "continueBtn",
+                      "fill": "$color-primary",
+                      "cornerRadius": "$radius-soft",
+                      "gap": 6,
+                      "padding": [
+                        6,
+                        14
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Sveiu",
+                          "fill": "$color-neutral-0",
+                          "content": "Lanjutkan",
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 12,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "icon_font",
+                          "id": "zbFQ4",
+                          "width": 12,
+                          "height": 12,
+                          "iconFontName": "arrow-right",
+                          "iconFontFamily": "lucide",
+                          "fill": "$color-neutral-0"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "rectangle",
+          "id": "3k0Di",
+          "fill": "$color-neutral-200",
+          "width": "fill_container",
+          "height": 1
+        },
+        {
+          "type": "frame",
+          "id": "V5qIg",
+          "name": "sec4",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 24,
+          "children": [
+            {
+              "type": "text",
+              "id": "XFmLL",
+              "fill": "$color-neutral-800",
+              "content": "04 — Action Header",
+              "fontFamily": "Plus Jakarta Sans",
+              "fontSize": 24,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "TA2tc",
+              "fill": "$color-neutral-500",
+              "content": "Modal/page header with title on left and close icon button on right.",
+              "fontFamily": "Plus Jakarta Sans",
+              "fontSize": 12
+            },
+            {
+              "type": "frame",
+              "id": "sRjZb",
+              "name": "headerRow",
+              "width": "fill_container",
+              "gap": 32,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "VU0WX",
+                  "name": "Molecule/ActionHeader/Default",
+                  "reusable": true,
+                  "width": 480,
+                  "fill": "$color-surface",
+                  "cornerRadius": "$radius-soft",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$color-neutral-200"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#285ccc26",
+                    "offset": {
+                      "x": 0,
+                      "y": 2
+                    },
+                    "blur": 8
+                  },
+                  "padding": [
+                    20,
+                    24
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "wWtwb",
+                      "fill": "$color-neutral-800",
+                      "content": "Detail Peserta",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 18,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "EYzCe",
+                      "name": "closeBtn",
+                      "width": 32,
+                      "height": 32,
+                      "fill": "$color-neutral-100",
+                      "cornerRadius": "$radius-soft",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "e8hil",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "x",
+                          "iconFontFamily": "lucide",
+                          "fill": "$color-neutral-600"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "erb0x",
+                  "name": "Molecule/ActionHeader/WithSubtitle",
+                  "reusable": true,
+                  "width": 480,
+                  "fill": "$color-surface",
+                  "cornerRadius": "$radius-soft",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$color-neutral-200"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#285ccc26",
+                    "offset": {
+                      "x": 0,
+                      "y": 2
+                    },
+                    "blur": 8
+                  },
+                  "padding": [
+                    20,
+                    24
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "cmabH",
+                      "name": "titleStack",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "yvUQe",
+                          "fill": "$color-neutral-800",
+                          "content": "Edit Profil Psikolog",
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 18,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "makd0",
+                          "fill": "$color-neutral-500",
+                          "content": "Perbarui informasi akun Anda",
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 12
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "x30OR",
+                      "name": "closeBtnSub",
+                      "width": 32,
+                      "height": 32,
+                      "fill": "$color-neutral-100",
+                      "cornerRadius": "$radius-soft",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "icdGW",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "x",
+                          "iconFontFamily": "lucide",
+                          "fill": "$color-neutral-600"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "rectangle",
+          "id": "m3JXH",
+          "fill": "$color-neutral-200",
+          "width": "fill_container",
+          "height": 1
+        },
+        {
+          "type": "frame",
+          "id": "f98NF",
+          "name": "footer",
+          "width": "fill_container",
+          "fill": "$color-primary",
+          "cornerRadius": "$radius-soft",
+          "padding": [
+            16,
+            32
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "a8As4",
+              "fill": "$color-neutral-0",
+              "content": "Molecules Library — Search · Form Field · Progress Card · Action Header",
+              "fontFamily": "Plus Jakarta Sans",
+              "fontSize": 14,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "vph4C",
+              "fill": "$color-secondary",
+              "content": "Built on Atoms Library + Design Token System v1.0",
+              "fontFamily": "Plus Jakarta Sans",
+              "fontSize": 12
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "color-background": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "color-error": {
+      "type": "color",
+      "value": "#dc2626"
+    },
+    "color-error-light": {
+      "type": "color",
+      "value": "#fee2e2"
+    },
+    "color-neutral-0": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "color-neutral-100": {
+      "type": "color",
+      "value": "#F5F5F5"
+    },
+    "color-neutral-200": {
+      "type": "color",
+      "value": "#E5E5E5"
+    },
+    "color-neutral-300": {
+      "type": "color",
+      "value": "#D4D4D4"
+    },
+    "color-neutral-400": {
+      "type": "color",
+      "value": "#A3A3A3"
+    },
+    "color-neutral-500": {
+      "type": "color",
+      "value": "#737373"
+    },
+    "color-neutral-600": {
+      "type": "color",
+      "value": "#525252"
+    },
+    "color-neutral-700": {
+      "type": "color",
+      "value": "#404040"
+    },
+    "color-neutral-800": {
+      "type": "color",
+      "value": "#171717"
+    },
+    "color-primary": {
+      "type": "color",
+      "value": "#285ccc"
+    },
+    "color-primary-hover": {
+      "type": "color",
+      "value": "#1e4aa3"
+    },
+    "color-primary-light": {
+      "type": "color",
+      "value": "#285ccc1A"
+    },
+    "color-secondary": {
+      "type": "color",
+      "value": "#fff2bd"
+    },
+    "color-secondary-hover": {
+      "type": "color",
+      "value": "#ffe980"
+    },
+    "color-success": {
+      "type": "color",
+      "value": "#16a34a"
+    },
+    "color-success-light": {
+      "type": "color",
+      "value": "#dcfce7"
+    },
+    "color-surface": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "color-warning": {
+      "type": "color",
+      "value": "#ea580c"
+    },
+    "color-warning-light": {
+      "type": "color",
+      "value": "#ffedd5"
+    },
+    "font-family": {
+      "type": "string",
+      "value": "Plus Jakarta Sans"
+    },
+    "font-size-body": {
+      "type": "number",
+      "value": 16
+    },
+    "font-size-caption": {
+      "type": "number",
+      "value": 12
+    },
+    "font-size-h1": {
+      "type": "number",
+      "value": 48
+    },
+    "font-size-h2": {
+      "type": "number",
+      "value": 36
+    },
+    "font-size-h3": {
+      "type": "number",
+      "value": 24
+    },
+    "font-weight-bold": {
+      "type": "string",
+      "value": "700"
+    },
+    "font-weight-medium": {
+      "type": "string",
+      "value": "500"
+    },
+    "font-weight-regular": {
+      "type": "string",
+      "value": "400"
+    },
+    "radius-full": {
+      "type": "number",
+      "value": 9999
+    },
+    "radius-small": {
+      "type": "number",
+      "value": 4
+    },
+    "radius-soft": {
+      "type": "number",
+      "value": 10
+    },
+    "space-1": {
+      "type": "number",
+      "value": 8
+    },
+    "space-2": {
+      "type": "number",
+      "value": 16
+    },
+    "space-3": {
+      "type": "number",
+      "value": 24
+    },
+    "space-4": {
+      "type": "number",
+      "value": 32
+    },
+    "space-5": {
+      "type": "number",
+      "value": 40
+    },
+    "space-6": {
+      "type": "number",
+      "value": 48
+    },
+    "space-8": {
+      "type": "number",
+      "value": 64
+    }
+  }
+}
