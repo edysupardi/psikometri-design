@@ -1,0 +1,1231 @@
+{
+  "version": "2.11",
+  "children": [
+    {
+      "type": "frame",
+      "id": "bxbFg",
+      "x": 0,
+      "y": 0,
+      "name": "Organism/SidebarNavigation",
+      "reusable": true,
+      "width": 240,
+      "height": 720,
+      "fill": "$color-primary",
+      "layout": "vertical",
+      "gap": 8,
+      "padding": [
+        24,
+        16
+      ],
+      "justifyContent": "space_between",
+      "children": [
+        {
+          "type": "frame",
+          "id": "pOeHb",
+          "name": "sidebarTop",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "AIkiF",
+              "name": "logoArea",
+              "width": "fill_container",
+              "gap": 12,
+              "padding": [
+                8,
+                0
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "bdSJp",
+                  "name": "logoBox",
+                  "width": 36,
+                  "height": 36,
+                  "fill": "$color-neutral-0",
+                  "cornerRadius": "$radius-soft"
+                },
+                {
+                  "type": "text",
+                  "id": "hqlJE",
+                  "name": "logoText",
+                  "fill": "$color-neutral-0",
+                  "content": "PsikoMetri",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 16,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "GhG1t",
+              "name": "divider",
+              "width": "fill_container",
+              "height": 1,
+              "fill": "#ffffff26"
+            },
+            {
+              "type": "frame",
+              "id": "7ctwF",
+              "name": "navMenu",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 4,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "9b9pf",
+                  "name": "menuItem/Dashboard",
+                  "width": "fill_container",
+                  "fill": "#ffffff26",
+                  "cornerRadius": "$radius-soft",
+                  "gap": 12,
+                  "padding": [
+                    10,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "druJJ",
+                      "name": "icon1",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "layout-dashboard",
+                      "iconFontFamily": "lucide",
+                      "fill": "$color-neutral-0"
+                    },
+                    {
+                      "type": "text",
+                      "id": "JPMFF",
+                      "name": "label1",
+                      "fill": "$color-neutral-0",
+                      "content": "Dashboard",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "y2XE5",
+                  "name": "menuItem/Pasien",
+                  "width": "fill_container",
+                  "cornerRadius": "$radius-soft",
+                  "gap": 12,
+                  "padding": [
+                    10,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "0qAAa",
+                      "name": "icon2",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "users",
+                      "iconFontFamily": "lucide",
+                      "fill": "#ffffffb3"
+                    },
+                    {
+                      "type": "text",
+                      "id": "rgyLh",
+                      "name": "label2",
+                      "fill": "#ffffffb3",
+                      "content": "Pasien",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "g9ZuV",
+                  "name": "menuItem/Tes",
+                  "width": "fill_container",
+                  "cornerRadius": "$radius-soft",
+                  "gap": 12,
+                  "padding": [
+                    10,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "TTrX9",
+                      "name": "icon3",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "clipboard-list",
+                      "iconFontFamily": "lucide",
+                      "fill": "#ffffffb3"
+                    },
+                    {
+                      "type": "text",
+                      "id": "5IcGt",
+                      "name": "label3",
+                      "fill": "#ffffffb3",
+                      "content": "Tes",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "knOdc",
+                  "name": "menuItem/Laporan",
+                  "width": "fill_container",
+                  "cornerRadius": "$radius-soft",
+                  "gap": 12,
+                  "padding": [
+                    10,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "D4EOf",
+                      "name": "icon4",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "trending-up",
+                      "iconFontFamily": "lucide",
+                      "fill": "#ffffffb3"
+                    },
+                    {
+                      "type": "text",
+                      "id": "51HwE",
+                      "name": "label4",
+                      "fill": "#ffffffb3",
+                      "content": "Laporan",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "0mOa7",
+                  "name": "menuItem/Pengaturan",
+                  "width": "fill_container",
+                  "cornerRadius": "$radius-soft",
+                  "gap": 12,
+                  "padding": [
+                    10,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "z75Kp",
+                      "name": "icon5",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "settings",
+                      "iconFontFamily": "lucide",
+                      "fill": "#ffffffb3"
+                    },
+                    {
+                      "type": "text",
+                      "id": "A7gf4",
+                      "name": "label5",
+                      "fill": "#ffffffb3",
+                      "content": "Pengaturan",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "PFATY",
+          "name": "dividerBottom",
+          "width": "fill_container",
+          "height": 1,
+          "fill": "#ffffff26"
+        },
+        {
+          "type": "frame",
+          "id": "G9yyj",
+          "name": "profileSection",
+          "width": "fill_container",
+          "gap": 12,
+          "padding": [
+            8,
+            0
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "oe3bG",
+              "name": "avatar",
+              "width": 36,
+              "height": 36,
+              "fill": "$color-primary-hover",
+              "cornerRadius": "$radius-full",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "67f2X",
+                  "name": "avatarInitial",
+                  "fill": "$color-neutral-0",
+                  "content": "ES",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 13,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "BE3j5",
+              "name": "profileInfo",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 2,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "B8mYa",
+                  "name": "profileName",
+                  "fill": "$color-neutral-0",
+                  "content": "Dr. Edy Supardi",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 13,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "zNLHZ",
+                  "name": "profileRole",
+                  "fill": "#ffffffb3",
+                  "content": "Psikolog Klinis",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "icon_font",
+              "id": "RaSJV",
+              "name": "logoutIcon",
+              "width": 16,
+              "height": 16,
+              "iconFontName": "log-out",
+              "iconFontFamily": "lucide",
+              "fill": "#ffffffb3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "IDWxS",
+      "x": 280,
+      "y": 0,
+      "name": "Organism/PatientDashboardGrid",
+      "reusable": true,
+      "width": 1120,
+      "fill": "$color-background",
+      "layout": "vertical",
+      "gap": 24,
+      "padding": 32,
+      "children": [
+        {
+          "type": "frame",
+          "id": "sUhRQ",
+          "name": "sectionHeader",
+          "width": "fill_container",
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "U0fNR",
+              "name": "sectionTitle",
+              "fill": "$color-neutral-800",
+              "content": "Tes Aktif",
+              "fontFamily": "Plus Jakarta Sans",
+              "fontSize": 24,
+              "fontWeight": "700"
+            },
+            {
+              "id": "e6bIm",
+              "type": "ref",
+              "ref": "q:NKuh7",
+              "descendants": {
+                "q:QSbIl": {
+                  "content": "3 Aktif"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Mk59I",
+          "name": "cardsGrid",
+          "width": "fill_container",
+          "gap": 24,
+          "children": [
+            {
+              "id": "CzsDa",
+              "type": "ref",
+              "ref": "q:LHYgv",
+              "width": "fill_container",
+              "descendants": {
+                "q:Tsew3": {
+                  "layout": "horizontal",
+                  "clip": true
+                },
+                "q:gzS4r": {
+                  "content": "Tes Kepribadian Dasar",
+                  "textGrowth": "fixed-width-height",
+                  "width": "fill_container",
+                  "height": 22
+                },
+                "q:M9ZnA": {
+                  "content": "In Progress"
+                },
+                "q:AHIBC": {
+                  "content": "60% selesai"
+                },
+                "q:HPSz9": {
+                  "content": "6 / 10 soal"
+                },
+                "q:oIwBh": {
+                  "content": "Terakhir: 20 Apr 2026"
+                },
+                "q:NUvvX": {
+                  "content": "Lanjutkan"
+                }
+              }
+            },
+            {
+              "id": "koPUe",
+              "type": "ref",
+              "ref": "q:LHYgv",
+              "width": "fill_container",
+              "descendants": {
+                "q:Tsew3": {
+                  "layout": "horizontal",
+                  "clip": true
+                },
+                "q:gzS4r": {
+                  "content": "Tes Kecerdasan Emosional",
+                  "textGrowth": "fixed-width-height",
+                  "width": "fill_container",
+                  "height": 22
+                },
+                "q:2UScN": {
+                  "fill": "$q:color-warning-light"
+                },
+                "q:YcXEE": {
+                  "fill": "$q:color-warning"
+                },
+                "q:M9ZnA": {
+                  "content": "Belum Mulai",
+                  "fill": "$q:color-warning"
+                },
+                "q:7XYcv": {
+                  "width": 0
+                },
+                "q:AHIBC": {
+                  "content": "0% selesai"
+                },
+                "q:HPSz9": {
+                  "content": "0 / 12 soal"
+                },
+                "q:oIwBh": {
+                  "content": "Belum dikerjakan"
+                },
+                "q:Yp9vF": {
+                  "fill": "$q:color-neutral-100"
+                },
+                "q:NUvvX": {
+                  "content": "Mulai",
+                  "fill": "$q:color-neutral-700"
+                },
+                "q:fxGu6": {
+                  "iconFontName": "play",
+                  "fill": "$q:color-neutral-700"
+                }
+              }
+            },
+            {
+              "id": "SAz5s",
+              "type": "ref",
+              "ref": "q:LHYgv",
+              "width": "fill_container",
+              "descendants": {
+                "q:Tsew3": {
+                  "layout": "horizontal",
+                  "clip": true
+                },
+                "q:gzS4r": {
+                  "content": "Tes Minat Karir",
+                  "textGrowth": "fixed-width-height",
+                  "width": "fill_container",
+                  "height": 22
+                },
+                "q:2UScN": {
+                  "fill": "$q:color-success-light"
+                },
+                "q:YcXEE": {
+                  "fill": "$q:color-success"
+                },
+                "q:M9ZnA": {
+                  "content": "Selesai",
+                  "fill": "$q:color-success"
+                },
+                "q:7XYcv": {
+                  "width": "fill_container",
+                  "fill": "$q:color-success"
+                },
+                "q:AHIBC": {
+                  "content": "100% selesai"
+                },
+                "q:HPSz9": {
+                  "content": "8 / 8 soal"
+                },
+                "q:oIwBh": {
+                  "content": "Selesai: 18 Apr 2026"
+                },
+                "q:Yp9vF": {
+                  "fill": "$q:color-success-light"
+                },
+                "q:NUvvX": {
+                  "content": "Lihat Hasil",
+                  "fill": "$q:color-success"
+                },
+                "q:fxGu6": {
+                  "iconFontName": "eye",
+                  "fill": "$q:color-success"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "uMoEy",
+      "x": 280,
+      "y": 315,
+      "name": "Organism/RegisterForm",
+      "reusable": true,
+      "width": 480,
+      "fill": "$color-surface",
+      "cornerRadius": "$radius-soft",
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "#285ccc26",
+        "offset": {
+          "x": 0,
+          "y": 8
+        },
+        "blur": 32
+      },
+      "layout": "vertical",
+      "gap": 24,
+      "padding": 40,
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "Wwe9a",
+          "name": "loginHeader",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 8,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "aKNBv",
+              "name": "logoMark",
+              "width": 48,
+              "height": 48,
+              "fill": "$color-primary",
+              "cornerRadius": "$radius-soft",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "Xp1En",
+                  "width": 24,
+                  "height": 24,
+                  "iconFontName": "brain",
+                  "iconFontFamily": "lucide",
+                  "fill": "$color-neutral-0"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "ExtyY",
+              "fill": "$color-neutral-800",
+              "content": "Daftar ke PsikoMetri",
+              "fontFamily": "Plus Jakarta Sans",
+              "fontSize": 22,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "fvTUT",
+              "fill": "$color-neutral-500",
+              "content": "Buat akun baru untuk memulai",
+              "fontFamily": "Plus Jakarta Sans",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "uKvRe",
+          "name": "divider",
+          "width": "fill_container",
+          "height": 1,
+          "fill": "$color-neutral-200"
+        },
+        {
+          "type": "frame",
+          "id": "6zvvm",
+          "name": "fieldsWrap",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "children": [
+            {
+              "id": "Ba7Sq",
+              "type": "ref",
+              "ref": "q:xYzgL",
+              "width": "fill_container",
+              "name": "emailRef",
+              "descendants": {
+                "q:GdKMm": {
+                  "content": "Email"
+                },
+                "q:ZOGi2": {
+                  "content": "contoh@email.com"
+                },
+                "q:KXKDb": {
+                  "content": "Gunakan email yang terdaftar"
+                }
+              }
+            },
+            {
+              "type": "frame",
+              "id": "kk5uc",
+              "name": "FormField/Password",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 6,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "gjxCV",
+                  "fill": "$color-neutral-700",
+                  "content": "Password",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "frame",
+                  "id": "qOBQz",
+                  "name": "inputFieldPassword",
+                  "width": "fill_container",
+                  "fill": "$color-surface",
+                  "cornerRadius": "$radius-soft",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1.5,
+                    "fill": "$color-neutral-300"
+                  },
+                  "padding": [
+                    10,
+                    14
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ixovA",
+                      "fill": "$color-neutral-400",
+                      "content": "Masukkan password",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "icon_font",
+                      "id": "A0ooE",
+                      "width": 16,
+                      "height": 16,
+                      "iconFontName": "eye-off",
+                      "iconFontFamily": "lucide",
+                      "fill": "$color-neutral-400"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "6CiPO",
+                  "fill": "$color-neutral-400",
+                  "content": "Minimal 8 karakter",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "xug6C",
+              "name": "FormField/ConfirmPassword",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 6,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "KePZd",
+                  "fill": "$color-neutral-700",
+                  "content": "Konfirmasi Password",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "frame",
+                  "id": "WBu0L",
+                  "name": "inputFieldConfirmPass",
+                  "width": "fill_container",
+                  "fill": "$color-surface",
+                  "cornerRadius": "$radius-soft",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1.5,
+                    "fill": "$color-neutral-300"
+                  },
+                  "padding": [
+                    10,
+                    14
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "rYCr8",
+                      "fill": "$color-neutral-400",
+                      "content": "Ulangi password Anda",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "icon_font",
+                      "id": "dmYQ9",
+                      "width": 16,
+                      "height": 16,
+                      "iconFontName": "eye-off",
+                      "iconFontFamily": "lucide",
+                      "fill": "$color-neutral-400"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "zJgHS",
+                  "fill": "$color-neutral-400",
+                  "content": "Harus sama dengan password di atas",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a7CDv",
+          "type": "ref",
+          "ref": "q:XgqC4",
+          "width": "fill_container",
+          "padding": [
+            14,
+            24
+          ],
+          "justifyContent": "center",
+          "name": "btn",
+          "descendants": {
+            "q:auJAG": {
+              "content": "Daftar",
+              "fontSize": 16,
+              "fontWeight": "700"
+            }
+          }
+        },
+        {
+          "type": "frame",
+          "id": "x081b",
+          "name": "footerLink",
+          "width": "fill_container",
+          "gap": 4,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "dIKCt",
+              "fill": "$color-neutral-500",
+              "content": "Sudah punya akun?",
+              "fontFamily": "Plus Jakarta Sans",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "GRJAu",
+              "fill": "$color-primary",
+              "content": "Masuk sekarang",
+              "fontFamily": "Plus Jakarta Sans",
+              "fontSize": 13,
+              "fontWeight": "600"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Irzjl",
+      "x": 800,
+      "y": 315,
+      "name": "Organism/LoginForm",
+      "reusable": true,
+      "width": 480,
+      "fill": "$color-surface",
+      "cornerRadius": "$radius-soft",
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "#285ccc26",
+        "offset": {
+          "x": 0,
+          "y": 8
+        },
+        "blur": 32
+      },
+      "layout": "vertical",
+      "gap": 24,
+      "padding": 40,
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "MD7cl",
+          "name": "loginHeader",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 8,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "DEMza",
+              "name": "logoMark",
+              "width": 48,
+              "height": 48,
+              "fill": "$color-primary",
+              "cornerRadius": "$radius-soft",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "Tg8Bf",
+                  "width": 24,
+                  "height": 24,
+                  "iconFontName": "brain",
+                  "iconFontFamily": "lucide",
+                  "fill": "$color-neutral-0"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "HJYUO",
+              "fill": "$color-neutral-800",
+              "content": "Masuk ke PsikoMetri",
+              "fontFamily": "Plus Jakarta Sans",
+              "fontSize": 22,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "Z2VSX",
+              "fill": "$color-neutral-500",
+              "content": "Silakan masukkan data akun Anda",
+              "fontFamily": "Plus Jakarta Sans",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "JzBU4",
+          "name": "divider",
+          "width": "fill_container",
+          "height": 1,
+          "fill": "$color-neutral-200"
+        },
+        {
+          "type": "frame",
+          "id": "M2lqy",
+          "name": "fieldsWrap",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "children": [
+            {
+              "id": "YDUKH",
+              "type": "ref",
+              "ref": "q:xYzgL",
+              "width": "fill_container",
+              "name": "lemail",
+              "descendants": {
+                "q:GdKMm": {
+                  "content": "Email"
+                },
+                "q:ZOGi2": {
+                  "content": "contoh@email.com"
+                },
+                "q:KXKDb": {
+                  "content": "Gunakan email yang terdaftar"
+                }
+              }
+            },
+            {
+              "type": "frame",
+              "id": "TEiO1",
+              "name": "FormField/Password",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 6,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "6VRb0",
+                  "fill": "$color-neutral-700",
+                  "content": "Password",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "frame",
+                  "id": "GzHa2",
+                  "name": "inputFieldPassword",
+                  "width": "fill_container",
+                  "fill": "$color-surface",
+                  "cornerRadius": "$radius-soft",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1.5,
+                    "fill": "$color-neutral-300"
+                  },
+                  "padding": [
+                    10,
+                    14
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "sMJBJ",
+                      "fill": "$color-neutral-400",
+                      "content": "Masukkan password",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "icon_font",
+                      "id": "ffnKq",
+                      "width": 16,
+                      "height": 16,
+                      "iconFontName": "eye-off",
+                      "iconFontFamily": "lucide",
+                      "fill": "$color-neutral-400"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "qFfJM",
+                  "fill": "$color-neutral-400",
+                  "content": "Minimal 8 karakter",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "QOJ6O",
+          "type": "ref",
+          "ref": "q:XgqC4",
+          "width": "fill_container",
+          "padding": [
+            14,
+            24
+          ],
+          "justifyContent": "center",
+          "name": "lbtn",
+          "descendants": {
+            "q:auJAG": {
+              "content": "Masuk",
+              "fontSize": 16,
+              "fontWeight": "700"
+            }
+          }
+        },
+        {
+          "type": "frame",
+          "id": "3MNRR",
+          "name": "footerLink",
+          "width": "fill_container",
+          "gap": 4,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "Tkjrt",
+              "fill": "$color-neutral-500",
+              "content": "Belum punya akun?",
+              "fontFamily": "Plus Jakarta Sans",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "a0CaB",
+              "fill": "$color-primary",
+              "content": "Daftar sekarang",
+              "fontFamily": "Plus Jakarta Sans",
+              "fontSize": 13,
+              "fontWeight": "600"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "color-background": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "color-error": {
+      "type": "color",
+      "value": "#dc2626"
+    },
+    "color-error-light": {
+      "type": "color",
+      "value": "#fee2e2"
+    },
+    "color-neutral-0": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "color-neutral-100": {
+      "type": "color",
+      "value": "#F5F5F5"
+    },
+    "color-neutral-200": {
+      "type": "color",
+      "value": "#E5E5E5"
+    },
+    "color-neutral-300": {
+      "type": "color",
+      "value": "#D4D4D4"
+    },
+    "color-neutral-400": {
+      "type": "color",
+      "value": "#A3A3A3"
+    },
+    "color-neutral-500": {
+      "type": "color",
+      "value": "#737373"
+    },
+    "color-neutral-600": {
+      "type": "color",
+      "value": "#525252"
+    },
+    "color-neutral-700": {
+      "type": "color",
+      "value": "#404040"
+    },
+    "color-neutral-800": {
+      "type": "color",
+      "value": "#171717"
+    },
+    "color-primary": {
+      "type": "color",
+      "value": "#285ccc"
+    },
+    "color-primary-hover": {
+      "type": "color",
+      "value": "#1e4aa3"
+    },
+    "color-primary-light": {
+      "type": "color",
+      "value": "#285ccc1A"
+    },
+    "color-secondary": {
+      "type": "color",
+      "value": "#fff2bd"
+    },
+    "color-secondary-hover": {
+      "type": "color",
+      "value": "#ffe980"
+    },
+    "color-success": {
+      "type": "color",
+      "value": "#16a34a"
+    },
+    "color-success-light": {
+      "type": "color",
+      "value": "#dcfce7"
+    },
+    "color-surface": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "color-warning": {
+      "type": "color",
+      "value": "#ea580c"
+    },
+    "color-warning-light": {
+      "type": "color",
+      "value": "#ffedd5"
+    },
+    "font-family": {
+      "type": "string",
+      "value": "Plus Jakarta Sans"
+    },
+    "font-size-body": {
+      "type": "number",
+      "value": 16
+    },
+    "font-size-caption": {
+      "type": "number",
+      "value": 12
+    },
+    "font-size-h1": {
+      "type": "number",
+      "value": 48
+    },
+    "font-size-h2": {
+      "type": "number",
+      "value": 36
+    },
+    "font-size-h3": {
+      "type": "number",
+      "value": 24
+    },
+    "font-weight-bold": {
+      "type": "string",
+      "value": "700"
+    },
+    "font-weight-medium": {
+      "type": "string",
+      "value": "500"
+    },
+    "font-weight-regular": {
+      "type": "string",
+      "value": "400"
+    },
+    "radius-full": {
+      "type": "number",
+      "value": 9999
+    },
+    "radius-small": {
+      "type": "number",
+      "value": 4
+    },
+    "radius-soft": {
+      "type": "number",
+      "value": 10
+    },
+    "space-1": {
+      "type": "number",
+      "value": 8
+    },
+    "space-2": {
+      "type": "number",
+      "value": 16
+    },
+    "space-3": {
+      "type": "number",
+      "value": 24
+    },
+    "space-4": {
+      "type": "number",
+      "value": 32
+    },
+    "space-5": {
+      "type": "number",
+      "value": 40
+    },
+    "space-6": {
+      "type": "number",
+      "value": 48
+    },
+    "space-8": {
+      "type": "number",
+      "value": 64
+    }
+  },
+  "imports": {
+    "q": "system.lib.pen"
+  }
+}

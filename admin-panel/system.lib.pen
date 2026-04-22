@@ -1,0 +1,2569 @@
+{
+  "version": "2.11",
+  "children": [
+    {
+      "type": "frame",
+      "id": "gZani",
+      "x": 0,
+      "y": -280,
+      "name": "_MainWrapper",
+      "width": 1440,
+      "fill": "$color-neutral-100",
+      "layout": "vertical",
+      "gap": 32,
+      "padding": [
+        0,
+        20,
+        48,
+        20
+      ],
+      "children": [
+        {
+          "type": "frame",
+          "id": "Rl08I",
+          "name": "_Cover",
+          "width": "fill_container",
+          "height": 240,
+          "fill": "$color-primary",
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            0,
+            48
+          ],
+          "justifyContent": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "trErn",
+              "fill": "$color-neutral-0",
+              "content": "PsikoMetri Design System",
+              "fontFamily": "Plus Jakarta Sans",
+              "fontSize": 36,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "3IKpr",
+              "opacity": 0.7,
+              "fill": "$color-neutral-0",
+              "content": "system.lib.pen  ·  Single Source of Truth",
+              "fontFamily": "Plus Jakarta Sans",
+              "fontSize": 16,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "DBQE7",
+              "opacity": 0.5,
+              "fill": "$color-neutral-0",
+              "content": "v1.0  ·  2026  ·  37 Components  ·  38 Design Tokens",
+              "fontFamily": "Plus Jakarta Sans",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "YmKPs",
+          "name": "_Section01_Atoms",
+          "width": "fill_container",
+          "height": 56,
+          "fill": "$color-neutral-100",
+          "gap": 16,
+          "padding": [
+            0,
+            48
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "pDGU0",
+              "width": 4,
+              "height": 32,
+              "fill": "$color-primary",
+              "cornerRadius": 2
+            },
+            {
+              "type": "text",
+              "id": "Fz7aY",
+              "fill": "$color-neutral-800",
+              "content": "01 — Atoms",
+              "fontFamily": "Plus Jakarta Sans",
+              "fontSize": 22,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "DMwRl",
+              "fill": "$color-neutral-400",
+              "content": "Button · Input · Radio · Checkbox · Badge · Progress",
+              "fontFamily": "Plus Jakarta Sans",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "SevyQ",
+          "name": "_Card_Buttons",
+          "width": "fill_container",
+          "fill": "$color-surface",
+          "cornerRadius": 12,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1,
+            "fill": "$color-neutral-200"
+          },
+          "layout": "vertical",
+          "gap": 16,
+          "padding": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "G4aav",
+              "name": "btnHeader",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 4,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "NhnS5",
+                  "name": "btnTitle",
+                  "fill": "$color-neutral-800",
+                  "content": "Buttons",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 16,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "8Mmhu",
+                  "name": "btnDesc",
+                  "fill": "$color-neutral-400",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Tombol utama untuk aksi pengguna. Tersedia dalam 3 varian (Primary, Secondary, Ghost) masing-masing dengan state Default, Hover, Active, dan Disabled.",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "y3wF3",
+              "name": "btnContent",
+              "gap": 16,
+              "padding": [
+                16,
+                0,
+                0,
+                0
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "XgqC4",
+                  "name": "Button/Primary",
+                  "reusable": true,
+                  "fill": "$color-primary",
+                  "cornerRadius": "$radius-soft",
+                  "gap": 8,
+                  "padding": [
+                    12,
+                    24
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "auJAG",
+                      "fill": "$color-neutral-0",
+                      "content": "Button",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "eSgEI",
+                  "name": "Button/Primary/Hover",
+                  "reusable": true,
+                  "fill": "$color-primary-hover",
+                  "cornerRadius": "$radius-soft",
+                  "gap": 8,
+                  "padding": [
+                    12,
+                    24
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "9j4v5",
+                      "fill": "$color-neutral-0",
+                      "content": "Button",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "WgTcb",
+                  "name": "Button/Primary/Active",
+                  "reusable": true,
+                  "opacity": 0.85,
+                  "fill": "$color-primary-hover",
+                  "cornerRadius": "$radius-soft",
+                  "gap": 8,
+                  "padding": [
+                    12,
+                    24
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Ns6qq",
+                      "fill": "$color-neutral-0",
+                      "content": "Button",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "9vCHP",
+                  "name": "Button/Primary/Disabled",
+                  "reusable": true,
+                  "fill": "$color-neutral-300",
+                  "cornerRadius": "$radius-soft",
+                  "gap": 8,
+                  "padding": [
+                    12,
+                    24
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "5YzAc",
+                      "fill": "$color-neutral-0",
+                      "content": "Button",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "75k6L",
+                  "name": "Button/Secondary",
+                  "reusable": true,
+                  "fill": "$color-secondary",
+                  "cornerRadius": "$radius-soft",
+                  "gap": 8,
+                  "padding": [
+                    12,
+                    24
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "pEzGa",
+                      "fill": "$color-neutral-800",
+                      "content": "Button",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "66Y1T",
+                  "name": "Button/Secondary/Hover",
+                  "reusable": true,
+                  "fill": "$color-secondary-hover",
+                  "cornerRadius": "$radius-soft",
+                  "gap": 8,
+                  "padding": [
+                    12,
+                    24
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "wzwPl",
+                      "fill": "$color-neutral-800",
+                      "content": "Button",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "vuTYt",
+                  "name": "Button/Secondary/Active",
+                  "reusable": true,
+                  "opacity": 0.85,
+                  "fill": "$color-secondary-hover",
+                  "cornerRadius": "$radius-soft",
+                  "gap": 8,
+                  "padding": [
+                    12,
+                    24
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "EmLDf",
+                      "fill": "$color-neutral-800",
+                      "content": "Button",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "eKi1g",
+                  "name": "Button/Secondary/Disabled",
+                  "reusable": true,
+                  "fill": "$color-neutral-200",
+                  "cornerRadius": "$radius-soft",
+                  "gap": 8,
+                  "padding": [
+                    12,
+                    24
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "7lSSN",
+                      "fill": "$color-neutral-400",
+                      "content": "Button",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "oaznR",
+                  "name": "Button/Ghost",
+                  "reusable": true,
+                  "fill": "$color-neutral-0",
+                  "cornerRadius": "$radius-soft",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1.5,
+                    "fill": "$color-primary"
+                  },
+                  "gap": 8,
+                  "padding": [
+                    12,
+                    24
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "kJsj9",
+                      "fill": "$color-primary",
+                      "content": "Button",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "ogmST",
+                  "name": "Button/Ghost/Hover",
+                  "reusable": true,
+                  "fill": "$color-primary-light",
+                  "cornerRadius": "$radius-soft",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1.5,
+                    "fill": "$color-primary"
+                  },
+                  "gap": 8,
+                  "padding": [
+                    12,
+                    24
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Ceg0A",
+                      "fill": "$color-primary",
+                      "content": "Button",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "wITvz",
+                  "name": "Button/Ghost/Active",
+                  "reusable": true,
+                  "opacity": 0.85,
+                  "fill": "$color-primary-light",
+                  "cornerRadius": "$radius-soft",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1.5,
+                    "fill": "$color-primary-hover"
+                  },
+                  "gap": 8,
+                  "padding": [
+                    12,
+                    24
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "en2u7",
+                      "fill": "$color-primary-hover",
+                      "content": "Button",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "tytgI",
+                  "name": "Button/Ghost/Disabled",
+                  "reusable": true,
+                  "fill": "$color-neutral-0",
+                  "cornerRadius": "$radius-soft",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1.5,
+                    "fill": "$color-neutral-300"
+                  },
+                  "gap": 8,
+                  "padding": [
+                    12,
+                    24
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "tr3kw",
+                      "fill": "$color-neutral-400",
+                      "content": "Button",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "n3QPX",
+          "name": "_Card_Inputs",
+          "width": "fill_container",
+          "fill": "$color-surface",
+          "cornerRadius": 12,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1,
+            "fill": "$color-neutral-200"
+          },
+          "layout": "vertical",
+          "gap": 16,
+          "padding": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "mqc5t",
+              "name": "inputHeader",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 4,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "hWbG0",
+                  "name": "inputTitle",
+                  "fill": "$color-neutral-800",
+                  "content": "Input Fields",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 16,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "ES5Q0",
+                  "name": "inputDesc",
+                  "fill": "$color-neutral-400",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Field input untuk form. Mendukung state Default, Focused, Error, dan Disabled dengan label dan helper text.",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "2xQe4",
+              "name": "inputContent",
+              "gap": 24,
+              "padding": [
+                16,
+                0,
+                0,
+                0
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Y0t6v",
+                  "name": "Input/Default",
+                  "reusable": true,
+                  "width": 280,
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ZEdxm",
+                      "fill": "$color-neutral-700",
+                      "content": "Label",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "EQj7K",
+                      "name": "inputDefaultField",
+                      "width": "fill_container",
+                      "fill": "$color-surface",
+                      "cornerRadius": "$radius-soft",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1.5,
+                        "fill": "$color-neutral-300"
+                      },
+                      "padding": [
+                        10,
+                        14
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "166JE",
+                          "fill": "$color-neutral-400",
+                          "content": "Placeholder",
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "IkLOq",
+                  "name": "Input/Focused",
+                  "reusable": true,
+                  "width": 280,
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "XUzIB",
+                      "fill": "$color-primary",
+                      "content": "Label",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "hnSJw",
+                      "name": "inputFocusedField",
+                      "width": "fill_container",
+                      "fill": "$color-surface",
+                      "cornerRadius": "$radius-soft",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 2,
+                        "fill": "$color-primary"
+                      },
+                      "padding": [
+                        10,
+                        14
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "OgFUB",
+                          "fill": "$color-neutral-400",
+                          "content": "Placeholder",
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "pg13N",
+                  "name": "Input/Error",
+                  "reusable": true,
+                  "width": 280,
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "zrF2G",
+                      "fill": "$color-error",
+                      "content": "Label",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "TFDbH",
+                      "name": "inputErrorField",
+                      "width": "fill_container",
+                      "fill": "$color-surface",
+                      "cornerRadius": "$radius-soft",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1.5,
+                        "fill": "$color-error"
+                      },
+                      "padding": [
+                        10,
+                        14
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "l1hNF",
+                          "fill": "$color-neutral-400",
+                          "content": "Placeholder",
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "GhNoJ",
+                      "fill": "$color-error",
+                      "content": "This field is required",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "dBqpR",
+                  "name": "Input/Disabled",
+                  "reusable": true,
+                  "width": 280,
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "T8fr7",
+                      "fill": "$color-neutral-400",
+                      "content": "Label",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "wYzHi",
+                      "name": "inputDisabledField",
+                      "width": "fill_container",
+                      "fill": "$color-neutral-100",
+                      "cornerRadius": "$radius-soft",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1.5,
+                        "fill": "$color-neutral-200"
+                      },
+                      "padding": [
+                        10,
+                        14
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "yyIx4",
+                          "fill": "$color-neutral-400",
+                          "content": "Placeholder",
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "a3gya",
+          "name": "_Card_RadioCheckbox",
+          "width": "fill_container",
+          "fill": "$color-surface",
+          "cornerRadius": 12,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1,
+            "fill": "$color-neutral-200"
+          },
+          "layout": "vertical",
+          "gap": 16,
+          "padding": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "l48fh",
+              "name": "radioHeader",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 4,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ooEzC",
+                  "name": "radioTitle",
+                  "fill": "$color-neutral-800",
+                  "content": "Radio & Checkbox",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 16,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "siTRM",
+                  "name": "radioDesc",
+                  "fill": "$color-neutral-400",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Kontrol seleksi untuk pilihan tunggal (Radio) dan pilihan ganda (Checkbox). Tersedia state Selected, Unselected, dan Disabled.",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "fWLQ7",
+              "name": "radioContent",
+              "gap": 24,
+              "padding": [
+                16,
+                0,
+                0,
+                0
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "HMOR9",
+                  "name": "Radio/Selected",
+                  "reusable": true,
+                  "gap": 10,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "ellipse",
+                      "id": "cU7sI",
+                      "fill": "$color-neutral-0",
+                      "width": 18,
+                      "height": 18,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 2,
+                        "fill": "$color-primary"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "nt8CL",
+                      "fill": "$color-neutral-800",
+                      "content": "Selected",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "V6622",
+                  "name": "Radio/Unselected",
+                  "reusable": true,
+                  "gap": 10,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "ellipse",
+                      "id": "TjJkq",
+                      "fill": "$color-neutral-0",
+                      "width": 18,
+                      "height": 18,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1.5,
+                        "fill": "$color-neutral-300"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "3JqKx",
+                      "fill": "$color-neutral-800",
+                      "content": "Unselected",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "yT7B4",
+                  "name": "Radio/Disabled",
+                  "reusable": true,
+                  "gap": 10,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "ellipse",
+                      "id": "dHVCZ",
+                      "fill": "$color-neutral-100",
+                      "width": 18,
+                      "height": 18,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1.5,
+                        "fill": "$color-neutral-200"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "ZGiAx",
+                      "fill": "$color-neutral-400",
+                      "content": "Disabled",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "oqPgA",
+                  "name": "Checkbox/Checked",
+                  "reusable": true,
+                  "gap": 10,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "ZG651",
+                      "name": "cbCheckedBox",
+                      "width": 18,
+                      "height": 18,
+                      "fill": "$color-primary",
+                      "cornerRadius": 4,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "QBdmU",
+                          "width": 12,
+                          "height": 12,
+                          "iconFontName": "check",
+                          "iconFontFamily": "lucide",
+                          "fill": "$color-neutral-0"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "4APWc",
+                      "fill": "$color-neutral-800",
+                      "content": "Checked",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "HbVpC",
+                  "name": "Checkbox/Unchecked",
+                  "reusable": true,
+                  "gap": 10,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "g7dAE",
+                      "width": 18,
+                      "height": 18,
+                      "fill": "$color-neutral-0",
+                      "cornerRadius": 4,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1.5,
+                        "fill": "$color-neutral-300"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "oCnvs",
+                      "fill": "$color-neutral-800",
+                      "content": "Unchecked",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "gMPr0",
+                  "name": "Checkbox/Disabled",
+                  "reusable": true,
+                  "gap": 10,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "po3FZ",
+                      "width": 18,
+                      "height": 18,
+                      "fill": "$color-neutral-100",
+                      "cornerRadius": 4,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1.5,
+                        "fill": "$color-neutral-200"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "MvXhx",
+                      "fill": "$color-neutral-400",
+                      "content": "Disabled",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "kr7TX",
+          "name": "_Card_Badge",
+          "width": "fill_container",
+          "fill": "$color-surface",
+          "cornerRadius": 12,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1,
+            "fill": "$color-neutral-200"
+          },
+          "layout": "vertical",
+          "gap": 16,
+          "padding": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "VD4f4",
+              "name": "badgeHeader",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 4,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Y3NMO",
+                  "name": "badgeTitle",
+                  "fill": "$color-neutral-800",
+                  "content": "Badges",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 16,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "Cl0Wd",
+                  "name": "badgeDesc",
+                  "fill": "$color-neutral-400",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Label status kecil untuk menandai kondisi item. Tersedia varian Success, Warning, Error, dan Primary/Info.",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "rYl1I",
+              "name": "badgeContent",
+              "gap": 16,
+              "padding": [
+                16,
+                0,
+                0,
+                0
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "TIGk6",
+                  "name": "Badge/Success",
+                  "reusable": true,
+                  "fill": "$color-success-light",
+                  "cornerRadius": "$radius-full",
+                  "gap": 6,
+                  "padding": [
+                    4,
+                    10
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "ellipse",
+                      "id": "O13BS",
+                      "fill": "$color-success",
+                      "width": 6,
+                      "height": 6
+                    },
+                    {
+                      "type": "text",
+                      "id": "iBgHz",
+                      "fill": "$color-success",
+                      "content": "Success",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "3pUvX",
+                  "name": "Badge/Warning",
+                  "reusable": true,
+                  "fill": "$color-warning-light",
+                  "cornerRadius": "$radius-full",
+                  "gap": 6,
+                  "padding": [
+                    4,
+                    10
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "ellipse",
+                      "id": "LHEGX",
+                      "fill": "$color-warning",
+                      "width": 6,
+                      "height": 6
+                    },
+                    {
+                      "type": "text",
+                      "id": "dd1Bv",
+                      "fill": "$color-warning",
+                      "content": "Warning",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "4RAOb",
+                  "name": "Badge/Error",
+                  "reusable": true,
+                  "fill": "$color-error-light",
+                  "cornerRadius": "$radius-full",
+                  "gap": 6,
+                  "padding": [
+                    4,
+                    10
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "ellipse",
+                      "id": "dIK5q",
+                      "fill": "$color-error",
+                      "width": 6,
+                      "height": 6
+                    },
+                    {
+                      "type": "text",
+                      "id": "VrXci",
+                      "fill": "$color-error",
+                      "content": "Error",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "NKuh7",
+                  "name": "Badge/Primary",
+                  "reusable": true,
+                  "fill": "$color-primary-light",
+                  "cornerRadius": "$radius-full",
+                  "gap": 6,
+                  "padding": [
+                    4,
+                    10
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "ellipse",
+                      "id": "FM00V",
+                      "fill": "$color-primary",
+                      "width": 6,
+                      "height": 6
+                    },
+                    {
+                      "type": "text",
+                      "id": "QSbIl",
+                      "fill": "$color-primary",
+                      "content": "Info",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "VGcnB",
+          "name": "_Card_Progress",
+          "width": "fill_container",
+          "fill": "$color-surface",
+          "cornerRadius": 12,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1,
+            "fill": "$color-neutral-200"
+          },
+          "layout": "vertical",
+          "gap": 16,
+          "padding": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "alWGt",
+              "name": "progHeader",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 4,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "U3VYw",
+                  "name": "progTitle",
+                  "fill": "$color-neutral-800",
+                  "content": "Progress Bars",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 16,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "Wuik7",
+                  "name": "progDesc",
+                  "fill": "$color-neutral-400",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Indikator progres visual untuk menampilkan persentase penyelesaian. Tersedia state 25%, 60%, Complete, dan Error.",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "bZbpj",
+              "name": "progContent",
+              "layout": "vertical",
+              "gap": 16,
+              "padding": [
+                16,
+                0,
+                0,
+                0
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "HheQs",
+                  "name": "Progress/25",
+                  "reusable": true,
+                  "width": 400,
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "s5eJ7",
+                      "name": "progTrack25",
+                      "width": "fill_container",
+                      "height": 8,
+                      "fill": "$color-neutral-200",
+                      "cornerRadius": "$radius-full",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "cZZdC",
+                          "width": 100,
+                          "height": 8,
+                          "fill": "$color-primary",
+                          "cornerRadius": "$radius-full"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "xEoh0",
+                      "fill": "$color-neutral-500",
+                      "content": "25% — In Progress",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Za9O0",
+                  "name": "Progress/60",
+                  "reusable": true,
+                  "width": 400,
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "parS1",
+                      "name": "progTrack60",
+                      "width": "fill_container",
+                      "height": 8,
+                      "fill": "$color-neutral-200",
+                      "cornerRadius": "$radius-full",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "P84EU",
+                          "width": 240,
+                          "height": 8,
+                          "fill": "$color-primary",
+                          "cornerRadius": "$radius-full"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "4WurU",
+                      "fill": "$color-neutral-500",
+                      "content": "60% — In Progress",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "h8xHs",
+                  "name": "Progress/Complete",
+                  "reusable": true,
+                  "width": 400,
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "GvJjV",
+                      "name": "progTrack100",
+                      "width": "fill_container",
+                      "height": 8,
+                      "fill": "$color-success-light",
+                      "cornerRadius": "$radius-full",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "qPe0e",
+                          "width": 400,
+                          "height": 8,
+                          "fill": "$color-success",
+                          "cornerRadius": "$radius-full"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "cFuWJ",
+                      "fill": "$color-success",
+                      "content": "100% — Complete",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "9yHfy",
+                  "name": "Progress/Error",
+                  "reusable": true,
+                  "width": 400,
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "FLAeG",
+                      "name": "progTrackErr",
+                      "width": "fill_container",
+                      "height": 8,
+                      "fill": "$color-error-light",
+                      "cornerRadius": "$radius-full",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "TDEpo",
+                          "width": 160,
+                          "height": 8,
+                          "fill": "$color-error",
+                          "cornerRadius": "$radius-full"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "cnNkI",
+                      "fill": "$color-error",
+                      "content": "40% — Error",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "sJJUE",
+          "name": "_Section02_Molecules",
+          "width": "fill_container",
+          "height": 56,
+          "fill": "$color-neutral-100",
+          "gap": 16,
+          "padding": [
+            0,
+            48
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "DvQj6",
+              "width": 4,
+              "height": 32,
+              "fill": "$color-primary",
+              "cornerRadius": 2
+            },
+            {
+              "type": "text",
+              "id": "RCW0O",
+              "fill": "$color-neutral-800",
+              "content": "02 — Molecules",
+              "fontFamily": "Plus Jakarta Sans",
+              "fontSize": 22,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "Tcv8O",
+              "fill": "$color-neutral-400",
+              "content": "SearchBar · FormField · ProgressCard · ActionHeader",
+              "fontFamily": "Plus Jakarta Sans",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "sm3FN",
+          "name": "_Card_SearchBar",
+          "width": "fill_container",
+          "fill": "$color-surface",
+          "cornerRadius": 12,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1,
+            "fill": "$color-neutral-200"
+          },
+          "layout": "vertical",
+          "gap": 16,
+          "padding": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "7c5Aw",
+              "name": "searchHeader",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 4,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "E5duJ",
+                  "name": "searchTitle",
+                  "fill": "$color-neutral-800",
+                  "content": "Search Bar",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 16,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "wOYn6",
+                  "name": "searchDesc",
+                  "fill": "$color-neutral-400",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Komponen pencarian dengan ikon dan placeholder. Tersedia state Default dan Focused dengan tombol clear.",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "RWo0t",
+              "name": "searchContent",
+              "gap": 24,
+              "padding": [
+                16,
+                0,
+                0,
+                0
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "KYEBF",
+                  "name": "Molecule/SearchBar",
+                  "reusable": true,
+                  "width": 400,
+                  "fill": "$color-surface",
+                  "cornerRadius": "$radius-soft",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1.5,
+                    "fill": "$color-neutral-300"
+                  },
+                  "gap": 10,
+                  "padding": [
+                    10,
+                    14
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "NO2Kv",
+                      "width": 16,
+                      "height": 16,
+                      "iconFontName": "search",
+                      "iconFontFamily": "lucide",
+                      "fill": "$color-primary"
+                    },
+                    {
+                      "type": "text",
+                      "id": "oneZX",
+                      "fill": "$color-neutral-400",
+                      "content": "Search...",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "F3tYk",
+                  "name": "Molecule/SearchBar/Focused",
+                  "reusable": true,
+                  "width": 400,
+                  "fill": "$color-surface",
+                  "cornerRadius": "$radius-soft",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 2,
+                    "fill": "$color-primary"
+                  },
+                  "gap": 10,
+                  "padding": [
+                    10,
+                    14
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "ckDrh",
+                      "width": 16,
+                      "height": 16,
+                      "iconFontName": "search",
+                      "iconFontFamily": "lucide",
+                      "fill": "$color-primary"
+                    },
+                    {
+                      "type": "text",
+                      "id": "0PSWf",
+                      "fill": "$color-neutral-800",
+                      "content": "Tes kepribadian...",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "icon_font",
+                      "id": "mASwG",
+                      "width": 14,
+                      "height": 14,
+                      "iconFontName": "x",
+                      "iconFontFamily": "lucide",
+                      "fill": "$color-neutral-400"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "nngC5",
+          "name": "_Card_FormField",
+          "width": "fill_container",
+          "fill": "$color-surface",
+          "cornerRadius": 12,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1,
+            "fill": "$color-neutral-200"
+          },
+          "layout": "vertical",
+          "gap": 16,
+          "padding": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "6mI6X",
+              "name": "formHeader",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 4,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "3Pc4Y",
+                  "name": "formTitle",
+                  "fill": "$color-neutral-800",
+                  "content": "Form Field",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 16,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "H9750",
+                  "name": "formDesc",
+                  "fill": "$color-neutral-400",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Gabungan label, input, dan helper/error text dalam satu komponen form. Tersedia state Default dengan hint text, Error dengan pesan validasi, dan Password dengan toggle show/hide.",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "aeo3v",
+              "name": "formContent",
+              "gap": 24,
+              "padding": [
+                16,
+                0,
+                0,
+                0
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "xYzgL",
+                  "name": "Molecule/FormField/Default",
+                  "reusable": true,
+                  "width": 320,
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "GdKMm",
+                      "fill": "$color-neutral-700",
+                      "content": "Full Name",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "SoBSX",
+                      "name": "inputFieldDefault",
+                      "width": "fill_container",
+                      "fill": "$color-surface",
+                      "cornerRadius": "$radius-soft",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1.5,
+                        "fill": "$color-neutral-300"
+                      },
+                      "padding": [
+                        10,
+                        14
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "ZOGi2",
+                          "fill": "$color-neutral-400",
+                          "content": "Enter your full name",
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "KXKDb",
+                      "fill": "$color-neutral-400",
+                      "content": "This will appear on your certificate",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "772ZU",
+                  "name": "Molecule/FormField/Error",
+                  "reusable": true,
+                  "width": 320,
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "1sI8E",
+                      "fill": "$color-error",
+                      "content": "Email Address",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "k2loA",
+                      "name": "inputFieldError",
+                      "width": "fill_container",
+                      "fill": "$color-surface",
+                      "cornerRadius": "$radius-soft",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1.5,
+                        "fill": "$color-error"
+                      },
+                      "padding": [
+                        10,
+                        14
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "qmK98",
+                          "fill": "$color-neutral-800",
+                          "content": "invalid@",
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "X45y6",
+                      "name": "errRow",
+                      "gap": 4,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "tjheR",
+                          "width": 12,
+                          "height": 12,
+                          "iconFontName": "circle-alert",
+                          "iconFontFamily": "lucide",
+                          "fill": "$color-error"
+                        },
+                        {
+                          "type": "text",
+                          "id": "MWG58",
+                          "fill": "$color-error",
+                          "content": "Please enter a valid email address",
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 11,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "QiYWh",
+                  "name": "Molecule/FormField/Password",
+                  "reusable": true,
+                  "width": 320,
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "zTgOn",
+                      "name": "passLabel",
+                      "fill": "$color-neutral-700",
+                      "content": "Password",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "YbEXy",
+                      "name": "inputFieldPassword",
+                      "width": "fill_container",
+                      "fill": "$color-surface",
+                      "cornerRadius": "$radius-soft",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1.5,
+                        "fill": "$color-neutral-300"
+                      },
+                      "padding": [
+                        10,
+                        14
+                      ],
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "LBusk",
+                          "name": "passPlaceholder",
+                          "fill": "$color-neutral-400",
+                          "content": "Masukkan password",
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "icon_font",
+                          "id": "FIA6z",
+                          "name": "passEyeIcon",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "eye-off",
+                          "iconFontFamily": "lucide",
+                          "fill": "$color-neutral-400"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "y09aZ",
+                      "name": "passHint",
+                      "fill": "$color-neutral-400",
+                      "content": "Minimal 8 karakter",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "FKUfd",
+          "name": "_Card_ProgressCard",
+          "width": "fill_container",
+          "fill": "$color-surface",
+          "cornerRadius": 12,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1,
+            "fill": "$color-neutral-200"
+          },
+          "layout": "vertical",
+          "gap": 16,
+          "padding": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "boKbm",
+              "name": "progMolHeader",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 4,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "frt6a",
+                  "name": "progMolTitle",
+                  "fill": "$color-neutral-800",
+                  "content": "Progress Card",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 16,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "h9a4Y",
+                  "name": "progMolDesc",
+                  "fill": "$color-neutral-400",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Kartu progres tes yang menampilkan judul, badge status, progress bar, dan tombol lanjutkan. Digunakan di dashboard peserta.",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "A5b5r",
+              "name": "progCardContent",
+              "gap": 24,
+              "padding": [
+                16,
+                0,
+                0,
+                0
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "LHYgv",
+                  "name": "Molecule/ProgressCard",
+                  "reusable": true,
+                  "width": 360,
+                  "fill": "$color-surface",
+                  "cornerRadius": "$radius-soft",
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#285ccc33",
+                    "offset": {
+                      "x": 0,
+                      "y": 4
+                    },
+                    "blur": 16
+                  },
+                  "layout": "vertical",
+                  "gap": 16,
+                  "padding": 24,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "Tsew3",
+                      "name": "cardTop",
+                      "clip": true,
+                      "width": "fill_container",
+                      "gap": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "gzS4r",
+                          "fill": "$color-neutral-800",
+                          "textGrowth": "fixed-width-height",
+                          "width": "fill_container",
+                          "height": 22,
+                          "content": "Tes Kepribadian Dasar",
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 16,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "2UScN",
+                          "name": "badgeInProgress",
+                          "fill": "$color-primary-light",
+                          "cornerRadius": "$radius-full",
+                          "gap": 6,
+                          "padding": [
+                            4,
+                            10
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "ellipse",
+                              "id": "YcXEE",
+                              "fill": "$color-primary",
+                              "width": 6,
+                              "height": 6
+                            },
+                            {
+                              "type": "text",
+                              "id": "M9ZnA",
+                              "fill": "$color-primary",
+                              "content": "In Progress",
+                              "fontFamily": "Plus Jakarta Sans",
+                              "fontSize": 11,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "SyLkK",
+                      "name": "progressBarWrap",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 6,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "1grvs",
+                          "name": "progressTrack",
+                          "width": "fill_container",
+                          "height": 8,
+                          "fill": "$color-neutral-200",
+                          "cornerRadius": "$radius-full",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "7XYcv",
+                              "width": 216,
+                              "height": 8,
+                              "fill": "$color-primary",
+                              "cornerRadius": "$radius-full"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "jGdiT",
+                          "name": "progressFooter",
+                          "width": "fill_container",
+                          "justifyContent": "space_between",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "AHIBC",
+                              "fill": "$color-neutral-500",
+                              "content": "60% selesai",
+                              "fontFamily": "Plus Jakarta Sans",
+                              "fontSize": 11,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "text",
+                              "id": "HPSz9",
+                              "fill": "$color-neutral-400",
+                              "content": "6 / 10 soal",
+                              "fontFamily": "Plus Jakarta Sans",
+                              "fontSize": 11,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "EmgFO",
+                      "name": "cardFooter",
+                      "width": "fill_container",
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "oIwBh",
+                          "fill": "$color-neutral-400",
+                          "content": "Terakhir dikerjakan: 20 Apr 2026",
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 11,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "Yp9vF",
+                          "name": "continueBtn",
+                          "fill": "$color-primary",
+                          "cornerRadius": "$radius-soft",
+                          "gap": 6,
+                          "padding": [
+                            6,
+                            14
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "NUvvX",
+                              "fill": "$color-neutral-0",
+                              "content": "Lanjutkan",
+                              "fontFamily": "Plus Jakarta Sans",
+                              "fontSize": 12,
+                              "fontWeight": "600"
+                            },
+                            {
+                              "type": "icon_font",
+                              "id": "fxGu6",
+                              "width": 12,
+                              "height": 12,
+                              "iconFontName": "arrow-right",
+                              "iconFontFamily": "lucide",
+                              "fill": "$color-neutral-0"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "DlI8y",
+          "name": "_Card_ActionHeader",
+          "width": "fill_container",
+          "fill": "$color-surface",
+          "cornerRadius": 12,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1,
+            "fill": "$color-neutral-200"
+          },
+          "layout": "vertical",
+          "gap": 16,
+          "padding": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "A2rDk",
+              "name": "actionHeader",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 4,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "x40ao",
+                  "name": "actionTitle",
+                  "fill": "$color-neutral-800",
+                  "content": "Action Header",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 16,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "xLOQp",
+                  "name": "actionDesc",
+                  "fill": "$color-neutral-400",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Header bar untuk panel atau modal dengan judul dan tombol close. Tersedia varian Default (judul saja) dan WithSubtitle (judul + deskripsi).",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "0hz3j",
+              "name": "actionContent",
+              "gap": 24,
+              "padding": [
+                16,
+                0,
+                0,
+                0
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "bp7X5",
+                  "name": "Molecule/ActionHeader/Default",
+                  "reusable": true,
+                  "width": 480,
+                  "fill": "$color-surface",
+                  "cornerRadius": "$radius-soft",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$color-neutral-200"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#285ccc26",
+                    "offset": {
+                      "x": 0,
+                      "y": 2
+                    },
+                    "blur": 8
+                  },
+                  "padding": [
+                    20,
+                    24
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "yJeAR",
+                      "fill": "$color-neutral-800",
+                      "content": "Detail Peserta",
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 18,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "vEFZo",
+                      "name": "closeBtn",
+                      "width": 32,
+                      "height": 32,
+                      "fill": "$color-neutral-100",
+                      "cornerRadius": "$radius-soft",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "nYvfV",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "x",
+                          "iconFontFamily": "lucide",
+                          "fill": "$color-neutral-600"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "rp65w",
+                  "name": "Molecule/ActionHeader/WithSubtitle",
+                  "reusable": true,
+                  "width": 480,
+                  "fill": "$color-surface",
+                  "cornerRadius": "$radius-soft",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$color-neutral-200"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#285ccc26",
+                    "offset": {
+                      "x": 0,
+                      "y": 2
+                    },
+                    "blur": 8
+                  },
+                  "padding": [
+                    20,
+                    24
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "5VCkd",
+                      "name": "titleStack",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "08yF6",
+                          "fill": "$color-neutral-800",
+                          "content": "Edit Profil Psikolog",
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 18,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "PfHxL",
+                          "fill": "$color-neutral-500",
+                          "content": "Perbarui informasi akun Anda",
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Kr9iv",
+                      "name": "closeBtnSub",
+                      "width": 32,
+                      "height": 32,
+                      "fill": "$color-neutral-100",
+                      "cornerRadius": "$radius-soft",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "wGC45",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "x",
+                          "iconFontFamily": "lucide",
+                          "fill": "$color-neutral-600"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "EmhcJ",
+          "name": "_Footer",
+          "width": "fill_container",
+          "height": 56,
+          "fill": "$color-neutral-100",
+          "padding": [
+            0,
+            48
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "x4rBj",
+              "fill": "$color-neutral-400",
+              "content": "PsikoMetri Design System  ·  system.lib.pen",
+              "fontFamily": "Plus Jakarta Sans",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "gizJC",
+              "fill": "$color-neutral-400",
+              "content": "37 Components  ·  38 Tokens  ·  Plus Jakarta Sans  ·  8pt Grid",
+              "fontFamily": "Plus Jakarta Sans",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "color-background": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "color-error": {
+      "type": "color",
+      "value": "#dc2626"
+    },
+    "color-error-light": {
+      "type": "color",
+      "value": "#fee2e2"
+    },
+    "color-neutral-0": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "color-neutral-100": {
+      "type": "color",
+      "value": "#F5F5F5"
+    },
+    "color-neutral-200": {
+      "type": "color",
+      "value": "#E5E5E5"
+    },
+    "color-neutral-300": {
+      "type": "color",
+      "value": "#D4D4D4"
+    },
+    "color-neutral-400": {
+      "type": "color",
+      "value": "#A3A3A3"
+    },
+    "color-neutral-500": {
+      "type": "color",
+      "value": "#737373"
+    },
+    "color-neutral-600": {
+      "type": "color",
+      "value": "#525252"
+    },
+    "color-neutral-700": {
+      "type": "color",
+      "value": "#404040"
+    },
+    "color-neutral-800": {
+      "type": "color",
+      "value": "#171717"
+    },
+    "color-primary": {
+      "type": "color",
+      "value": "#285ccc"
+    },
+    "color-primary-hover": {
+      "type": "color",
+      "value": "#1e4aa3"
+    },
+    "color-primary-light": {
+      "type": "color",
+      "value": "#285ccc1A"
+    },
+    "color-secondary": {
+      "type": "color",
+      "value": "#fff2bd"
+    },
+    "color-secondary-hover": {
+      "type": "color",
+      "value": "#ffe980"
+    },
+    "color-success": {
+      "type": "color",
+      "value": "#16a34a"
+    },
+    "color-success-light": {
+      "type": "color",
+      "value": "#dcfce7"
+    },
+    "color-surface": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "color-warning": {
+      "type": "color",
+      "value": "#ea580c"
+    },
+    "color-warning-light": {
+      "type": "color",
+      "value": "#ffedd5"
+    },
+    "font-family": {
+      "type": "string",
+      "value": "Plus Jakarta Sans"
+    },
+    "font-size-body": {
+      "type": "number",
+      "value": 16
+    },
+    "font-size-caption": {
+      "type": "number",
+      "value": 12
+    },
+    "font-size-h1": {
+      "type": "number",
+      "value": 48
+    },
+    "font-size-h2": {
+      "type": "number",
+      "value": 36
+    },
+    "font-size-h3": {
+      "type": "number",
+      "value": 24
+    },
+    "font-weight-bold": {
+      "type": "string",
+      "value": "700"
+    },
+    "font-weight-medium": {
+      "type": "string",
+      "value": "500"
+    },
+    "font-weight-regular": {
+      "type": "string",
+      "value": "400"
+    },
+    "radius-full": {
+      "type": "number",
+      "value": 9999
+    },
+    "radius-small": {
+      "type": "number",
+      "value": 4
+    },
+    "radius-soft": {
+      "type": "number",
+      "value": 10
+    },
+    "space-1": {
+      "type": "number",
+      "value": 8
+    },
+    "space-2": {
+      "type": "number",
+      "value": 16
+    },
+    "space-3": {
+      "type": "number",
+      "value": 24
+    },
+    "space-4": {
+      "type": "number",
+      "value": 32
+    },
+    "space-5": {
+      "type": "number",
+      "value": 40
+    },
+    "space-6": {
+      "type": "number",
+      "value": 48
+    },
+    "space-8": {
+      "type": "number",
+      "value": 64
+    }
+  }
+}
