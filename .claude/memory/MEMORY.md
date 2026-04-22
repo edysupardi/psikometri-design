@@ -1,0 +1,6 @@
+- [Design Spec](design-spec.md) — Kontrak desain aktif: tokens, component contracts, hard rules
+- [Decisions Log](decisions.md) — Log keputusan desain beserta alasan dan alternatif yang ditolak
+- [Patterns](patterns.md) — Pattern library yang sudah terbukti konsisten (belum ada entry)
+- [User: Edy](user_edy.md) — Project owner, prefer bahasa Indonesia, praktis, pakai Pencil MCP
+- [Project: Psikometri](project_psikometri.md) — Platform asesmen psikologi online, 3 tipe user, freemium model
+- [Feedback: MCP Pause](feedback_mcp_pause.md) — Jika MCP Pencil disconnect, pause dan info user
