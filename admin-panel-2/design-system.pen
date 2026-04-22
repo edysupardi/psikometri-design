@@ -1,0 +1,142 @@
+{
+  "version": "2.11",
+  "children": [],
+  "variables": {
+    "border-mid": {
+      "type": "number",
+      "value": 2
+    },
+    "border-thin": {
+      "type": "number",
+      "value": 1
+    },
+    "color-accent": {
+      "type": "color",
+      "value": "#D4A017"
+    },
+    "color-bg": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "color-border": {
+      "type": "color",
+      "value": "#E9D8F5"
+    },
+    "color-error": {
+      "type": "color",
+      "value": "#DC2626"
+    },
+    "color-info": {
+      "type": "color",
+      "value": "#3B82F6"
+    },
+    "color-primary": {
+      "type": "color",
+      "value": "#5F197B"
+    },
+    "color-primary-hover": {
+      "type": "color",
+      "value": "#4A1260"
+    },
+    "color-secondary": {
+      "type": "color",
+      "value": "#8B2FC9"
+    },
+    "color-success": {
+      "type": "color",
+      "value": "#16A34A"
+    },
+    "color-surface": {
+      "type": "color",
+      "value": "#FAF5FF"
+    },
+    "color-text-base": {
+      "type": "color",
+      "value": "#1A0A2E"
+    },
+    "color-text-muted": {
+      "type": "color",
+      "value": "#6B5F7A"
+    },
+    "color-warning": {
+      "type": "color",
+      "value": "#F59E0B"
+    },
+    "duration-fast": {
+      "type": "number",
+      "value": 100
+    },
+    "duration-normal": {
+      "type": "number",
+      "value": 200
+    },
+    "duration-slow": {
+      "type": "number",
+      "value": 400
+    },
+    "font-body": {
+      "type": "string",
+      "value": "Inter"
+    },
+    "font-display": {
+      "type": "string",
+      "value": "Plus Jakarta Sans"
+    },
+    "font-mono": {
+      "type": "string",
+      "value": "JetBrains Mono"
+    },
+    "radius-full": {
+      "type": "number",
+      "value": 9999
+    },
+    "radius-lg": {
+      "type": "number",
+      "value": 12
+    },
+    "radius-md": {
+      "type": "number",
+      "value": 8
+    },
+    "radius-none": {
+      "type": "number",
+      "value": 0
+    },
+    "radius-sm": {
+      "type": "number",
+      "value": 4
+    },
+    "space-1": {
+      "type": "number",
+      "value": 8
+    },
+    "space-12": {
+      "type": "number",
+      "value": 96
+    },
+    "space-16": {
+      "type": "number",
+      "value": 128
+    },
+    "space-2": {
+      "type": "number",
+      "value": 16
+    },
+    "space-3": {
+      "type": "number",
+      "value": 24
+    },
+    "space-4": {
+      "type": "number",
+      "value": 32
+    },
+    "space-6": {
+      "type": "number",
+      "value": 48
+    },
+    "space-8": {
+      "type": "number",
+      "value": 64
+    }
+  }
+}

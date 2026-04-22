@@ -46,8 +46,9 @@ Mode        : Light mode (dark mode menyusul setelah light mode final)
 ### Typography
 ```
 --font-display  : 'Plus Jakarta Sans', sans-serif   (heading — geometric, premium, Indonesian origin)
---font-body     : 'Inter', sans-serif                (body — UI readability standard)
+--font-body     : 'Inter', sans-serif                (body — UI readability standard, weight 500 default)
 --font-mono     : 'JetBrains Mono', monospace        (kode referensi, ID, nomor asesmen)
+--font-feature  : "calt"                             (contextual alternates — aktif di semua text)
 
 Scale (base 16px):
   display-xl  : 56px / 1.1  / -0.02em   → hero section
@@ -101,6 +102,10 @@ Satuan dasar: 8px (balanced density)
 --duration-normal : 200ms
 --duration-slow   : 400ms
 --ease-default    : cubic-bezier(0.4, 0, 0.2, 1)
+
+Button interaction:
+  hover  : scale(1.02) + duration-fast
+  active : scale(0.98) + duration-fast
 ```
 
 ---
@@ -189,8 +194,11 @@ Breakpoints:
 5. Semua interactive element harus punya focus state (aksesibilitas)
 6. Light mode dan dark mode dipisah — jangan campur styling keduanya
 7. Design dibuat menggunakan Pencil (.pen files) via MCP — jika MCP disconnect, pause dan info user
+8. Semua text harus pakai `font-feature-settings: "calt"` — contextual alternates mandatory
+9. Button hover pakai scale(1.02), active pakai scale(0.98) — bukan color-only
+10. HIMPSI purple (#5F197B) hanya untuk CTA/accent — tidak untuk flood background besar
 
 ---
 
-_Last updated: 2026-04-22_
-_Updated by: Claude × Edy — init-design-spec session_
+_Last updated: 2026-04-23_
+_Updated by: Claude × Edy — extract-design Wise session_

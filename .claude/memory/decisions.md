@@ -56,6 +56,30 @@ Format entry:
 **Alternatif yang ditolak**: Manual design di Figma
 **Dampak**: Seluruh design workflow
 
+## [2026-04-23] Button Hover — Scale Animation
+**Keputusan**: Adopsi scale animation untuk button hover: `scale(1.02)` hover, `scale(0.98)` active
+**Alasan**: Lebih premium dari sekadar color shift. Wise membuktikan physical interaction meningkatkan perceived quality. Psikometri pakai nilai lebih subtle (1.02 vs Wise's 1.05) agar tetap trustworthy, tidak playful.
+**Alternatif yang ditolak**: Color-only hover (terlalu flat), scale(1.05) Wise (terlalu bouncy untuk konteks psikologi)
+**Dampak**: Semua Button variants
+
+## [2026-04-23] OpenType "calt" — Contextual Alternates
+**Keputusan**: Aktifkan `font-feature-settings: "calt"` di semua text — Plus Jakarta Sans dan Inter
+**Alasan**: Wise menggunakan ini di semua text dan hasilnya lebih polished. Plus Jakarta Sans dan Inter keduanya support "calt". Zero cost, quality improvement.
+**Alternatif yang ditolak**: Tidak pakai (default browser behavior — missed opportunity)
+**Dampak**: Semua typography token, semua komponen
+
+## [2026-04-23] Body Font Weight — Inter 500
+**Keputusan**: Body default Inter weight 500 (medium), bukan 400 (regular)
+**Alasan**: Wise pakai Inter 600 sebagai default — terlalu bold untuk konteks asesmen. Tapi 400 terlalu ringan untuk UI yang perlu terasa confident dan premium. 500 adalah middle ground yang tepat untuk Psikometri.
+**Alternatif yang ditolak**: Inter 400 (terlalu ringan, kurang premium), Inter 600 (terlalu bold untuk body text asesmen)
+**Dampak**: `--font-body` token, semua body text
+
+## [2026-04-23] Accent-First Color Philosophy — Dikonfirmasi
+**Keputusan**: HIMPSI purple (#5F197B) digunakan sebagai accent/CTA saja — bukan flood ke background besar
+**Alasan**: Wise membuktikan accent-first (lime green hanya di button/CTA) menciptakan identitas visual kuat tanpa overwhelming. Psikometri mengadopsi filosofi ini dengan purple sebagai anchor.
+**Alternatif yang ditolak**: Purple sebagai dominant background color (terlalu heavy, mengurangi readability)
+**Dampak**: Semua color usage rules, component styling
+
 ---
 
 _Mulai log decisions kamu di bawah ini:_

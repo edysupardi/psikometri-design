@@ -107,6 +107,8 @@ PLAN → SPEC INJECT → DRAFT → REVIEW VS SPEC → REFINE → UPDATE MEMORY
 | Command | Fungsi |
 |---------|--------|
 | `/init-design-spec` | Setup atau update design-spec.md secara interaktif |
+| `/extract-design` | Extract design DNA dari URL / screenshot / deskripsi → file .md |
+| `/generate-design-system` | Baca file .md → auto-generate tokens + atoms + molecules + organisms ke Pencil |
 | `/new-design` | Mulai task design baru dengan context injection otomatis |
 | `/review-design` | Review konsistensi design vs spec |
 | `/update-memory` | Update semua memory files setelah sesi selesai |
@@ -140,25 +142,3 @@ Jangan loncat layer. Atom harus selesai sebelum molecule, dst.
 5. Semua interactive element harus punya focus state
 6. Light mode dan dark mode dipisah
 7. Jika MCP disconnect — pause dan informasikan ke user
-
-## Git Commit Rules (CRITICAL)
-
-**NEVER include in commit messages:**
-
-- "Co-Authored-By: Claude", "Co-authored-by: Claude"
-- "by Anthropic", "via Claude", "author anthropic"
-- Any AI provider attribution
-
-**Always use clean commit messages:**
-
-```bash
-git commit -m "feat: description"
-
-# For multi-line, use heredoc:
-git commit -m "$(cat <<'EOF'
-feat: implement feature
-
-Description details.
-EOF
-)"
-```

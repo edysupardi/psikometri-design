@@ -21,6 +21,7 @@
 ## Daftar Isi
 
 - [Fase 0 — Setup & Memory](#fase-0--setup--memory)
+- [Fase 0-Alt — Extract & Generate (Fast Track)](#fase-0-alt--extract--generate-fast-track)
 - [Fase 1 — Design Tokens](#fase-1--design-tokens)
 - [Fase 2 — Atoms](#fase-2--atoms)
 - [Fase 3 — Molecules](#fase-3--molecules)
@@ -82,7 +83,137 @@ Setelah membaca, berikan ringkasan singkat:
 
 ---
 
-## Fase 1 — Design Tokens
+## Fase 0-Alt — Extract & Generate (Fast Track)
+
+Gunakan ini jika kamu punya **referensi visual** (website, screenshot, atau deskripsi)
+dan ingin langsung generate design system lengkap tanpa melalui Fase 1-4 secara manual.
+
+> ⚠️ Ini adalah jalur cepat — cocok untuk eksplorasi atau project baru.
+> Untuk design system yang butuh kontrol penuh, tetap gunakan Fase 1-4 secara manual.
+
+---
+
+### Pipeline Wajib (Jangan Dilewati)
+
+```
+/extract-design → /update-memory → /generate-design-system
+```
+
+**Jangan loncat langsung dari `/extract-design` ke `/generate-design-system`**
+tanpa `/update-memory` di tengahnya. Memory harus selalu jadi source of truth.
+
+---
+
+### 0-Alt.1 Extract Design DNA
+
+**[GENERIC]**
+```
+/extract-design
+
+Sumber: [pilih salah satu]
+A) URL: [masukkan URL website]
+B) Screenshot: [upload gambar]
+C) Deskripsi: [ceritakan feel, warna primary, referensi brand]
+```
+
+**[PSIKOMETRI] — Contoh dengan file referensi**
+```
+/extract-design wise-design-system.md
+
+Fokus ekstraksi pada:
+- Apa yang BISA diadopsi ke Psikometri (personality: clean, premium, trustworthy)
+- Apa yang TIDAK kompatibel (anti-tone: tidak playful, tidak childish)
+- Mapping token: referensi → Psikometri equivalent
+```
+
+Output yang dihasilkan: file `[nama]-design-dna.md` di folder project.
+
+⚠️ **Anti-pattern:** Jangan langsung `/generate-design-system` setelah ini —
+update memory dulu di langkah berikutnya.
+
+---
+
+### 0-Alt.2 Update Memory dari Temuan Extract
+
+**Langkah wajib setelah `/extract-design` selesai.**
+Temuan yang tidak masuk ke memory akan hilang di sesi berikutnya.
+
+**[GENERIC]**
+```
+/update-memory
+
+Baru selesai /extract-design dari [nama-file].
+Temuan ada di [nama]-design-dna.md.
+
+Update:
+1. design-spec.md → tambahkan token/rule baru yang diadopsi
+2. decisions.md → catat keputusan + alasan (termasuk yang DITOLAK)
+3. patterns.md → jika ada pattern baru yang ditemukan
+```
+
+**[PSIKOMETRI] — Contoh setelah extract dari Wise**
+```
+/update-memory
+
+Baru selesai /extract-design dari wise-design-system.md.
+Temuan ada di wise-design-dna.md — bagian "Yang Bisa Diadopsi".
+
+Update design-spec.md:
+- Tambahkan scale animation: button hover scale(1.02), active scale(0.98)
+- Tambahkan OpenType "calt" ke font definition Plus Jakarta Sans dan Inter
+- Update body font weight: Inter 500 (medium) sebagai default, bukan 400
+
+Update decisions.md:
+- Catat: scale(1.02) dipilih (bukan 1.05 ala Wise — terlalu playful untuk Psikometri)
+- Catat: pill buttons DITOLAK — radius-md (8px) lebih sesuai personality trustworthy
+- Catat: 0.85 line-height DITOLAK — terlalu aggressive untuk konteks asesmen psikologi
+- Catat: Inter 500 dipilih sebagai body default (lebih confident dari 400, tidak selebay 600)
+```
+
+---
+
+### 0-Alt.3 Generate Full Design System
+
+Setelah memory terupdate, baru jalankan generate.
+
+**[GENERIC]**
+```
+/generate-design-system [nama-file-dna.md atau design-spec.md]
+```
+
+**[PSIKOMETRI] — Dua opsi:**
+
+Dari design DNA hasil extract:
+```
+/generate-design-system wise-design-dna.md
+```
+
+Atau dari design-spec yang sudah di-update:
+```
+/generate-design-system .claude/memory/design-spec.md
+```
+
+> Gunakan `design-spec.md` jika ingin hasil yang 100% sesuai Psikometri spec.
+> Gunakan file DNA jika ingin eksplorasi yang lebih terinspirasi dari referensi.
+
+---
+
+### Perbandingan: Manual vs Fast Track
+
+| Aspek | Manual (Fase 1-4) | Fast Track (0-Alt) |
+|-------|-------------------|-------------------|
+| Kontrol | Penuh — setiap token dikonfirmasi | Otomatis — Claude yang decide |
+| Kecepatan | Lambat tapi presisi | Cepat tapi perlu review |
+| Cocok untuk | Design system production | Eksplorasi / prototype awal |
+| Risiko | Rendah | Perlu audit setelah generate |
+| Rekomendasi | Project utama | Research & referensi baru |
+
+> 💡 **Best practice**: Gunakan Fast Track untuk eksplorasi awal,
+> lalu refinement manual untuk komponen yang akan production-ready.
+
+---
+
+
 
 Tokens adalah fondasi. Semua yang lain bergantung pada ini.
 Jangan generate atom sebelum tokens dikonfirmasi.
@@ -755,6 +886,9 @@ Setiap response yang menghasilkan design harus ada step kelima:
 7. **Catat yang gagal juga** — decisions.md harus isi "alternatif yang ditolak" — ini mencegah Claude mengusulkan hal yang sama lagi
 8. **Discover MCP tools dulu** — jangan asumsikan nama tool Pencil, selalu discover di awal sesi
 9. **Satu komponen selesai di Pencil dulu** — konfirmasi berhasil di-generate sebelum lanjut ke komponen berikutnya
+10. **Wajib `/update-memory` setelah `/extract-design`** — temuan yang tidak masuk memory akan hilang di sesi berikutnya, termasuk hal yang DITOLAK
+11. **Jika agen berhenti tiba-tiba** — jangan mulai ulang, gunakan prompt resume: *"Lanjutkan dari checkpoint terakhir di generate-progress.md"*
+12. **Aktifkan bypass permissions** — untuk agentic task panjang, set `bypass permissions on` di Claude Code agar agen tidak berhenti menunggu izin
 
 ---
 
