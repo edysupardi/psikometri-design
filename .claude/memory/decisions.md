@@ -80,6 +80,23 @@ Format entry:
 **Alternatif yang ditolak**: Purple sebagai dominant background color (terlalu heavy, mengurangi readability)
 **Dampak**: Semua color usage rules, component styling
 
+## [2026-04-23] Icon Library — Lucide dengan Fallback
+**Keputusan**: Gunakan lucide sebagai icon library utama. Beberapa nama icon berbeda dari ekspektasi: `check-circle` → `circle-check`, `alert-circle` → `circle-x`, `clock` → `timer`.
+**Alasan**: Lucide adalah icon set yang tersedia di Pencil. Nama icon tidak selalu intuitif — perlu dicek saat generate.
+**Alternatif yang ditolak**: Material Symbols (lebih verbose), Feather (subset lebih kecil)
+**Dampak**: Semua komponen yang menggunakan icon
+
+## [2026-04-23] Footer Background — Near-Black Purple
+**Keputusan**: Footer menggunakan #1A0A2E (near-black purple) sebagai background, bukan hitam murni
+**Alasan**: Konsisten dengan color-text-base token. Memberikan kesan premium dan kohesi dengan brand purple. Lebih hangat dari #000000.
+**Alternatif yang ditolak**: #000000 (terlalu harsh), #1F1F1F (tidak ada purple undertone)
+**Dampak**: Footer organism
+
+## [2026-04-23] Design System File — admin-panel-2/design-system.pen
+**Keputusan**: Design system disimpan di `admin-panel-2/design-system.pen`
+**Alasan**: User menyimpan file dari sesi generate ke lokasi ini
+**Dampak**: Semua referensi ke design system components harus menggunakan file ini
+
 ---
 
 _Mulai log decisions kamu di bawah ini:_
