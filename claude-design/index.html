@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<title>Psikometri — Design Exploration</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  html, body { width: 100%; height: 100%; overflow: hidden; }
+  .canvas-host { width: 100vw; height: 100vh; }
+  /* Tweak panel positioning */
+  .tweaks-floating { position: fixed; bottom: 16px; right: 16px; z-index: 50; }
+</style>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.26.5/babel.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+<div id="root" class="canvas-host"></div>
+
+<!-- Tweak defaults: density, card style, active state, sidebar collapsed -->
+<script id="tweak-defaults" type="application/json">
+/*EDITMODE-BEGIN*/{
+  "density": "standard",
+  "cardStyle": "ring",
+  "activeStyle": "tonal",
+  "sidebarCollapsed": false
+}/*EDITMODE-END*/
+</script>
+
+<!-- Starters -->
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+
+<!-- Component layers (order matters: shell → screens) -->
+<script type="text/babel" src="screens/shell.jsx"></script>
+<script type="text/babel" src="screens/design-system.jsx"></script>
+<script type="text/babel" src="screens/landing.jsx"></script>
+<script type="text/babel" src="screens/auth.jsx"></script>
+<script type="text/babel" src="screens/admin-dashboard.jsx"></script>
+<script type="text/babel" src="screens/test-interface.jsx"></script>
+<script type="text/babel" src="screens/review-detail.jsx"></script>
+
+<script type="text/babel" data-presets="react">
+const { useEffect: useEffectApp, useState: useStateApp } = React;
+
+const TWEAK_DEFAULTS = JSON.parse(
+  document.getElementById('tweak-defaults').textContent
+    .replace('/*EDITMODE-BEGIN*/', '')
+    .replace('/*EDITMODE-END*/', '')
+);
+
+function ApplyTweaks({ density, cardStyle, activeStyle }) {
+  useEffectApp(() => {
+    document.documentElement.dataset.density = density;
+    document.documentElement.dataset.cardstyle = cardStyle;
+    document.documentElement.dataset.active = activeStyle;
+  }, [density, cardStyle, activeStyle]);
+  return null;
+}
+
+function IconRefresher({ deps }) {
+  useEffectApp(() => {
+    if (window.lucide) {
+      try { window.lucide.createIcons(); } catch (e) {}
+    }
+  });
+  return null;
+}
+
+function App() {
+  const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+  return (
+    <>
+      <ApplyTweaks {...tweaks} />
+      <IconRefresher />
+
+      <DesignCanvas
+        title="Psikometri — Hi-fi Design Exploration"
+        subtitle="Platform asesmen psikologi · Indigo + Lavender + Yellow accent · Lucide icons"
+      >
+        <DCSection id="brand" title="Brand & Foundation">
+          <DCArtboard id="ds" label="Design System" width={1200} height={2400}>
+            <DesignSystem />
+          </DCArtboard>
+        </DCSection>
+
+        <DCSection id="public" title="Halaman Publik">
+          <DCArtboard id="landing" label="Landing Page" width={1280} height={3200}>
+            <LandingPage />
+          </DCArtboard>
+          <DCArtboard id="login" label="Login" width={1280} height={820}>
+            <LoginPage />
+          </DCArtboard>
+          <DCArtboard id="otp" label="Verifikasi OTP" width={1280} height={820}>
+            <OtpPage />
+          </DCArtboard>
+        </DCSection>
+
+        <DCSection id="admin" title="Superadmin Console">
+          <DCArtboard id="admin-dashboard" label="Dashboard" width={1280} height={1100}>
+            <AdminDashboard />
+          </DCArtboard>
+        </DCSection>
+
+        <DCSection id="psikolog" title="Psikolog Workspace">
+          <DCArtboard id="review" label="Review Hasil — WWQ" width={1280} height={1480}>
+            <ReviewDetail />
+          </DCArtboard>
+        </DCSection>
+
+        <DCSection id="peserta" title="Peserta — Test Mode (Focused)">
+          <DCArtboard id="test" label="Sedang Mengerjakan Tes" width={1280} height={820}>
+            <TestInterface />
+          </DCArtboard>
+        </DCSection>
+      </DesignCanvas>
+
+      <TweaksPanel title="Tweaks">
+        <TweakSection label="Layout">
+          <TweakRadio
+            label="Densitas"
+            value={tweaks.density}
+            onChange={(v) => setTweak('density', v)}
+            options={[
+              { value: 'compact', label: 'Compact' },
+              { value: 'standard', label: 'Standard' },
+              { value: 'comfortable', label: 'Comfort' },
+            ]}
+          />
+        </TweakSection>
+        <TweakSection label="Komponen">
+          <TweakRadio
+            label="Gaya kartu"
+            value={tweaks.cardStyle}
+            onChange={(v) => setTweak('cardStyle', v)}
+            options={[
+              { value: 'flat', label: 'Flat' },
+              { value: 'ring', label: 'Ring' },
+              { value: 'shadow', label: 'Shadow' },
+            ]}
+          />
+          <TweakRadio
+            label="Active state sidebar"
+            value={tweaks.activeStyle}
+            onChange={(v) => setTweak('activeStyle', v)}
+            options={[
+              { value: 'filled', label: 'Filled' },
+              { value: 'tonal', label: 'Tonal' },
+              { value: 'border', label: 'Border' },
+            ]}
+          />
+        </TweakSection>
+      </TweaksPanel>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
