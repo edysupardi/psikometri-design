@@ -1757,3 +1757,330 @@ svg.icon-xl { width: 24px; height: 24px; stroke-width: 1.75; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--surface-high); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--outline); }
+
+/* ==========================================================================
+   20. REUSABLE PAGE COMPONENTS
+   ========================================================================== */
+
+/* ── KPI Grid ── */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+/* ── Page Toolbar (table filter bar) ── */
+.page-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--divider);
+  flex-wrap: wrap;
+}
+
+.page-toolbar-search {
+  flex: 1;
+  min-width: 180px;
+  max-width: 280px;
+}
+
+/* ── Detail Grid (2-col: main + sticky sidebar) ── */
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 16px;
+  align-items: start;
+}
+
+.detail-grid-main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.detail-grid-side {
+  position: sticky;
+  top: calc(var(--topbar-h) + 24px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Info Card (used in detail pages) ── */
+.info-card {
+  background: var(--surface-lowest);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-1);
+  overflow: hidden;
+}
+
+.info-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 18px;
+  border-bottom: 1px solid var(--divider);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--on-surface);
+}
+
+.info-card-header svg {
+  width: 14px;
+  height: 14px;
+  stroke-width: 1.75;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.info-card-body { padding: 18px; }
+
+/* Info row (label + value pairs) */
+.info-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 8px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--divider);
+  font-size: 13px;
+}
+
+.info-row:last-child { border-bottom: none; }
+.info-row-label, .info-key { color: var(--on-surface-muted); }
+.info-row-val, .info-val   { color: var(--on-surface); font-weight: 500; }
+
+/* ── Form Card (full-width, sectioned) ── */
+.form-card {
+  background: var(--surface-lowest);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-1);
+  overflow: hidden;
+}
+
+.form-card-section {
+  padding: 22px 24px;
+  border-bottom: 1px solid var(--divider);
+}
+
+.form-card-section:last-child { border-bottom: none; }
+
+.form-section-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--on-surface);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.form-section-title svg {
+  width: 15px;
+  height: 15px;
+  stroke-width: 1.75;
+  color: var(--primary);
+}
+
+.form-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  border-top: 1px solid var(--divider);
+  background: var(--surface-lowest);
+}
+
+/* ── Action Dropdown ── */
+.dropdown-wrap { position: relative; }
+
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 4px);
+  background: var(--surface-lowest);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-3);
+  min-width: 176px;
+  z-index: 200;
+  overflow: hidden;
+  display: none;
+}
+
+.dropdown-menu.open { display: block; }
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  font-size: 13px;
+  color: var(--on-surface-variant);
+  cursor: pointer;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  transition: background var(--duration-base), color var(--duration-base);
+  text-decoration: none;
+}
+
+.dropdown-item:hover { background: var(--surface-low); color: var(--on-surface); }
+.dropdown-item.danger { color: var(--error); }
+.dropdown-item.danger:hover { background: var(--error-bg); }
+.dropdown-item svg { width: 13px; height: 13px; stroke-width: 1.75; flex-shrink: 0; }
+.dropdown-sep { height: 1px; background: var(--divider); margin: 3px 0; }
+
+/* ── Confirm modal icon ── */
+.confirm-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 14px;
+}
+
+.confirm-icon.warn   { background: var(--warning-bg); color: var(--warning); }
+.confirm-icon.danger { background: var(--error-bg);   color: var(--error); }
+.confirm-icon svg    { width: 22px; height: 22px; stroke-width: 1.75; }
+
+/* ── Avatar role colors ── */
+.av-admin      { background: #ede9fe; color: #5b21b6; }
+.av-superadmin { background: #c4b5fd; color: #3730a3; }
+.av-psikolog   { background: #fef9c3; color: #a16207; }
+.av-b2b        { background: #dcfce7; color: #15803d; }
+.av-publik     { background: var(--surface-high); color: var(--on-surface-muted); }
+
+/* ── User cell (avatar + name + email) ── */
+.user-cell { display: flex; align-items: center; gap: 10px; }
+.user-cell-name  { font-size: 13px; font-weight: 500; color: var(--on-surface); }
+.user-cell-email { font-size: 11px; color: var(--on-surface-faint); margin-top: 1px; }
+
+/* ==========================================================================
+   21. MOBILE SHELL OVERLAY
+   ========================================================================== */
+
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 20, 0.4);
+  z-index: 9;
+  backdrop-filter: blur(1px);
+}
+
+.sidebar-overlay.visible { display: block; }
+
+/* ==========================================================================
+   22. RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+
+/* Tablet: 2-col KPI → 2-col */
+@media (max-width: 1024px) {
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .detail-grid { grid-template-columns: 1fr; }
+  .detail-grid-side { position: static; }
+}
+
+/* Mobile: full-width everything */
+@media (max-width: 768px) {
+  /* Shell: sidebar becomes off-canvas overlay */
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    z-index: 10;
+    transform: translateX(-100%);
+    transition: transform var(--duration-slow) var(--easing-base),
+                width var(--duration-slow) var(--easing-base),
+                min-width var(--duration-slow) var(--easing-base);
+    width: var(--sidebar-w) !important;
+    min-width: var(--sidebar-w) !important;
+  }
+
+  .sidebar.mobile-open {
+    transform: translateX(0);
+  }
+
+  /* Collapsed state doesn't apply on mobile */
+  .sidebar.collapsed {
+    width: var(--sidebar-w) !important;
+    min-width: var(--sidebar-w) !important;
+  }
+
+  .sidebar.collapsed .sidebar-logo-text { opacity: 1; pointer-events: auto; width: auto; }
+  .sidebar.collapsed .ps-nav-item-label { opacity: 1; width: auto; overflow: visible; }
+  .sidebar.collapsed .ps-nav-item { justify-content: flex-start; padding: 0 10px; }
+  .sidebar.collapsed .ps-nav-section { opacity: 1; height: auto; margin: 16px 0 4px; }
+  .sidebar.collapsed .sidebar-user-info { opacity: 1; width: auto; overflow: visible; }
+  .sidebar.collapsed .sidebar-user { justify-content: flex-start; padding: 6px 10px; }
+
+  /* Shell right takes full width */
+  .shell-right { width: 100%; }
+
+  /* Content padding reduced */
+  .content-area { padding: 16px; }
+
+  /* KPI grid: 2 cols on mobile */
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+
+  /* Page header: stack on mobile */
+  .page-header-row { flex-wrap: wrap; gap: 10px; }
+
+  /* Form rows: single column */
+  .form-row-2, .form-row-3 { grid-template-columns: 1fr; }
+
+  /* Table: horizontal scroll */
+  .table-wrap { overflow-x: auto; }
+
+  /* Detail grid: single column */
+  .detail-grid { grid-template-columns: 1fr; }
+  .detail-grid-side { position: static; }
+
+  /* Toolbar: wrap */
+  .page-toolbar { gap: 6px; }
+  .page-toolbar-search { max-width: 100%; }
+
+  /* Topbar user: hide name on very small screens */
+  .topbar-user-name { display: none; }
+}
+
+/* ==========================================================================
+   23. ALIASES — backward-compat with existing page class names
+   ========================================================================== */
+
+/* detail-layout used in 23/24/25b pages */
+.detail-layout { display: grid; grid-template-columns: 1fr 320px; gap: 16px; align-items: start; }
+.detail-left   { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.detail-right  { position: sticky; top: calc(var(--topbar-h) + 24px); display: flex; flex-direction: column; gap: 16px; }
+
+/* info-card-title used in 23/24 pages */
+.info-card-title {
+  display: flex; align-items: center; gap: 8px;
+  padding: 13px 18px; border-bottom: 1px solid var(--divider);
+  font-size: 13px; font-weight: 600; color: var(--on-surface);
+}
+.info-card-title svg { width: 14px; height: 14px; stroke-width: 1.75; color: var(--primary); flex-shrink: 0; }
+
+/* toolbar used in 22/24/25 pages */
+.toolbar        { display: flex; align-items: center; gap: 8px; padding: 12px 16px; border-bottom: 1px solid var(--divider); flex-wrap: wrap; }
+.toolbar-search { flex: 1; min-width: 180px; max-width: 280px; }
+
+/* metrics used in dashboard */
+.metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+
+@media (max-width: 1024px) {
+  .detail-layout { grid-template-columns: 1fr; }
+  .detail-right  { position: static; }
+  .metrics       { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .metrics { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .toolbar-search { max-width: 100%; }
+}

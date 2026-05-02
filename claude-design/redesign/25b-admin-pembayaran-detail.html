@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detail Pembayaran — Psikometri Admin</title>
+  <link rel="stylesheet" href="./_shared/styles.css">
+  <style>
+    .amount-section { background: var(--surface-low); border-radius: var(--r-md); padding: 14px 16px; }
+    .amount-row { display: flex; justify-content: space-between; font-size: 13px; padding: 4px 0; color: var(--on-surface-muted); }
+    .amount-total { display: flex; justify-content: space-between; font-size: 15px; font-weight: 600; padding-top: 10px; margin-top: 6px; border-top: 1px solid var(--divider); }
+    .amount-total-val { color: var(--primary); }
+
+    .timeline-item { display: flex; gap: 12px; padding: 10px 0; position: relative; }
+    .timeline-item:not(:last-child)::after { content:''; position:absolute; left:7px; top:28px; bottom:0; width:1px; background:var(--divider); }
+    .timeline-dot { width: 16px; height: 16px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+    .timeline-dot.done { background: var(--success); }
+    .timeline-dot.pending { background: var(--warning); }
+    .timeline-dot.failed { background: var(--error); }
+    .timeline-dot svg { width: 8px; height: 8px; stroke-width: 3; color: white; }
+    .timeline-label { font-size: 13px; font-weight: 500; color: var(--on-surface); }
+    .timeline-time { font-size: 11px; color: var(--on-surface-faint); margin-top: 1px; }
+  </style>
+</head>
+<body>
+
+<div class="breadcrumb" style="margin-bottom:16px;">
+  <a class="breadcrumb-item" href="25-admin-pembayaran.html">Manajemen Pembayaran</a>
+  <span class="breadcrumb-sep">›</span>
+  <span class="breadcrumb-item active">ORD-2026-001</span>
+</div>
+
+<div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;flex-wrap:wrap;">
+  <div style="font-family:var(--font-mono);font-size:18px;font-weight:600;color:var(--on-surface);">ORD-2026-001</div>
+  <span class="badge badge-role-b2b" style="font-size:10px;">B2B</span>
+  <span class="badge badge-success">SELESAI</span>
+  <div style="color:var(--on-surface-faint);font-size:12px;margin-left:auto;">18 Mar 2026, 14:23</div>
+</div>
+
+<div class="detail-grid">
+  <div style="display:flex;flex-direction:column;gap:16px;">
+    <!-- Info Transaksi -->
+    <div class="info-card">
+      <div class="info-card-header">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
+        Informasi Transaksi
+      </div>
+      <div class="info-card-body">
+        <div class="info-row"><span class="info-key">Order ID</span><span class="info-val" style="font-family:var(--font-mono);font-size:12px;">ORD-2026-001</span></div>
+        <div class="info-row"><span class="info-key">Tipe</span><span class="info-val"><span class="badge badge-role-b2b" style="font-size:11px;">B2B</span></span></div>
+        <div class="info-row"><span class="info-key">Customer</span><span class="info-val">PT ABCXYZ</span></div>
+        <div class="info-row"><span class="info-key">Email</span><span class="info-val">b2b@psikometri.id</span></div>
+        <div class="info-row"><span class="info-key">Tanggal Dibuat</span><span class="info-val">18 Mar 2026, 14:20</span></div>
+        <div class="info-row"><span class="info-key">Tanggal Bayar</span><span class="info-val">18 Mar 2026, 14:23</span></div>
+      </div>
+    </div>
+
+    <!-- Info Paket -->
+    <div class="info-card">
+      <div class="info-card-header">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m7.5 4.27 9 5.15M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/></svg>
+        Paket yang Dibeli
+      </div>
+      <div class="info-card-body">
+        <div class="info-row"><span class="info-key">Nama Paket</span><span class="info-val">CPMI - Cheklist Masalah Individu</span></div>
+        <div class="info-row"><span class="info-key">Kode Paket</span><span class="info-val" style="font-family:var(--font-mono);font-size:12px;">CPMI_-_CHEKLIST_MASA</span></div>
+        <div class="info-row"><span class="info-key">Jumlah Peserta</span><span class="info-val">83 orang</span></div>
+        <div class="info-row"><span class="info-key">Harga Satuan</span><span class="info-val">Rp 150.000 / peserta</span></div>
+        <div class="info-row"><span class="info-key">Tes dalam Paket</span><span class="info-val"><span class="badge badge-test badge-test-wwq">WWQ</span></span></div>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="info-card">
+      <div class="info-card-header">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Timeline Transaksi
+      </div>
+      <div style="padding:12px 20px 8px;">
+        <div class="timeline-item">
+          <div class="timeline-dot done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <div class="timeline-content">
+            <div class="timeline-label">Pesanan dibuat</div>
+            <div class="timeline-time">18 Mar 2026, 14:20:01</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <div class="timeline-content">
+            <div class="timeline-label">Menunggu pembayaran</div>
+            <div class="timeline-time">18 Mar 2026, 14:20:05</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <div class="timeline-content">
+            <div class="timeline-label">Pembayaran diterima via Bank Transfer VCA</div>
+            <div class="timeline-time">18 Mar 2026, 14:23:42</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <div class="timeline-content">
+            <div class="timeline-label">Akses asesmen diaktifkan</div>
+            <div class="timeline-time">18 Mar 2026, 14:23:45</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right: Summary -->
+  <div class="detail-right">
+    <div class="info-card">
+      <div class="info-card-header">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        Rincian Pembayaran
+      </div>
+      <div style="padding:16px 20px;">
+        <div class="amount-section">
+          <div class="amount-row"><span>83 × Rp 150.000</span><span style="color:var(--on-surface);">Rp 12.450.000</span></div>
+          <div class="amount-row"><span>Biaya Layanan</span><span style="color:var(--on-surface);">Rp 50.000</span></div>
+          <div class="amount-row"><span>PPN (11%)</span><span style="color:var(--on-surface);">Rp 1.375.500</span></div>
+          <div class="amount-total">
+            <span>Total Dibayar</span>
+            <span class="amount-total-val">Rp 13.875.500</span>
+          </div>
+        </div>
+        <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--divider);">
+          <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--on-surface-faint);margin-bottom:10px;">Metode Pembayaran</div>
+          <div style="font-size:13px;font-weight:500;color:var(--on-surface);margin-bottom:2px;">Bank Transfer — VCA BCA</div>
+          <div style="font-size:12px;color:var(--on-surface-muted);">No. Ref: TRF20260318142342</div>
+        </div>
+        <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--divider);">
+          <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--on-surface-faint);margin-bottom:10px;">Status</div>
+          <span class="badge badge-success">SELESAI</span>
+        </div>
+      </div>
+      <div style="padding:14px 20px;border-top:1px solid var(--divider);display:flex;flex-direction:column;gap:8px;">
+        <button class="btn btn-outline btn-full btn-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:13px;height:13px;stroke-width:1.75;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+          Unduh Bukti Pembayaran
+        </button>
+        <button class="btn btn-ghost btn-sm" style="color:var(--on-surface-muted);">Tandai Rekonsiliasi</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="./_shared/shell.js"></script>
+<script src="./_shared/utils.js" defer></script>
+<script>
+  initShell({
+    role: 'admin',
+    activeHref: '25-admin-pembayaran.html',
+    user: { name: 'Superadmin', role: 'Superadmin', initials: 'AS' },
+    notifCount: 6
+  });
+</script>
+</body>
+</html>

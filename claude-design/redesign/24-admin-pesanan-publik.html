@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pesanan Publik — Psikometri Admin</title>
+  <link rel="stylesheet" href="./_shared/styles.css">
+  <style>
+    .metric { background: var(--surface-lowest); border-radius: var(--r-md); box-shadow: var(--shadow-1); padding: 16px 18px; }
+    .metric-label { font-size: 12px; color: var(--on-surface-muted); font-weight: 500; margin-bottom: 6px; }
+    .metric-value { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--on-surface); letter-spacing: -0.02em; line-height: 1; }
+    .metric-value.sm { font-size: 18px; }
+    .order-id { font-family: var(--font-mono); font-size: 12px; font-weight: 500; color: var(--primary); text-decoration: none; }
+    .order-id:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="page-header-row">
+    <div>
+      <div class="page-header-title">Pesanan Publik</div>
+      <div class="page-header-desc">Pesanan dari pengguna asesmen mandiri</div>
+    </div>
+    <button class="btn btn-outline btn-sm">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:14px;height:14px;stroke-width:1.75;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+      Export CSV
+    </button>
+  </div>
+</div>
+
+<div class="metrics">
+  <div class="metric">
+    <div class="metric-label">Total Revenue Publik</div>
+    <div class="metric-value sm">Rp 62,4M</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Total Pesanan</div>
+    <div class="metric-value">416</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Selesai Hari Ini</div>
+    <div class="metric-value">23</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Pending Pembayaran</div>
+    <div class="metric-value">8</div>
+  </div>
+</div>
+
+<div class="table-wrap">
+  <div style="display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--divider);flex-wrap:wrap;">
+    <div class="input-group" style="flex:1;min-width:200px;max-width:280px;">
+      <span class="input-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
+      <input class="input" type="search" placeholder="Cari Order ID atau nama user...">
+    </div>
+    <select class="select" style="width:140px;height:36px;"><option>Semua Paket</option><option>WWQ</option><option>IST</option><option>PAPIKOSTICK</option></select>
+    <select class="select" style="width:140px;height:36px;"><option>Semua Status</option><option>SELESAI</option><option>PENDING</option><option>EXPIRED</option></select>
+  </div>
+
+  <div style="overflow-x:auto;">
+    <table class="ps-table" style="min-width:800px;">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Pengguna</th>
+          <th>Paket</th>
+          <th>Total</th>
+          <th>Status</th>
+          <th>Tanggal</th>
+          <th style="width:60px;"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a class="order-id" href="24-admin-pesanan-publik-detail.html">cmmx22uvm001</a></td>
+          <td><div style="font-size:13px;font-weight:500;">Jane Doe</div><div style="font-size:11px;color:var(--on-surface-faint);">jane@psikometri.id</div></td>
+          <td><div style="font-size:13px;">WWQ<span class="badge badge-test badge-test-wwq" style="margin-left:6px;">WWQ</span></div></td>
+          <td class="t-small" style="font-weight:500;">Rp 150.000</td>
+          <td><span class="badge badge-success">SELESAI</span></td>
+          <td class="t-small text-muted">19 Mar 2026</td>
+          <td class="td-actions"><a href="24-admin-pesanan-publik-detail.html" class="btn btn-icon btn-ghost btn-icon-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:14px;height:14px;stroke-width:1.75;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></a></td>
+        </tr>
+        <tr>
+          <td><a class="order-id" href="24-admin-pesanan-publik-detail.html">cmmx22uvm002e</a></td>
+          <td><div style="font-size:13px;font-weight:500;">Jane Doe</div><div style="font-size:11px;color:var(--on-surface-faint);">jane@psikometri.id</div></td>
+          <td><div style="font-size:13px;">WWQ<span class="badge badge-test badge-test-wwq" style="margin-left:6px;">WWQ</span></div></td>
+          <td class="t-small" style="font-weight:500;">Rp 150.000</td>
+          <td><span class="badge badge-success">SELESAI</span></td>
+          <td class="t-small text-muted">19 Mar 2026</td>
+          <td class="td-actions"><a href="24-admin-pesanan-publik-detail.html" class="btn btn-icon btn-ghost btn-icon-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:14px;height:14px;stroke-width:1.75;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></a></td>
+        </tr>
+        <tr>
+          <td><a class="order-id" href="24-admin-pesanan-publik-detail.html">cmmx22uvm003</a></td>
+          <td><div style="font-size:13px;font-weight:500;">Ahmad Kurniawan</div><div style="font-size:11px;color:var(--on-surface-faint);">ahmad.k@gmail.com</div></td>
+          <td><div style="font-size:13px;">IST<span class="badge badge-test badge-test-ist" style="margin-left:6px;">IST</span></div></td>
+          <td class="t-small" style="font-weight:500;">Rp 250.000</td>
+          <td><span class="badge badge-progress">PENDING</span></td>
+          <td class="t-small text-muted">18 Mar 2026</td>
+          <td class="td-actions"><a href="24-admin-pesanan-publik-detail.html" class="btn btn-icon btn-ghost btn-icon-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:14px;height:14px;stroke-width:1.75;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></a></td>
+        </tr>
+        <tr>
+          <td><a class="order-id" href="24-admin-pesanan-publik-detail.html">cmmx22uvm004</a></td>
+          <td><div style="font-size:13px;font-weight:500;">Siti Rahayu</div><div style="font-size:11px;color:var(--on-surface-faint);">siti.rahayu@gmail.com</div></td>
+          <td><div style="font-size:13px;">PAPIKOSTICK<span class="badge badge-test badge-test-papikostick" style="margin-left:6px;">PAPIKOSTICK</span></div></td>
+          <td class="t-small" style="font-weight:500;">Rp 200.000</td>
+          <td><span class="badge badge-success">SELESAI</span></td>
+          <td class="t-small text-muted">17 Mar 2026</td>
+          <td class="td-actions"><a href="24-admin-pesanan-publik-detail.html" class="btn btn-icon btn-ghost btn-icon-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:14px;height:14px;stroke-width:1.75;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></a></td>
+        </tr>
+        <tr>
+          <td><a class="order-id" href="24-admin-pesanan-publik-detail.html">cmmx22uvm005</a></td>
+          <td><div style="font-size:13px;font-weight:500;">Deni Santos</div><div style="font-size:11px;color:var(--on-surface-faint);">deni.s@gmail.com</div></td>
+          <td><div style="font-size:13px;">WWQ<span class="badge badge-test badge-test-wwq" style="margin-left:6px;">WWQ</span></div></td>
+          <td class="t-small" style="font-weight:500;">Rp 150.000</td>
+          <td><span class="badge badge-pending">EXPIRED</span></td>
+          <td class="t-small text-muted">03 Mar 2026</td>
+          <td class="td-actions"><a href="24-admin-pesanan-publik-detail.html" class="btn btn-icon btn-ghost btn-icon-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:14px;height:14px;stroke-width:1.75;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="table-footer">
+    <span class="table-info">Menampilkan 1–10 dari 416 pesanan</span>
+    <div class="pagination">
+      <button class="page-btn" disabled><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m15 18-6-6 6-6"/></svg></button>
+      <button class="page-btn active">1</button>
+      <button class="page-btn">2</button>
+      <button class="page-btn">3</button>
+      <span style="color:var(--on-surface-faint);font-size:12px;padding:0 2px;">···</span>
+      <button class="page-btn">42</button>
+      <button class="page-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m9 18 6-6-6-6"/></svg></button>
+    </div>
+  </div>
+</div>
+
+<script src="./_shared/shell.js"></script>
+<script src="./_shared/utils.js" defer></script>
+<script>
+  initShell({
+    role: 'admin',
+    activeHref: '24-admin-pesanan-publik.html',
+    user: { name: 'Superadmin', role: 'Superadmin', initials: 'AS' },
+    notifCount: 6
+  });
+</script>
+</body>
+</html>

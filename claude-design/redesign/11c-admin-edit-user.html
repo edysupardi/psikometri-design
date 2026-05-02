@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit User — Psikometri Admin</title>
+  <link rel="stylesheet" href="./_shared/styles.css">
+  <style>
+    .form-card-footer { justify-content: space-between; }
+    @media (max-width: 640px) {
+      .form-card-footer { flex-direction: column-reverse; align-items: stretch; gap: 8px; }
+      .form-card-footer > div { display: flex; gap: 8px; }
+      .form-card-footer > div .btn { flex: 1; }
+      .form-card-footer > .btn-ghost {
+        border: 1px solid var(--error);
+        border-radius: var(--r-sm);
+        justify-content: center;
+        padding: 10px 14px;
+        height: auto;
+        margin-top: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="breadcrumb" style="margin-bottom:16px;">
+  <a class="breadcrumb-item" href="11-admin-manajemen-user.html">Manajemen User</a>
+  <span class="breadcrumb-sep">›</span>
+  <a class="breadcrumb-item" href="11d-admin-detail-user.html">Budi Wijaya</a>
+  <span class="breadcrumb-sep">›</span>
+  <span class="breadcrumb-item active">Edit</span>
+</div>
+
+<div class="page-header" style="margin-bottom:20px;">
+  <div class="page-header-row">
+    <div>
+      <div class="page-header-title">Edit User</div>
+      <div class="page-header-desc">Perbarui data dan akses pengguna.</div>
+    </div>
+    <span class="badge badge-role-admin">Admin</span>
+  </div>
+</div>
+
+<div class="form-card">
+  <div class="form-card-section">
+    <div class="form-section-title">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      Informasi Dasar
+    </div>
+    <div class="form-row form-row-2" style="margin-bottom:14px;">
+      <div class="form-group">
+        <label class="label">Nama Lengkap <span style="color:var(--error);">*</span></label>
+        <input class="input" type="text" value="Budi Wijaya">
+      </div>
+      <div class="form-group">
+        <label class="label">Email</label>
+        <input class="input" type="email" value="budi.wijaya@company.com" disabled style="cursor:not-allowed;">
+        <div class="form-help">Email tidak dapat diubah setelah registrasi.</div>
+      </div>
+    </div>
+    <div class="form-row form-row-2">
+      <div class="form-group">
+        <label class="label">Tanggal Lahir</label>
+        <input class="input" type="date" value="1990-04-15">
+      </div>
+      <div class="form-group">
+        <label class="label">Jenis Kelamin</label>
+        <select class="select"><option selected>Laki-laki</option><option>Perempuan</option></select>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-card-section">
+    <div class="form-section-title">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Akses & Role
+    </div>
+    <div class="form-row form-row-2">
+      <div class="form-group">
+        <label class="label">Role <span style="color:var(--error);">*</span></label>
+        <select class="select">
+          <option>Publik — Pengguna asesmen mandiri</option>
+          <option>Psikolog — Review & approval hasil</option>
+          <option>B2B Admin — Kelola pesanan perusahaan</option>
+          <option selected>Admin — Kelola seluruh sistem</option>
+          <option>Superadmin — Akses penuh</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="label">Status</label>
+        <select class="select"><option selected>Aktif</option><option>Tidak Aktif</option></select>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-card-footer">
+    <button class="btn btn-ghost btn-sm" style="color:var(--error);" data-open-modal="modal-deactivate-edit">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:14px;height:14px;stroke-width:1.75;"><circle cx="12" cy="12" r="10"/><line x1="8" x2="16" y1="12" y2="12"/></svg>
+      Nonaktifkan User
+    </button>
+    <div style="display:flex;gap:8px;">
+      <a href="11d-admin-detail-user.html" class="btn btn-outline">Batal</a>
+      <button class="btn btn-primary">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:14px;height:14px;stroke-width:1.75;"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/></svg>
+        Simpan Perubahan
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Nonaktifkan confirm -->
+<div class="modal-backdrop hidden" id="modal-deactivate-edit">
+  <div class="modal modal-sm">
+    <div class="modal-body" style="text-align:center;padding:28px 24px 16px;">
+      <div style="width:44px;height:44px;border-radius:50%;background:var(--error-bg);color:var(--error);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:20px;height:20px;stroke-width:1.75;"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" x2="12" y1="9" y2="13"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg>
+      </div>
+      <div style="font-size:15px;font-weight:600;color:var(--on-surface);margin-bottom:6px;">Nonaktifkan Budi Wijaya?</div>
+      <div style="font-size:13px;color:var(--on-surface-muted);line-height:1.5;">User tidak akan bisa login. Semua data dan riwayat tetap tersimpan.</div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" data-close-modal>Batal</button>
+      <button class="btn btn-danger">Ya, Nonaktifkan</button>
+    </div>
+  </div>
+</div>
+
+<script src="./_shared/shell.js"></script>
+<script src="./_shared/utils.js" defer></script>
+<script>
+  initShell({
+    role: 'admin',
+    activeHref: '11-admin-manajemen-user.html',
+    user: { name: 'Superadmin', role: 'Superadmin', initials: 'AS' },
+    notifCount: 6
+  });
+</script>
+</body>
+</html>

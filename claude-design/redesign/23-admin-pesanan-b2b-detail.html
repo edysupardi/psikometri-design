@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detail Pesanan B2B — Psikometri Admin</title>
+  <link rel="stylesheet" href="./_shared/styles.css">
+  <style>
+    @media (min-width: 1025px) {
+      .detail-layout { grid-template-columns: 1fr 340px; align-items: stretch; }
+    }
+
+    .detail-right { height: 100%; }
+    .detail-right .info-card { height: 100%; }
+
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .info-item-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--on-surface-faint); margin-bottom: 3px; }
+    .info-item-val { font-size: 13px; color: var(--on-surface); font-weight: 500; }
+    .info-item-val.mono { font-family: var(--font-mono); font-size: 12px; }
+
+    .rincian-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--divider); font-size: 13px; }
+    .rincian-row:last-of-type { border-bottom: none; }
+    .rincian-label { color: var(--on-surface-muted); }
+    .rincian-total { display: flex; justify-content: space-between; align-items: center; padding: 10px 0 0; font-weight: 600; font-size: 14px; }
+    .rincian-total-val { color: var(--primary); font-size: 16px; }
+
+    .hasil-card { background: var(--surface-low); border-radius: var(--r-md); padding: 16px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .hasil-icon { width: 40px; height: 40px; background: rgba(197,184,245,0.3); border-radius: var(--r-md); display: flex; align-items: center; justify-content: center; color: var(--primary); }
+    .hasil-icon svg { width: 20px; height: 20px; stroke-width: 1.75; }
+  </style>
+</head>
+<body>
+
+<div class="breadcrumb" style="margin-bottom:12px;">
+  <a class="breadcrumb-item" href="22-admin-pesanan-b2b.html">Pesanan B2B</a>
+  <span class="breadcrumb-sep">›</span>
+  <span class="breadcrumb-item active">Detail Pesanan</span>
+</div>
+
+<div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;flex-wrap:wrap;">
+  <div style="font-family:var(--font-mono);font-size:18px;font-weight:600;color:var(--on-surface);letter-spacing:-0.01em;">cmmx1krvm0005</div>
+  <span class="badge badge-pending" style="font-size:10px;">PT ABCXYZ</span>
+  <span class="badge badge-success">Selesai</span>
+  <div style="color:var(--on-surface-faint);font-size:12px;margin-left:auto;">19 Mar 2026, 12:47</div>
+</div>
+
+<div class="detail-layout">
+  <div class="detail-left">
+
+    <!-- Informasi Perusahaan -->
+    <div class="info-card">
+      <div class="info-card-title">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Informasi Perusahaan
+      </div>
+      <div class="info-grid" style="padding: 16px 18px;">
+        <div>
+          <div class="info-item-label">Nama Perusahaan</div>
+          <div class="info-item-val">PT ABCXYZ</div>
+        </div>
+        <div>
+          <div class="info-item-label">Telepon</div>
+          <div class="info-item-val">+62 21 1234 5678</div>
+        </div>
+        <div>
+          <div class="info-item-label">Email</div>
+          <div class="info-item-val">b2b@psikometri.id</div>
+        </div>
+        <div>
+          <div class="info-item-label">Tujuan Asesmen</div>
+          <div class="info-item-val text-muted">Seleksi karyawan divisi IT Q2 2026</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detail Paket Tes -->
+    <div class="info-card">
+      <div class="info-card-title">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m7.5 4.27 9 5.15M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/></svg>
+        Detail Paket Tes
+      </div>
+      <div class="info-grid" style="padding: 16px 18px;">
+        <div>
+          <div class="info-item-label">Paket Tes</div>
+          <div class="info-item-val">CPMI - Cheklist Masalah Individu</div>
+        </div>
+        <div>
+          <div class="info-item-label">Jumlah Peserta</div>
+          <div class="info-item-val">1 orang</div>
+        </div>
+        <div>
+          <div class="info-item-label">Harga Satuan</div>
+          <div class="info-item-val">Rp 150.000 / orang</div>
+        </div>
+        <div>
+          <div class="info-item-label">Kode Paket</div>
+          <div class="info-item-val mono">CPMI_-_CHEKLIST_MASA</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="detail-right">
+    <!-- Rincian Pembayaran -->
+    <div class="info-card">
+      <div class="info-card-title">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
+        Rincian Pembayaran
+      </div>
+      <div style="padding: 16px 18px;">
+        <div class="rincian-row"><span class="rincian-label">Harga 1 × Rp 150.000</span><span>Rp 150.000</span></div>
+        <div class="rincian-row"><span class="rincian-label">Diskon</span><span>Rp 0</span></div>
+        <div class="rincian-total"><span>Total</span><span class="rincian-total-val">Rp 150.000</span></div>
+        <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--divider);">
+          <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--on-surface-faint);margin-bottom:4px;">Metode Pembayaran</div>
+          <div style="font-size:13px;font-weight:500;color:var(--on-surface);margin-bottom:12px;">Bank Transfer</div>
+          <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--on-surface-faint);margin-bottom:4px;">Tanggal Bayar</div>
+          <div style="font-size:13px;color:var(--on-surface);">19 Mar 2026, 12:47</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Daftar Peserta — full width -->
+<div class="info-card" style="margin-top:16px;overflow:hidden;">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid var(--divider);flex-wrap:wrap;gap:8px;">
+    <div style="font-size:13px;font-weight:600;color:var(--on-surface);">Daftar Peserta (1)</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+      <div class="input-group" style="max-width:220px;">
+        <span class="input-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
+        <input class="input" type="search" placeholder="Cari nama atau email..." style="height:32px;font-size:12px;">
+      </div>
+      <button class="btn btn-outline btn-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:13px;height:13px;stroke-width:1.75;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+        Export CSV
+      </button>
+    </div>
+  </div>
+  <div style="overflow-x:auto;">
+    <table class="ps-table" style="min-width:520px;">
+      <thead>
+        <tr>
+          <th style="width:40px;">No</th>
+          <th>Nama Peserta</th>
+          <th>Email</th>
+          <th>Status</th>
+          <th>Selesai</th>
+          <th style="width:50px;">Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="t-small text-faint">1</td>
+          <td style="font-size:13px;font-weight:500;">Jane Doe</td>
+          <td class="t-small text-muted">jane@psikometri.id</td>
+          <td><span class="badge badge-progress" style="font-size:10px;">Sedang Mengerjakan</span></td>
+          <td class="t-small text-muted">—</td>
+          <td class="td-actions">
+            <button class="btn btn-icon btn-ghost btn-icon-sm" title="Lihat hasil">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:14px;height:14px;stroke-width:1.75;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="padding:10px 20px;color:var(--on-surface-faint);font-size:12px;border-top:1px solid var(--divider);">Menampilkan 1–1 dari 1 peserta</div>
+</div>
+
+<script src="./_shared/shell.js"></script>
+<script src="./_shared/utils.js" defer></script>
+<script>
+  initShell({
+    role: 'admin',
+    activeHref: '22-admin-pesanan-b2b.html',
+    user: { name: 'Superadmin', role: 'Superadmin', initials: 'AS' },
+    notifCount: 6
+  });
+</script>
+</body>
+</html>

@@ -14,12 +14,14 @@ clean, professional, design-system-consistent — sebagai referensi visual untuk
 ## Keputusan Teknis
 
 ### Format Output: HTML + Vanilla JavaScript
+
 - Setiap halaman = 1 file HTML (bisa dibuka langsung di browser, no build step)
 - Shared sidebar/topbar via `_shared/shell.js` (vanilla JS injection) — tidak repeat 35x
 - Shared utilities via `_shared/utils.js` (modal open/close, tab switching, accordion)
 - Modal bisa dibuka, tab bisa diswitch, multi-step wizard bisa di-navigate dalam 1 file
 
 ### Struktur Folder Output
+
 ```
 claude-design/redesign/
 ├── index.html                    ← gallery semua screens (navigasi antar file)
@@ -52,23 +54,27 @@ Semua halaman yang memerlukan login menggunakan **satu set layout** yang terdiri
 ```
 
 **Sidebar** (kiri):
+
 - Expanded: 240px lebar, tampilkan icon + label menu
 - Collapsed: 48px lebar, tampilkan icon saja (hover = tooltip label)
 - Toggle button ada di topbar kiri (icon hamburger/panel)
 - Menu berbeda per role (4 konfigurasi), tapi struktur & style identik
 
 **Topbar/Header** (atas, sticky, 52px):
+
 - Kiri: toggle sidebar button + logo "Psikometri" (hilang saat collapsed)
 - Tengah: search bar (opsional per role)
 - Kanan: notification bell + avatar + nama user + role label
 
 **Content Area** (wrapper, bukan konten):
+
 - Padding: 24px
 - Background: `var(--color-surface)`
 - Overflow: `auto` (scrollable secara mandiri)
 - Bukan component dalam arti "konten" — hanya wrapper/slot
 
 **Konfigurasi menu per role** (di dalam `shell.js`):
+
 ```js
 const MENUS = {
   admin: [
@@ -98,13 +104,16 @@ const MENUS = {
 ```
 
 ### Login Page: 1 File Shared (Semua Role)
+
 Satu halaman login dipakai semua role. Diferensiasi terjadi setelah login via redirect
 ke dashboard masing-masing. Tidak ada login page terpisah per role.
 
 ### Screens yang Sudah Ada di `screens/*.jsx`
+
 File-file ini sudah dibangun dalam pendekatan JSX (Babel CDN). Untuk konsistensi
 dengan output HTML baru, akan **dibuatkan ulang dalam HTML** agar seluruh mockup
 berada dalam format yang sama dan dapat digunakan tanpa React.
+
 - `screens/landing.jsx` → `01-landing.html`
 - `screens/auth.jsx` (LoginPage, OtpPage) → `02-login.html`, `04-otp.html`
 - `screens/admin-dashboard.jsx` → `10-admin-dashboard.html`
@@ -113,7 +122,56 @@ berada dalam format yang sama dan dapat digunakan tanpa React.
 
 ---
 
-## Task List
+## Reusable CSS Components (styles.css)
+
+Semua komponen di bawah sudah tersedia di `_shared/styles.css` dan **wajib dipakai** oleh semua halaman logged-in. Jangan redefinisi di `<style>` per-halaman.
+
+| Class | Deskripsi | Dipakai di |
+|-------|-----------|------------|
+| `.kpi-grid` | 4-col grid untuk KPI cards, responsive 2-col di ≤1024px | Dashboard, Pesanan, Pembayaran |
+| `.metrics` | Alias `.kpi-grid` (4-col, responsive) | Dashboard, Pesanan Publik |
+| `.page-toolbar` | Flex toolbar dengan search + filter, wraps on mobile | Semua halaman tabel |
+| `.page-toolbar-search` | Search input dalam toolbar (flex:1, max 280px) | Semua halaman tabel |
+| `.detail-grid` | 2-col grid (1fr + 320px) untuk halaman detail, 1-col di ≤1024px | Detail pages |
+| `.detail-grid-main` | Kolom kiri detail grid (flex-col, gap 16px) | Detail pages |
+| `.detail-grid-side` | Kolom kanan detail grid (sticky) | Detail pages |
+| `.detail-layout` | Alias `.detail-grid` (backward-compat) | 23, 24, 25b |
+| `.detail-left` | Alias `.detail-grid-main` | 23, 24 |
+| `.detail-right` | Alias `.detail-grid-side` | 23, 24, 25b |
+| `.info-card` | Card putih dengan shadow untuk detail info | Detail pages |
+| `.info-card-header` | Header info card (icon + title + border-bottom) | Detail pages |
+| `.info-card-body` | Body padding info card | Detail pages |
+| `.info-card-title` | Alias `.info-card-header` (backward-compat) | 23, 24 |
+| `.info-row` | Grid 2-col (label + value) dengan border-bottom | Detail pages |
+| `.info-row-label` / `.info-key` | Label kolom kiri info-row | Detail pages |
+| `.info-row-val` / `.info-val` | Value kolom kanan info-row | Detail pages |
+| `.form-card` | Card form full-width dengan shadow | 11b, 11c, form pages |
+| `.form-card-section` | Section dalam form-card (padding + border-bottom) | 11b, 11c |
+| `.form-section-title` | Title section form (icon + label) | 11b, 11c |
+| `.form-card-footer` | Footer form-card (flex, space-between) | 11b, 11c |
+| `.dropdown-wrap` | Wrapper untuk action dropdown (position: relative) | 11 |
+| `.dropdown-menu` | Dropdown menu (absolute, shadow-3) | 11 |
+| `.dropdown-item` | Item dalam dropdown | 11 |
+| `.dropdown-sep` | Separator dalam dropdown | 11 |
+| `.confirm-icon` | Icon bulat untuk modal konfirmasi | 11, 11c, 11d |
+| `.av-admin` `.av-psikolog` `.av-b2b` `.av-publik` | Avatar color per role | 11 |
+| `.user-cell` | Flex cell: avatar + nama + email | 11 |
+| `.user-cell-name` | Nama dalam user-cell | 11 |
+| `.user-cell-email` | Email dalam user-cell | 11 |
+| `.toolbar` | Alias `.page-toolbar` (backward-compat) | 22, 25 |
+| `.toolbar-search` | Alias `.page-toolbar-search` | 22, 25 |
+
+### Mobile Shell Behavior
+
+Shell sudah mobile-responsive secara otomatis via `shell.js` + `styles.css`:
+
+- **≤768px**: Sidebar menjadi off-canvas overlay (slide dari kiri). Toggle button membuka/menutup. Overlay gelap menutup sidebar saat diklik.
+- **≤1024px**: KPI grid menjadi 2-col. Detail grid menjadi 1-col (sticky side panel menjadi static).
+- **Semua breakpoint**: Table wrap horizontal scroll. Form rows menjadi 1-col. Page header wraps.
+
+Tidak perlu menambahkan media query per-halaman untuk behavior di atas — sudah handled di shared CSS.
+
+---
 
 > **Urutan:** Non-login → Admin/Superadmin → B2B → User Publik → Psikolog
 > **Konvensi nama file:** `[no]-[role]-[nama-halaman].html`
@@ -121,9 +179,11 @@ berada dalam format yang sama dan dapat digunakan tanpa React.
 ---
 
 ### ⚙️ PHASE 0 — Setup & Shared Components
-*Harus selesai sebelum phase lain bisa dimulai. Output phase ini dipakai oleh semua 36 HTML pages.*
+
+_Harus selesai sebelum phase lain bisa dimulai. Output phase ini dipakai oleh semua 36 HTML pages._
 
 #### 0.1 — Folder & CSS
+
 - [x] **0.1a** Buat folder `claude-design/redesign/` dan subfolder `_shared/`
 - [x] **0.1b** Buat `_shared/styles.css`
   - Copy semua CSS variables + base rules dari `claude-design/styles.css`
@@ -141,6 +201,7 @@ berada dalam format yang sama dan dapat digunakan tanpa React.
   - Tambah: category filter tabs (pill style)
 
 #### 0.2 — Sidebar Component
+
 - [x] **0.2** Buat `_shared/shell.js` — **3 shared components** untuk semua logged-in pages:
 
   **Component 1: Sidebar** (kiri, collapsible)
@@ -168,12 +229,16 @@ berada dalam format yang sama dan dapat digunakan tanpa React.
   - Fungsi `initShell(role, activeHref)` dipanggil di setiap HTML page
 
   **API penggunaan di setiap HTML file:**
+
   ```html
   <script src="../_shared/shell.js"></script>
-  <script>initShell('admin', '11-admin-manajemen-user.html')</script>
+  <script>
+    initShell("admin", "11-admin-manajemen-user.html");
+  </script>
   ```
 
 #### 0.3 — Utilities
+
 - [x] **0.3** Buat `_shared/utils.js` — utility functions:
   - `openModal(id)` / `closeModal(id)` / `closeModalOnBackdrop(e)`
   - `switchTab(groupId, tabId)` — tab panel switching
@@ -184,6 +249,7 @@ berada dalam format yang sama dan dapat digunakan tanpa React.
   - `initNumberStepper()` — +/− button handlers
 
 #### 0.4 — Gallery Index
+
 - [x] **0.4** Buat `index.html` — gallery navigasi semua 36 screens:
   - Dikelompokkan per section: Non-Login / Admin / B2B / Publik / Psikolog
   - Setiap card: nomor file + nama halaman + link ke HTML file
@@ -192,7 +258,8 @@ berada dalam format yang sama dan dapat digunakan tanpa React.
 ---
 
 ### 🌐 PHASE 1 — Non-Login Pages
-*Halaman yang bisa diakses tanpa login*
+
+_Halaman yang bisa diakses tanpa login_
 
 - [x] **1.1** `01-landing.html`
   - Ref: `pasted-1777307549577-0`
@@ -217,7 +284,27 @@ berada dalam format yang sama dan dapat digunakan tanpa React.
 ---
 
 ### 🔐 PHASE 2 — Admin / Superadmin Pages
-*Semua halaman yang diakses oleh role admin atau superadmin*
+
+_Semua halaman yang diakses oleh role admin atau superadmin_
+_Dipecah 3 iterasi. Pencil design refs tersedia di `pencil/_.pen`files (lihat plan detail di`redesign-plan-admin.md`).\*
+
+#### Iterasi 1 — Core Navigation & Transaksi
+
+_Pencil ref: `pencil/admin-pages.pen`_
+
+#### Iterasi 2 — Bank Soal Pages
+
+_Pencil ref: `pencil/admin-pages-bank-soal.pen` + `pencil/admin-pages-bank-soal-2.pen`_
+
+#### Iterasi 3 — Content Config & Misc
+
+_Pencil ref: `pencil/admin-pages-paket-tes.pen` + `pencil/admin-pages-biaya.pen` + uploads only_
+
+---
+
+_Detail per-halaman dan Pencil node IDs ada di `redesign-plan-admin.md`_
+
+---
 
 - [ ] **2.1** `10-admin-dashboard.html`
   - Ref: `pasted-1777307634014-0`
@@ -317,7 +404,8 @@ berada dalam format yang sama dan dapat digunakan tanpa React.
 ---
 
 ### 🏢 PHASE 3 — B2B User Pages
-*Semua halaman yang diakses oleh role B2B (perusahaan/klien)*
+
+_Semua halaman yang diakses oleh role B2B (perusahaan/klien)_
 
 - [ ] **3.1** `30-b2b-dashboard.html`
   - Ref: `pasted-1777308120168-0`
@@ -344,7 +432,8 @@ berada dalam format yang sama dan dapat digunakan tanpa React.
 ---
 
 ### 👤 PHASE 4 — User Publik Pages
-*Semua halaman yang diakses oleh user publik (melakukan asesmen mandiri)*
+
+_Semua halaman yang diakses oleh user publik (melakukan asesmen mandiri)_
 
 - [ ] **4.1** `40-publik-dashboard.html`
   - Ref: `pasted-1777308199399-0`
@@ -381,7 +470,8 @@ berada dalam format yang sama dan dapat digunakan tanpa React.
 ---
 
 ### 🧠 PHASE 5 — Psikolog Pages
-*Semua halaman yang diakses oleh role psikolog*
+
+_Semua halaman yang diakses oleh role psikolog_
 
 - [ ] **5.1** `50-psikolog-antrian-review.html`
   - Ref: `pasted-1777307979392-0`
@@ -404,44 +494,44 @@ berada dalam format yang sama dan dapat digunakan tanpa React.
 
 ## Mapping Upload → HTML Output
 
-| Upload File | Screen | HTML Output |
-|-------------|--------|-------------|
-| `pasted-1777307549577-0` | Landing Page | `01-landing.html` |
-| `pasted-1777307567756-0` | Login Page | `02-login.html` |
-| *(tidak ada di uploads)* | Register Page | `03-register.html` |
-| `pasted-1777307587001-0` | Verifikasi OTP | `04-otp.html` |
-| `pasted-1777307634014-0` | Admin Dashboard | `10-admin-dashboard.html` |
-| `pasted-1777307649476-0` | Manajemen User (list) | `11-admin-manajemen-user.html` |
-| `pasted-1777307666097-0` | Tambah User Modal | `11-admin-manajemen-user.html` (modal state) |
-| `pasted-1777307680394-0` | Bank Soal (list) | `12-admin-bank-soal.html` |
-| `pasted-1777307695605-0` | Tambah Jenis Tes | `13-admin-tambah-jenis-tes.html` |
-| `pasted-1777307718285-0` | Tambah Lajur Kraepelin | `17-admin-tambah-lajur-kraepelin.html` |
-| `pasted-1777307739450-0` | Tambah Soal PAPIKOSTICK | `15-admin-tambah-soal-papikostick.html` |
-| `pasted-1777307760574-0` | Tambah Soal WWQ | `14-admin-tambah-soal-wwq.html` |
-| `pasted-1777307782005-0` | Tambah Soal IST-SE | `16-admin-tambah-soal-ist.html` |
-| `pasted-1777307807434-0` | Tambah Paket Tes | `18-admin-paket-asesmen.html` |
-| `pasted-1777307821966-0` | Biaya Tambahan | `19-admin-biaya.html` |
-| `pasted-1777307840596-0` | Voucher (list + modal) | `20-admin-voucher.html` |
-| `pasted-1777307866351-0` | Tambah Template Laporan | `21-admin-template-laporan.html` |
-| `pasted-1777307877860-0` | Pesanan B2B (list) | `22-admin-pesanan-b2b.html` |
-| `pasted-1777307890711-0` | Pesanan B2B Detail | `23-admin-pesanan-b2b-detail.html` |
-| `pasted-1777307906012-0` | Pesanan Publik Detail | `24-admin-pesanan-publik-detail.html` |
-| `pasted-1777307918867-0` | Manajemen Pembayaran | `25-admin-pembayaran.html` |
-| `pasted-1777307931003-0` | Log Aktivitas | `26-admin-log-aktivitas.html` |
-| `pasted-1777307946451-0` | Profil Saya | `27-shared-profil.html` |
-| `pasted-1777307979392-0` | Antrian Review (Psikolog) | `50-psikolog-antrian-review.html` |
-| `pasted-1777307995739-0` | Detail Review WWQ | `51-psikolog-review-detail.html` |
-| `pasted-1777308008115-0` | Summary Final / Klinis | `52-psikolog-summary-final.html` |
-| `pasted-1777308120168-0` | B2B Dashboard | `30-b2b-dashboard.html` |
-| `pasted-1777308133591-0` | B2B Paket Asesmen | `31-b2b-paket-asesmen.html` |
-| `pasted-1777308150692-0` | B2B Buat Order | `32-b2b-buat-order.html` |
-| `pasted-1777308164971-0` | B2B Monitoring Peserta | `33-b2b-monitoring.html` |
-| `pasted-1777308199399-0` | Public Dashboard | `40-publik-dashboard.html` |
-| `pasted-1777308216107-0` | Public Paket Asesmen | `41-publik-paket-asesmen.html` |
-| `pasted-1777308230415-0` | Public Paket Detail | `42-publik-paket-detail.html` |
-| `pasted-1777308242389-0` | Public Riwayat Asesmen | `43-publik-riwayat-asesmen.html` |
-| `pasted-1777308463759-0` | Public Sesi Tes Saya | `44-publik-sesi-tes.html` |
-| *(dari screens/test-interface.jsx)* | Test Interface | `45-test-interface.html` |
+| Upload File                         | Screen                    | HTML Output                                  |
+| ----------------------------------- | ------------------------- | -------------------------------------------- |
+| `pasted-1777307549577-0`            | Landing Page              | `01-landing.html`                            |
+| `pasted-1777307567756-0`            | Login Page                | `02-login.html`                              |
+| _(tidak ada di uploads)_            | Register Page             | `03-register.html`                           |
+| `pasted-1777307587001-0`            | Verifikasi OTP            | `04-otp.html`                                |
+| `pasted-1777307634014-0`            | Admin Dashboard           | `10-admin-dashboard.html`                    |
+| `pasted-1777307649476-0`            | Manajemen User (list)     | `11-admin-manajemen-user.html`               |
+| `pasted-1777307666097-0`            | Tambah User Modal         | `11-admin-manajemen-user.html` (modal state) |
+| `pasted-1777307680394-0`            | Bank Soal (list)          | `12-admin-bank-soal.html`                    |
+| `pasted-1777307695605-0`            | Tambah Jenis Tes          | `13-admin-tambah-jenis-tes.html`             |
+| `pasted-1777307718285-0`            | Tambah Lajur Kraepelin    | `17-admin-tambah-lajur-kraepelin.html`       |
+| `pasted-1777307739450-0`            | Tambah Soal PAPIKOSTICK   | `15-admin-tambah-soal-papikostick.html`      |
+| `pasted-1777307760574-0`            | Tambah Soal WWQ           | `14-admin-tambah-soal-wwq.html`              |
+| `pasted-1777307782005-0`            | Tambah Soal IST-SE        | `16-admin-tambah-soal-ist.html`              |
+| `pasted-1777307807434-0`            | Tambah Paket Tes          | `18-admin-paket-asesmen.html`                |
+| `pasted-1777307821966-0`            | Biaya Tambahan            | `19-admin-biaya.html`                        |
+| `pasted-1777307840596-0`            | Voucher (list + modal)    | `20-admin-voucher.html`                      |
+| `pasted-1777307866351-0`            | Tambah Template Laporan   | `21-admin-template-laporan.html`             |
+| `pasted-1777307877860-0`            | Pesanan B2B (list)        | `22-admin-pesanan-b2b.html`                  |
+| `pasted-1777307890711-0`            | Pesanan B2B Detail        | `23-admin-pesanan-b2b-detail.html`           |
+| `pasted-1777307906012-0`            | Pesanan Publik Detail     | `24-admin-pesanan-publik-detail.html`        |
+| `pasted-1777307918867-0`            | Manajemen Pembayaran      | `25-admin-pembayaran.html`                   |
+| `pasted-1777307931003-0`            | Log Aktivitas             | `26-admin-log-aktivitas.html`                |
+| `pasted-1777307946451-0`            | Profil Saya               | `27-shared-profil.html`                      |
+| `pasted-1777307979392-0`            | Antrian Review (Psikolog) | `50-psikolog-antrian-review.html`            |
+| `pasted-1777307995739-0`            | Detail Review WWQ         | `51-psikolog-review-detail.html`             |
+| `pasted-1777308008115-0`            | Summary Final / Klinis    | `52-psikolog-summary-final.html`             |
+| `pasted-1777308120168-0`            | B2B Dashboard             | `30-b2b-dashboard.html`                      |
+| `pasted-1777308133591-0`            | B2B Paket Asesmen         | `31-b2b-paket-asesmen.html`                  |
+| `pasted-1777308150692-0`            | B2B Buat Order            | `32-b2b-buat-order.html`                     |
+| `pasted-1777308164971-0`            | B2B Monitoring Peserta    | `33-b2b-monitoring.html`                     |
+| `pasted-1777308199399-0`            | Public Dashboard          | `40-publik-dashboard.html`                   |
+| `pasted-1777308216107-0`            | Public Paket Asesmen      | `41-publik-paket-asesmen.html`               |
+| `pasted-1777308230415-0`            | Public Paket Detail       | `42-publik-paket-detail.html`                |
+| `pasted-1777308242389-0`            | Public Riwayat Asesmen    | `43-publik-riwayat-asesmen.html`             |
+| `pasted-1777308463759-0`            | Public Sesi Tes Saya      | `44-publik-sesi-tes.html`                    |
+| _(dari screens/test-interface.jsx)_ | Test Interface            | `45-test-interface.html`                     |
 
 **Total: 36 HTML files** (34 dari uploads + register page + test interface) + shared files + index
 
@@ -472,4 +562,4 @@ Phase 0 harus selesai dulu. Phase 2–5 bisa dikerjakan paralel setelah Phase 0 
 
 ---
 
-*Plan dibuat: 2026-05-01 | Total: 36 HTML mockup pages*
+_Plan dibuat: 2026-05-01 | Total: 36 HTML mockup pages_

@@ -21,6 +21,7 @@ Tool        : Pencil (.pen files) via MCP
 ```
 
 **Target users (4 role, 1 apps, RBAC):**
+
 - User publik — register mandiri, asesmen, bayar untuk lihat hasil
 - User B2B — assign asesmen ke kandidat (rekrutmen)
 - Psikolog — review & approval hasil asesmen
@@ -31,6 +32,7 @@ Tool        : Pencil (.pen files) via MCP
 ## Cara Kamu Harus Berperilaku
 
 ### 1. Baca memory sebelum mulai
+
 Sebelum generate atau memodifikasi design apapun, baca file-file ini secara berurutan:
 
 1. `.claude/memory/design-spec.md` → kontrak desain aktif (token, rules, component contracts)
@@ -41,7 +43,9 @@ Sebelum generate atau memodifikasi design apapun, baca file-file ini secara beru
 > `design-spec.md` selalu menang — dia adalah sumber kebenaran tunggal.
 
 ### 2. Update memory setelah selesai
+
 Setelah setiap component atau organism selesai dan difinalize:
+
 - Tambahkan pattern baru ke `patterns.md`
 - Catat keputusan penting ke `decisions.md`
 - Update `design-spec.md` jika ada token atau constraint baru yang disepakati
@@ -58,17 +62,20 @@ Semua output design HARUS dibuat menggunakan MCP Pencil — bukan dideskripsikan
 4. **Konfirmasi hasil** — pastikan komponen berhasil dibuat sebelum lanjut ke review
 
 **Jika MCP Pencil tidak tersedia atau disconnect:**
+
 - ❌ Jangan generate design dalam format lain (HTML, CSS, deskripsi teks) sebagai pengganti
 - ✅ Pause, informasikan ke user bahwa MCP Pencil tidak terdeteksi
 - ✅ Tunggu instruksi dari user sebelum lanjut
 
 **Jika tools MCP Pencil berubah atau tidak familiar:**
+
 - Selalu discover ulang — jangan asumsikan nama tool dari sesi sebelumnya
 - Jika ada tool yang ambigu, tanyakan ke user sebelum menggunakannya
 
 ---
 
 ### 4. Prinsip anti-halusinasi
+
 - ❌ Jangan berasumsi nilai token — selalu refer ke `design-spec.md`
 - ❌ Jangan invent variant baru — cek `patterns.md` dan component contracts dulu
 - ❌ Jangan skip review step — setiap output harus diverifikasi vs spec
@@ -76,6 +83,7 @@ Semua output design HARUS dibuat menggunakan MCP Pencil — bukan dideskripsikan
 - ❌ Jika MCP Pencil disconnect — pause, informasikan ke user, jangan generate tanpa tool
 
 ### 5. Format response untuk setiap design task
+
 Struktur ini wajib diikuti, tidak boleh dilewati:
 
 ```
@@ -104,15 +112,15 @@ PLAN → SPEC INJECT → DRAFT → REVIEW VS SPEC → REFINE → UPDATE MEMORY
 
 **Commands yang tersedia** (lihat `.claude/commands/` untuk detail):
 
-| Command | Fungsi |
-|---------|--------|
-| `/init-design-spec` | Setup atau update design-spec.md secara interaktif |
-| `/extract-design` | Extract design DNA dari URL / screenshot / deskripsi → file .md |
+| Command                   | Fungsi                                                                         |
+| ------------------------- | ------------------------------------------------------------------------------ |
+| `/init-design-spec`       | Setup atau update design-spec.md secara interaktif                             |
+| `/extract-design`         | Extract design DNA dari URL / screenshot / deskripsi → file .md                |
 | `/generate-design-system` | Baca file .md → auto-generate tokens + atoms + molecules + organisms ke Pencil |
-| `/new-design` | Mulai task design baru dengan context injection otomatis |
-| `/review-design` | Review konsistensi design vs spec |
-| `/update-memory` | Update semua memory files setelah sesi selesai |
-| `/research-log` | Catat temuan research (berhasil maupun gagal) |
+| `/new-design`             | Mulai task design baru dengan context injection otomatis                       |
+| `/review-design`          | Review konsistensi design vs spec                                              |
+| `/update-memory`          | Update semua memory files setelah sesi selesai                                 |
+| `/research-log`           | Catat temuan research (berhasil maupun gagal)                                  |
 
 ---
 
@@ -135,10 +143,14 @@ Jangan loncat layer. Atom harus selesai sebelum molecule, dst.
 
 ## Hard Rules (Ringkasan — detail di design-spec.md)
 
-1. Tidak ada hardcode hex color — selalu CSS variable token
-2. Semua spacing kelipatan 8px
-3. Tidak ada font selain yang didefinisikan di tokens
-4. Mobile-first — semua komponen harus responsive
-5. Semua interactive element harus punya focus state
-6. Light mode dan dark mode dipisah
-7. Jika MCP disconnect — pause dan informasikan ke user
+1. **WAJIB: Design baru, bukan replikasi** — Tujuan project ini adalah REVAMP, bukan copy-paste dari file `.pen` atau referensi lama. Setiap halaman harus dirancang ulang dengan pendekatan yang lebih profesional, clean, simple, rapi, dan terpercaya. **DILARANG membuat "AI Slop"** — yaitu design yang generik, over-decorated, terlalu banyak warna berbeda, terlalu banyak icon berwarna-warni, atau terasa seperti template murahan. Rujukan utama adalah `design-token-and-atoms.md` sebagai sumber kebenaran visual.
+   1b. Referensi layout dan warna bisa juga ambil dari file {root_project}/pencil/\*.pen dari hasil design sebelumnya, tapi jgn jadikan acuan utama, karena redesign ini adalah utk membuat penyegaran dari template .pen tersebut
+2. Tidak ada hardcode hex color — selalu CSS variable token
+3. Semua spacing kelipatan 8px
+4. Tidak ada font selain yang didefinisikan di tokens
+5. Mobile-first — semua komponen harus responsive
+6. Semua interactive element harus punya focus state
+7. Light mode dan dark mode dipisah
+8. Jika MCP disconnect — pause dan informasikan ke user
+9. tidak boleh melakukan commit sebelum perubahan disetujui
+10. untuk lanjut ke next step harus melakukan confirm dahulu, tidak boleh berinisiatif melanjutkan ke next step sebelum di setujui

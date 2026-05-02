@@ -168,15 +168,6 @@ function buildSidebar(role, activeHref, user) {
       <nav class="sidebar-nav">
         ${navSections}
       </nav>
-      <div class="sidebar-footer">
-        <div class="sidebar-user">
-          <div class="avatar avatar-md">${initials}</div>
-          <div class="sidebar-user-info">
-            <div class="sidebar-user-name">${user.name || 'User'}</div>
-            <div class="sidebar-user-role">${user.role || role}</div>
-          </div>
-        </div>
-      </div>
     </aside>`;
 }
 
@@ -230,10 +221,8 @@ function initShell(opts) {
     notifCount = 0,
   } = opts;
 
-  // Determine if search shown (admin + psikolog have search)
-  const hasSearch = opts.hasSearch !== undefined
-    ? opts.hasSearch
-    : (role === 'admin' || role === 'psikolog');
+  // Determine if search shown — removed per design decision, no search in topbar
+  const hasSearch = false;
 
   // Grab existing page body content
   const pageContent = document.body.innerHTML;
@@ -260,12 +249,47 @@ function initShell(opts) {
   const sidebarEl = document.getElementById('sidebar');
   const toggleBtn = document.getElementById('sidebarToggle');
 
+  // Inject overlay element for mobile
+  const overlay = document.createElement('div');
+  overlay.className = 'sidebar-overlay';
+  overlay.id = 'sidebarOverlay';
+  document.body.appendChild(overlay);
+
+  const isMobile = () => window.innerWidth <= 768;
+
   let collapsed = localStorage.getItem('ps_sidebar_collapsed') === 'true';
-  if (collapsed) sidebarEl.classList.add('collapsed');
+  if (collapsed && !isMobile()) sidebarEl.classList.add('collapsed');
+
+  function openMobileSidebar() {
+    sidebarEl.classList.add('mobile-open');
+    overlay.classList.add('visible');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMobileSidebar() {
+    sidebarEl.classList.remove('mobile-open');
+    overlay.classList.remove('visible');
+    document.body.style.overflow = '';
+  }
 
   toggleBtn.addEventListener('click', () => {
-    collapsed = !collapsed;
-    sidebarEl.classList.toggle('collapsed', collapsed);
-    localStorage.setItem('ps_sidebar_collapsed', collapsed);
+    if (isMobile()) {
+      const isOpen = sidebarEl.classList.contains('mobile-open');
+      isOpen ? closeMobileSidebar() : openMobileSidebar();
+    } else {
+      collapsed = !collapsed;
+      sidebarEl.classList.toggle('collapsed', collapsed);
+      localStorage.setItem('ps_sidebar_collapsed', collapsed);
+    }
+  });
+
+  overlay.addEventListener('click', closeMobileSidebar);
+
+  // On resize: clean up mobile state when going back to desktop
+  window.addEventListener('resize', () => {
+    if (!isMobile()) {
+      closeMobileSidebar();
+      if (collapsed) sidebarEl.classList.add('collapsed');
+    }
   });
 }

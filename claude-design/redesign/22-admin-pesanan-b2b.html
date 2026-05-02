@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pesanan B2B — Psikometri Admin</title>
+  <link rel="stylesheet" href="./_shared/styles.css">
+  <style>
+    .order-id { font-family: var(--font-mono); font-size: 12px; font-weight: 500; color: var(--primary); cursor: pointer; }
+    .order-id:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="page-header-row">
+    <div>
+      <div class="page-header-title">Pesanan B2B</div>
+      <div class="page-header-desc">Kelola semua pesanan dari klien perusahaan</div>
+    </div>
+    <button class="btn btn-outline btn-sm">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:14px;height:14px;stroke-width:1.75;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+      Export CSV
+    </button>
+  </div>
+</div>
+
+<div class="kpi-grid">
+  <div class="kpi-card">
+    <div class="kpi-card-header">
+      <div class="kpi-icon kpi-icon-success">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </div>
+    </div>
+    <div class="kpi-value" style="font-size:20px;">Rp 745.000</div>
+    <div class="kpi-label">Total Revenue B2B</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-card-header">
+      <div class="kpi-icon kpi-icon-primary">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
+      </div>
+    </div>
+    <div class="kpi-value">10</div>
+    <div class="kpi-label">Total Pesanan</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-card-header">
+      <div class="kpi-icon kpi-icon-secondary">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+    </div>
+    <div class="kpi-value" style="font-size:20px;">Rp 74.500</div>
+    <div class="kpi-label">Rata-rata per Order</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-card-header">
+      <div class="kpi-icon kpi-icon-warning">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+    </div>
+    <div class="kpi-value">0</div>
+    <div class="kpi-label">Menunggu Bayar</div>
+  </div>
+</div>
+
+<div class="table-wrap">
+  <div class="toolbar">
+    <div class="toolbar-search input-group">
+      <span class="input-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
+      <input class="input" type="search" placeholder="Cari Order ID, perusahaan, paket...">
+    </div>
+    <select class="select" style="width:160px;height:36px;"><option>Semua Perusahaan</option><option>PT ABCXYZ</option><option>CV Maju Bersama</option></select>
+    <select class="select" style="width:160px;height:36px;"><option>Semua Paket</option><option>CPMI - Checklist Masalah</option><option>SKOLASTIK - IST</option></select>
+    <select class="select" style="width:140px;height:36px;"><option>Semua Status</option><option>COMPLETED</option><option>CANCELLED</option><option>EXPIRED</option><option>MENUNGGU</option></select>
+  </div>
+
+  <div style="overflow-x:auto;">
+    <table class="ps-table" style="min-width:900px;">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Perusahaan</th>
+          <th>Paket</th>
+          <th>Tes</th>
+          <th>Peserta</th>
+          <th>Total</th>
+          <th>Status</th>
+          <th>Tanggal</th>
+          <th style="width:60px;">Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a class="order-id" href="23-admin-pesanan-b2b-detail.html">cmmx1krvm0001</a></td>
+          <td class="t-small">PT ABCXYZ</td>
+          <td class="t-small">CPMI - Checklist Masalah Individu</td>
+          <td><span class="badge badge-test badge-test-wwq">WWQ</span></td>
+          <td class="t-small text-muted">1 orang</td>
+          <td class="t-small font-weight:500;">Rp 150.000</td>
+          <td><span class="badge badge-success">COMPLETED</span></td>
+          <td class="t-small text-muted">19 Mar 2026</td>
+          <td class="td-actions"><button class="btn btn-icon btn-ghost btn-icon-sm" title="Lihat Detail" onclick="location.href='23-admin-pesanan-b2b-detail.html'"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:14px;height:14px;stroke-width:1.75;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button></td>
+        </tr>
+        <tr>
+          <td><a class="order-id" href="23-admin-pesanan-b2b-detail.html">cmmx1krvm0002</a></td>
+          <td class="t-small">PT ABCXYZ</td>
+          <td class="t-small">CPMI - Checklist Masalah Individu</td>
+          <td><span class="badge badge-test badge-test-wwq">WWQ</span></td>
+          <td class="t-small text-muted">1 orang</td>
+          <td class="t-small">Rp 150.000</td>
+          <td><span class="badge badge-error">CANCELLED</span></td>
+          <td class="t-small text-muted">19 Mar 2026</td>
+          <td class="td-actions"><button class="btn btn-icon btn-ghost btn-icon-sm" onclick="location.href='23-admin-pesanan-b2b-detail.html'"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:14px;height:14px;stroke-width:1.75;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button></td>
+        </tr>
+        <tr>
+          <td><a class="order-id" href="23-admin-pesanan-b2b-detail.html">cmmx1krvm0003</a></td>
+          <td class="t-small">PT ABCXYZ</td>
+          <td class="t-small">CPMI - Checklist Masalah Individu</td>
+          <td><span class="badge badge-test badge-test-wwq">WWQ</span></td>
+          <td class="t-small text-muted">1 orang</td>
+          <td class="t-small">Rp 150.000</td>
+          <td><span class="badge badge-pending">EXPIRED</span></td>
+          <td class="t-small text-muted">03 Mar 2026</td>
+          <td class="td-actions"><button class="btn btn-icon btn-ghost btn-icon-sm" onclick="location.href='23-admin-pesanan-b2b-detail.html'"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:14px;height:14px;stroke-width:1.75;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button></td>
+        </tr>
+        <tr>
+          <td><a class="order-id" href="23-admin-pesanan-b2b-detail.html">cmmx1krvm0004</a></td>
+          <td class="t-small">CV Maju Bersama</td>
+          <td class="t-small">SKOLASTIK - Tes Inteligensi</td>
+          <td><span class="badge badge-test badge-test-ist">IST</span></td>
+          <td class="t-small text-muted">2 orang</td>
+          <td class="t-small">Rp 294.000</td>
+          <td><span class="badge badge-success">COMPLETED</span></td>
+          <td class="t-small text-muted">01 Mar 2026</td>
+          <td class="td-actions"><button class="btn btn-icon btn-ghost btn-icon-sm" onclick="location.href='23-admin-pesanan-b2b-detail.html'"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:14px;height:14px;stroke-width:1.75;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button></td>
+        </tr>
+        <tr>
+          <td><a class="order-id" href="23-admin-pesanan-b2b-detail.html">cmmx1krvm0005</a></td>
+          <td class="t-small">PT Telekomunikasi</td>
+          <td class="t-small">KRAEPELIN - Tes Kecepatan Kerja</td>
+          <td><span class="badge badge-test badge-test-kraepelin">KRAEPELIN</span></td>
+          <td class="t-small text-muted">3 orang</td>
+          <td class="t-small">Rp 450.000</td>
+          <td><span class="badge badge-progress">MENUNGGU</span></td>
+          <td class="t-small text-muted">28 Feb 2026</td>
+          <td class="td-actions"><button class="btn btn-icon btn-ghost btn-icon-sm" onclick="location.href='23-admin-pesanan-b2b-detail.html'"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:14px;height:14px;stroke-width:1.75;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="table-footer">
+    <span class="table-info">Menampilkan 1–10 dari 10 transaksi</span>
+    <div class="pagination">
+      <button class="page-btn active">1</button>
+    </div>
+  </div>
+</div>
+
+<script src="./_shared/shell.js"></script>
+<script src="./_shared/utils.js" defer></script>
+<script>
+  initShell({
+    role: 'admin',
+    activeHref: '22-admin-pesanan-b2b.html',
+    user: { name: 'Superadmin', role: 'Superadmin', initials: 'AS' },
+    notifCount: 6
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manajemen Pembayaran — Psikometri Admin</title>
+  <link rel="stylesheet" href="./_shared/styles.css">
+  <style>
+    .order-id { font-family: var(--font-mono); font-size: 12px; font-weight: 500; color: var(--primary); }
+    .order-id:hover { text-decoration: underline; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="page-header-row">
+    <div>
+      <div class="page-header-title">Manajemen Pembayaran</div>
+      <div class="page-header-desc">Pantau & kelola semua transaksi pembayaran</div>
+    </div>
+    <div style="display:flex;gap:8px;">
+      <button class="btn btn-outline btn-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:14px;height:14px;stroke-width:1.75;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+        Export
+      </button>
+      <button class="btn btn-primary btn-sm">Rekonsiliasi</button>
+    </div>
+  </div>
+</div>
+
+<div class="kpi-grid">
+  <div class="kpi-card">
+    <div class="kpi-card-header">
+      <div class="kpi-icon kpi-icon-success">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </div>
+      <span class="kpi-trend up">+12%</span>
+    </div>
+    <div class="kpi-value" style="font-size:18px;">Rp 324,5M</div>
+    <div class="kpi-label">Total Revenue</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-card-header">
+      <div class="kpi-icon kpi-icon-warning">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+    </div>
+    <div class="kpi-value" style="font-size:18px;">Rp 45,2M</div>
+    <div class="kpi-label">Pending Payments</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-card-header">
+      <div class="kpi-icon kpi-icon-success">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6 9 17l-5-5"/></svg>
+      </div>
+      <span class="badge badge-info" style="font-size:10px;height:18px;">+4%</span>
+    </div>
+    <div class="kpi-value">156</div>
+    <div class="kpi-label">Completed Today</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-card-header">
+      <div class="kpi-icon kpi-icon-error">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><line x1="15" x2="9" y1="9" y2="15"/><line x1="9" x2="15" y1="9" y2="15"/></svg>
+      </div>
+      <span class="kpi-trend down">0.9%</span>
+    </div>
+    <div class="kpi-value">12</div>
+    <div class="kpi-label">Failed Transactions</div>
+  </div>
+</div>
+
+<div class="table-wrap">
+  <div class="toolbar">
+    <div class="toolbar-search input-group">
+      <span class="input-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
+      <input class="input" type="search" placeholder="Cari Order ID atau customer...">
+    </div>
+    <select class="select" style="width:140px;height:36px;"><option>Semua Status</option><option>SELESAI</option><option>PENDING</option><option>GAGAL</option><option>ASSIGNED</option></select>
+    <select class="select" style="width:160px;height:36px;"><option>30 Hari Terakhir</option><option>7 Hari Terakhir</option><option>90 Hari Terakhir</option></select>
+    <button class="btn btn-ghost btn-sm" title="Refresh" style="margin-left:auto;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:15px;height:15px;stroke-width:1.75;"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+    </button>
+  </div>
+
+  <div style="overflow-x:auto;">
+    <table class="ps-table" style="min-width:920px;">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Customer</th>
+          <th>Tipe</th>
+          <th>Jumlah</th>
+          <th>Status</th>
+          <th>Metode</th>
+          <th>Tanggal</th>
+          <th style="width:50px;">Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="order-id">ORD-2026-001</span></td>
+          <td><div style="font-size:13px;font-weight:500;">PT ABCXYZ</div><div style="font-size:11px;color:var(--on-surface-faint);">b2b@psikometri.id</div></td>
+          <td><span class="badge badge-role-b2b" style="font-size:10px;">B2B</span></td>
+          <td class="t-small font-weight:500;">Rp 12.500.000</td>
+          <td><span class="badge badge-success">SELESAI</span></td>
+          <td class="t-small text-muted">Bank Transfer VCA</td>
+          <td class="t-small text-muted">18 Mar 2026</td>
+          <td class="td-actions"><button class="btn btn-icon btn-ghost btn-icon-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:14px;height:14px;stroke-width:1.75;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button></td>
+        </tr>
+        <tr>
+          <td><span class="order-id">ORD-2026-002</span></td>
+          <td><div style="font-size:13px;font-weight:500;">Siti Rahayu</div><div style="font-size:11px;color:var(--on-surface-faint);">siti.rahayu@gmail.com</div></td>
+          <td><span class="badge badge-role-publik" style="font-size:10px;">PUBLIC</span></td>
+          <td class="t-small">Rp 750.000</td>
+          <td><span class="badge badge-progress">PENDING</span></td>
+          <td class="t-small text-muted">GoPay</td>
+          <td class="t-small text-muted">18 Mar 2026</td>
+          <td class="td-actions"><button class="btn btn-icon btn-ghost btn-icon-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:14px;height:14px;stroke-width:1.75;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button></td>
+        </tr>
+        <tr>
+          <td><span class="order-id">ORD-2026-003</span></td>
+          <td><div style="font-size:13px;font-weight:500;">Budi Santosa</div><div style="font-size:11px;color:var(--on-surface-faint);">budi.santosa@gmail.com</div></td>
+          <td><span class="badge badge-role-publik" style="font-size:10px;">PUBLIC</span></td>
+          <td class="t-small">Rp 390.000</td>
+          <td><span class="badge badge-error">GAGAL</span></td>
+          <td class="t-small text-muted">ShopeePay</td>
+          <td class="t-small text-muted">18 Mar 2026</td>
+          <td class="td-actions"><button class="btn btn-icon btn-ghost btn-icon-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:14px;height:14px;stroke-width:1.75;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button></td>
+        </tr>
+        <tr>
+          <td><span class="order-id">ASSIGNED-001</span></td>
+          <td><div style="font-size:13px;font-weight:500;">Ahmad Wirawan</div><div style="font-size:11px;color:var(--on-surface-faint);">ahmad.w@company.com</div></td>
+          <td><span class="badge badge-role-b2b" style="font-size:10px;">B2B</span></td>
+          <td class="t-small">Rp 87.500.000</td>
+          <td><span class="badge badge-info">ASSIGNED</span></td>
+          <td class="t-small text-muted">Bank Transfer</td>
+          <td class="t-small text-muted">19 Mar 2026</td>
+          <td class="td-actions"><button class="btn btn-icon btn-ghost btn-icon-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:14px;height:14px;stroke-width:1.75;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button></td>
+        </tr>
+        <tr>
+          <td><span class="order-id">ORD-2026-004</span></td>
+          <td><div style="font-size:13px;font-weight:500;">CV Sejahtera Abadi</div><div style="font-size:11px;color:var(--on-surface-faint);">cv@sejahtera.co.id</div></td>
+          <td><span class="badge badge-role-b2b" style="font-size:10px;">B2B</span></td>
+          <td class="t-small">Rp 6.750.000</td>
+          <td><span class="badge badge-success">SELESAI</span></td>
+          <td class="t-small text-muted">BCA Virtual Account</td>
+          <td class="t-small text-muted">19 Mar 2026</td>
+          <td class="td-actions"><button class="btn btn-icon btn-ghost btn-icon-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:14px;height:14px;stroke-width:1.75;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button></td>
+        </tr>
+        <tr>
+          <td><span class="order-id">ORD-2026-005</span></td>
+          <td><div style="font-size:13px;font-weight:500;">Sinar Lestari</div><div style="font-size:11px;color:var(--on-surface-faint);">sinar@lestari.co.id</div></td>
+          <td><span class="badge badge-role-publik" style="font-size:10px;">PUBLIC</span></td>
+          <td class="t-small">Rp 200.000</td>
+          <td><span class="badge badge-progress">PENDING</span></td>
+          <td class="t-small text-muted">BNI Virtual Account</td>
+          <td class="t-small text-muted">19 Mar 2026</td>
+          <td class="td-actions"><button class="btn btn-icon btn-ghost btn-icon-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:14px;height:14px;stroke-width:1.75;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button></td>
+        </tr>
+        <tr>
+          <td><span class="order-id">ORD-2026-006</span></td>
+          <td><div style="font-size:13px;font-weight:500;">PT Digarta Nasional</div><div style="font-size:11px;color:var(--on-surface-faint);">finance@digarta.id</div></td>
+          <td><span class="badge badge-role-b2b" style="font-size:10px;">B2B</span></td>
+          <td class="t-small">Rp 1.480.000</td>
+          <td><span class="badge badge-success">SELESAI</span></td>
+          <td class="t-small text-muted">BCA Virtual Account</td>
+          <td class="t-small text-muted">19 Mar 2026</td>
+          <td class="td-actions"><button class="btn btn-icon btn-ghost btn-icon-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:14px;height:14px;stroke-width:1.75;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button></td>
+        </tr>
+        <tr>
+          <td><span class="order-id">ORD-2026-007</span></td>
+          <td><div style="font-size:13px;font-weight:500;">Budi Hartono</div><div style="font-size:11px;color:var(--on-surface-faint);">budi.h@gmail.com</div></td>
+          <td><span class="badge badge-role-publik" style="font-size:10px;">PUBLIC</span></td>
+          <td class="t-small">Rp 1.590.000</td>
+          <td><span class="badge badge-error">GAGAL</span></td>
+          <td class="t-small text-muted">BRI Virtual Account</td>
+          <td class="t-small text-muted">20 Mar 2026</td>
+          <td class="td-actions"><button class="btn btn-icon btn-ghost btn-icon-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:14px;height:14px;stroke-width:1.75;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="table-footer">
+    <span class="table-info">Menampilkan 1–10 dari 1.234 transaksi</span>
+    <div class="pagination">
+      <button class="page-btn" disabled><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m15 18-6-6 6-6"/></svg></button>
+      <button class="page-btn active">1</button>
+      <button class="page-btn">2</button>
+      <button class="page-btn">3</button>
+      <span style="color:var(--on-surface-faint);font-size:13px;padding:0 4px;">...</span>
+      <button class="page-btn">124</button>
+      <button class="page-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m9 18 6-6-6-6"/></svg></button>
+    </div>
+  </div>
+</div>
+
+<script src="./_shared/shell.js"></script>
+<script src="./_shared/utils.js" defer></script>
+<script>
+  initShell({
+    role: 'admin',
+    activeHref: '25-admin-pembayaran.html',
+    user: { name: 'Superadmin', role: 'Superadmin', initials: 'AS' },
+    notifCount: 6
+  });
+</script>
+</body>
+</html>
