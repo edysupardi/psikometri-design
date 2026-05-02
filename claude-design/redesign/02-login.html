@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Masuk — Psikometri</title>
+  <link rel="stylesheet" href="./_shared/styles.css">
+  <script src="./_shared/utils.js" defer></script>
+  <style>
+    body { margin: 0; background: var(--surface-lowest); height: 100vh; overflow: hidden; }
+
+    /* ── Split shell ── */
+    .auth-shell {
+      display: flex; height: 100vh;
+    }
+
+    /* ── Brand panel (left) ── */
+    .auth-brand {
+      width: 420px; min-width: 420px;
+      background: var(--primary);
+      display: flex; flex-direction: column;
+      padding: 40px;
+      position: relative; overflow: hidden;
+    }
+
+    /* Subtle noise texture via SVG filter — no blobs */
+    .auth-brand::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle at 80% 20%, rgba(255,255,255,0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .brand-logo {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: auto;
+    }
+
+    .brand-logo-mark {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-size: 15px; font-weight: 700;
+      color: white;
+    }
+
+    .brand-logo-text {
+      font-family: var(--font-display); font-size: 16px;
+      font-weight: 700; color: white;
+    }
+
+    .brand-body {
+      flex: 1; display: flex; flex-direction: column;
+      justify-content: center; padding: 48px 0;
+    }
+
+    .brand-headline {
+      font-family: var(--font-display);
+      font-size: 28px; font-weight: 700;
+      color: white; line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .brand-sub {
+      font-size: 14px; color: rgba(255,255,255,0.65);
+      line-height: 1.6; margin-bottom: 36px;
+    }
+
+    .brand-points { display: flex; flex-direction: column; gap: 12px; }
+
+    .brand-point {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13px; color: rgba(255,255,255,0.8);
+    }
+
+    .brand-point-icon {
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .brand-point-icon svg { width: 10px; height: 10px; stroke-width: 2.5; color: white; }
+
+    .brand-footer {
+      font-size: 12px; color: rgba(255,255,255,0.3);
+      padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* ── Form panel (right) ── */
+    .auth-form {
+      flex: 1;
+      display: flex; align-items: center; justify-content: center;
+      padding: 40px;
+      overflow-y: auto;
+    }
+
+    .form-wrap { width: 100%; max-width: 340px; }
+
+    .form-heading {
+      font-family: var(--font-display);
+      font-size: 22px; font-weight: 700;
+      color: var(--on-surface); letter-spacing: -0.01em;
+      margin-bottom: 4px;
+    }
+
+    .form-sub {
+      font-size: 13px; color: var(--on-surface-muted); margin-bottom: 28px;
+    }
+
+    .form-stack { display: flex; flex-direction: column; gap: 16px; }
+
+    .form-field { display: flex; flex-direction: column; gap: 5px; }
+
+    .form-label {
+      font-size: 13px; font-weight: 500; color: var(--on-surface-variant);
+    }
+
+    .form-forgot {
+      font-size: 12px; color: var(--primary); text-decoration: none;
+      display: block; text-align: right; margin-top: 4px;
+      transition: opacity 0.1s;
+    }
+    .form-forgot:hover { opacity: 0.75; }
+
+    .form-divider {
+      height: 1px; background: var(--divider); margin: 4px 0;
+    }
+
+    .form-register {
+      text-align: center; font-size: 13px;
+      color: var(--on-surface-muted); margin-top: 20px;
+    }
+
+    .form-register a {
+      color: var(--primary); font-weight: 500; text-decoration: none;
+    }
+    .form-register a:hover { text-decoration: underline; }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .auth-brand { width: 360px; min-width: 360px; }
+    }
+
+    @media (max-width: 768px) {
+      body { height: auto; overflow: auto; }
+      .auth-shell { flex-direction: column; height: auto; min-height: 100dvh; }
+
+      .auth-brand {
+        width: 100%; min-width: unset;
+        height: 56px; padding: 0 20px;
+        flex-direction: row; align-items: center;
+      }
+      .brand-logo { margin-bottom: 0; }
+      .brand-body, .brand-footer { display: none; }
+
+      .auth-form { flex: 1; padding: 32px 20px 40px; align-items: flex-start; }
+      .form-wrap  { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="auth-shell">
+
+  <!-- Brand panel -->
+  <aside class="auth-brand">
+    <div class="brand-logo">
+      <div class="brand-logo-mark">P</div>
+      <span class="brand-logo-text">Psikometri</span>
+    </div>
+
+    <div class="brand-body">
+      <div class="brand-headline">Platform Asesmen<br>Psikologi Profesional</div>
+      <div class="brand-sub">
+        Akses tes psikologi terstandar, hasil akurat, dan laporan yang dapat
+        dipertanggungjawabkan secara klinis.
+      </div>
+      <div class="brand-points">
+        <div class="brand-point">
+          <div class="brand-point-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6 9 17l-5-5"/></svg>
+          </div>
+          Terstandar HIMPSI & Permenkes 2024
+        </div>
+        <div class="brand-point">
+          <div class="brand-point-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6 9 17l-5-5"/></svg>
+          </div>
+          Data terenkripsi end-to-end
+        </div>
+        <div class="brand-point">
+          <div class="brand-point-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6 9 17l-5-5"/></svg>
+          </div>
+          Direview langsung oleh psikolog terdaftar
+        </div>
+      </div>
+    </div>
+
+    <div class="brand-footer">© 2026 Psikometri</div>
+  </aside>
+
+  <!-- Form panel -->
+  <main class="auth-form">
+    <div class="form-wrap">
+      <div class="form-heading">Masuk ke Akun</div>
+      <div class="form-sub">Masukkan email dan password Anda untuk melanjutkan.</div>
+
+      <form class="form-stack" onsubmit="return false;">
+        <div class="form-field">
+          <label class="form-label" for="email">Email</label>
+          <input class="input" type="email" id="email" placeholder="nama@email.com" autocomplete="email">
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="password">Password</label>
+          <div class="input-group suffix">
+            <input class="input" type="password" id="password" placeholder="Masukkan password" autocomplete="current-password">
+            <div class="input-suffix">
+              <button type="button" onclick="togglePass()" title="Tampilkan password">
+                <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:15px;height:15px;stroke-width:1.75;">
+                  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <a class="form-forgot" href="05-forgot-password.html">Lupa password?</a>
+        </div>
+
+        <div style="margin-top: 4px;">
+          <button class="btn btn-primary btn-full" type="submit" style="height:40px;font-size:14px;"
+            onclick="location.href='10-admin-dashboard.html'">
+            Masuk
+          </button>
+        </div>
+      </form>
+
+      <div class="form-register">
+        Belum punya akun? <a href="03-register.html">Daftar sekarang</a>
+      </div>
+    </div>
+  </main>
+
+</div>
+
+<script>
+  function togglePass() {
+    const input = document.getElementById('password');
+    const icon  = document.getElementById('eye-icon');
+    if (input.type === 'password') {
+      input.type = 'text';
+      icon.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>';
+    } else {
+      input.type = 'password';
+      icon.innerHTML = '<path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/>';
+    }
+  }
+</script>
+</body>
+</html>

@@ -8,106 +8,144 @@
   <style>
     body { padding: 40px; max-width: 1200px; margin: 0 auto; }
 
-    .gallery-header { margin-bottom: 40px; }
-    .gallery-title  { font-size: 28px; font-weight: 700; color: var(--on-surface); font-family: var(--font-display); letter-spacing: -0.02em; }
-    .gallery-desc   { font-size: 14px; color: var(--on-surface-muted); margin-top: 4px; }
+    .gallery-header { margin-bottom: 32px; }
+    .gallery-title  { font-size: 26px; font-weight: 700; color: var(--on-surface); font-family: var(--font-display); letter-spacing: -0.02em; }
+    .gallery-desc   { font-size: 13px; color: var(--on-surface-muted); margin-top: 4px; }
 
-    .gallery-stats  { display: flex; gap: 24px; margin-top: 16px; }
-    .gallery-stat   { font-size: 13px; color: var(--on-surface-variant); }
+    .gallery-meta {
+      display: flex; align-items: center; gap: 20px; margin-top: 14px; flex-wrap: wrap;
+    }
+    .gallery-stat { font-size: 12px; color: var(--on-surface-variant); }
     .gallery-stat strong { color: var(--primary); }
 
+    .progress-bar-wrap {
+      margin-top: 16px;
+    }
+    .progress-label { font-size: 12px; color: var(--on-surface-faint); margin-bottom: 6px; }
+    .progress-track {
+      height: 4px; background: var(--surface-high);
+      border-radius: var(--r-pill); overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%; background: var(--success);
+      border-radius: var(--r-pill); width: 11.1%; /* 4/36 done */
+      transition: width 0.3s;
+    }
+
+    .legend {
+      display: flex; gap: 16px; margin-bottom: 4px; flex-wrap: wrap;
+    }
+    .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--on-surface-muted); }
+    .legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .legend-dot.done { background: var(--success); }
+    .legend-dot.wip  { background: var(--warning); }
+    .legend-dot.todo { background: var(--surface-high); border: 1px solid var(--outline); }
+
     .section-title {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--on-surface-faint);
-      margin: 32px 0 12px;
-      padding-bottom: 8px;
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--on-surface-faint);
+      margin: 28px 0 10px; padding-bottom: 8px;
       border-bottom: 1px solid var(--divider);
     }
 
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
     }
 
+    /* Card — div, not anchor, to allow two links inside */
     .screen-card {
       background: var(--surface-lowest);
       border: 1px solid var(--divider);
       border-radius: var(--r-md);
-      padding: 14px 16px;
-      text-decoration: none;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      transition: box-shadow var(--duration-base), border-color var(--duration-base), transform var(--duration-fast);
-      cursor: pointer;
-    }
-
-    .screen-card:hover {
-      box-shadow: var(--shadow-2);
-      border-color: var(--secondary);
-      transform: translateY(-1px);
-    }
-
-    .screen-card-num {
-      font-size: 10px;
-      font-weight: 700;
-      font-family: var(--font-mono);
-      color: var(--on-surface-faint);
-      letter-spacing: 0.06em;
-    }
-
-    .screen-card-name {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--on-surface);
-      line-height: 1.3;
-    }
-
-    .screen-card-ref {
-      font-size: 11px;
-      color: var(--on-surface-faint);
-      font-family: var(--font-mono);
-      white-space: nowrap;
+      display: flex; flex-direction: column;
       overflow: hidden;
-      text-overflow: ellipsis;
+      transition: box-shadow var(--duration-base), border-color var(--duration-base);
     }
+
+    .screen-card:hover { box-shadow: var(--shadow-1); border-color: var(--outline); }
 
     .screen-card.done { border-left: 3px solid var(--success); }
     .screen-card.wip  { border-left: 3px solid var(--warning); }
-    .screen-card.todo { border-left: 3px solid var(--divider); }
+    .screen-card.todo { border-left: 3px solid transparent; }
 
-    .legend {
-      display: flex;
-      gap: 16px;
-      margin-bottom: 8px;
+    .card-body {
+      padding: 12px 14px;
+      flex: 1;
     }
 
-    .legend-item {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      color: var(--on-surface-muted);
+    .screen-card-num {
+      font-size: 10px; font-weight: 700; font-family: var(--font-mono);
+      color: var(--on-surface-faint); letter-spacing: 0.06em; margin-bottom: 4px;
     }
 
-    .legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-    .legend-dot.done { background: var(--success); }
-    .legend-dot.wip  { background: var(--warning); }
-    .legend-dot.todo { background: var(--divider); }
+    .screen-card-name {
+      font-size: 13px; font-weight: 600; color: var(--on-surface); line-height: 1.35;
+    }
+
+    .screen-card-status {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 10px; font-weight: 600; margin-top: 6px;
+      text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .screen-card-status.done { color: var(--success); }
+    .screen-card-status.wip  { color: var(--warning); }
+    .screen-card-status.todo { color: var(--on-surface-faint); }
+    .screen-card-status svg { width: 10px; height: 10px; stroke-width: 2.5; }
+
+    .card-links {
+      display: flex; align-items: stretch;
+      border-top: 1px solid var(--divider);
+    }
+
+    .card-link {
+      flex: 1; padding: 8px 10px;
+      font-size: 11px; font-weight: 500;
+      color: var(--on-surface-muted); text-decoration: none;
+      display: flex; align-items: center; justify-content: center; gap: 4px;
+      transition: background var(--duration-base), color var(--duration-base);
+      white-space: nowrap;
+    }
+
+    .card-link:hover { background: var(--surface-low); color: var(--on-surface); }
+
+    .card-link svg { width: 11px; height: 11px; stroke-width: 1.75; flex-shrink: 0; }
+
+    .card-link + .card-link {
+      border-left: 1px solid var(--divider);
+    }
+
+    /* Ref-only card (no mockup yet) */
+    .card-link.disabled {
+      opacity: 0.4; pointer-events: none; cursor: default;
+    }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+      body { padding: 20px; }
+      .cards { grid-template-columns: 1fr 1fr; }
+      .gallery-meta { gap: 12px; }
+    }
+
+    @media (max-width: 380px) {
+      .cards { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
 
   <div class="gallery-header">
-    <div class="gallery-title">Psikometri — HTML Redesign Gallery</div>
-    <div class="gallery-desc">Mockup HTML untuk semua halaman aplikasi Psikometri. Buka langsung di browser, no build step.</div>
-    <div class="gallery-stats">
+    <div class="gallery-title">Psikometri — HTML Redesign</div>
+    <div class="gallery-desc">Mockup HTML semua halaman. Buka langsung di browser — no build step.</div>
+    <div class="gallery-meta">
       <div class="gallery-stat">Total: <strong>36 screens</strong></div>
-      <div class="gallery-stat">Shared files: <strong>styles.css · shell.js · utils.js</strong></div>
+      <div class="gallery-stat">Selesai: <strong>5 screens</strong></div>
+      <div class="gallery-stat">Shared: <strong>styles.css · shell.js · utils.js</strong></div>
+    </div>
+    <div class="progress-bar-wrap">
+      <div class="progress-label">Progress: 5 / 37</div>
+      <div class="progress-track"><div class="progress-fill" style="width:13.5%"></div></div>
     </div>
   </div>
 
@@ -117,204 +155,513 @@
     <div class="legend-item"><div class="legend-dot todo"></div> Belum Dikerjakan</div>
   </div>
 
-  <!-- Non-Login Pages -->
+  <!-- ── Non-Login Pages ── -->
   <div class="section-title">🌐 Non-Login Pages</div>
   <div class="cards">
-    <a class="screen-card todo" href="01-landing.html">
-      <div class="screen-card-num">01</div>
-      <div class="screen-card-name">Landing Page</div>
-      <div class="screen-card-ref">pasted-1777307549577-0</div>
-    </a>
-    <a class="screen-card todo" href="02-login.html">
-      <div class="screen-card-num">02</div>
-      <div class="screen-card-name">Login (Global)</div>
-      <div class="screen-card-ref">pasted-1777307567756-0</div>
-    </a>
-    <a class="screen-card todo" href="03-register.html">
-      <div class="screen-card-num">03</div>
-      <div class="screen-card-name">Register</div>
-      <div class="screen-card-ref">screens/auth.jsx</div>
-    </a>
-    <a class="screen-card todo" href="04-otp.html">
-      <div class="screen-card-num">04</div>
-      <div class="screen-card-name">Verifikasi OTP</div>
-      <div class="screen-card-ref">pasted-1777307587001-0</div>
-    </a>
+
+    <div class="screen-card done">
+      <div class="card-body">
+        <div class="screen-card-num">01</div>
+        <div class="screen-card-name">Landing Page</div>
+        <div class="screen-card-status done">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6 9 17l-5-5"/></svg>
+          Selesai
+        </div>
+      </div>
+      <div class="card-links">
+        <a class="card-link" href="01-landing.html">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Buka Mockup
+        </a>
+        <a class="card-link" href="../uploads/pasted-1777307549577-0.png" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+          Referensi
+        </a>
+      </div>
+    </div>
+
+    <div class="screen-card done">
+      <div class="card-body">
+        <div class="screen-card-num">02</div>
+        <div class="screen-card-name">Login (Global)</div>
+        <div class="screen-card-status done">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6 9 17l-5-5"/></svg>
+          Selesai
+        </div>
+      </div>
+      <div class="card-links">
+        <a class="card-link" href="02-login.html">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Buka Mockup
+        </a>
+        <a class="card-link" href="../uploads/pasted-1777307567756-0.png" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+          Referensi
+        </a>
+      </div>
+    </div>
+
+    <div class="screen-card done">
+      <div class="card-body">
+        <div class="screen-card-num">03</div>
+        <div class="screen-card-name">Register</div>
+        <div class="screen-card-status done">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6 9 17l-5-5"/></svg>
+          Selesai
+        </div>
+      </div>
+      <div class="card-links">
+        <a class="card-link" href="03-register.html">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Buka Mockup
+        </a>
+        <a class="card-link disabled" href="#" aria-disabled="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+          Tidak ada ref
+        </a>
+      </div>
+    </div>
+
+    <div class="screen-card done">
+      <div class="card-body">
+        <div class="screen-card-num">04</div>
+        <div class="screen-card-name">Verifikasi OTP</div>
+        <div class="screen-card-status done">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6 9 17l-5-5"/></svg>
+          Selesai
+        </div>
+      </div>
+      <div class="card-links">
+        <a class="card-link" href="04-otp.html">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Buka Mockup
+        </a>
+        <a class="card-link" href="../uploads/pasted-1777307587001-0.png" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+          Referensi
+        </a>
+      </div>
+    </div>
+
+    <div class="screen-card done">
+      <div class="card-body">
+        <div class="screen-card-num">05</div>
+        <div class="screen-card-name">Lupa Password</div>
+        <div class="screen-card-status done">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6 9 17l-5-5"/></svg>
+          Selesai
+        </div>
+      </div>
+      <div class="card-links">
+        <a class="card-link" href="05-forgot-password.html">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Buka Mockup
+        </a>
+        <a class="card-link disabled" href="#" aria-disabled="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+          Tidak ada ref
+        </a>
+      </div>
+    </div>
+
   </div>
 
-  <!-- Admin / Superadmin Pages -->
+  <!-- ── Admin / Superadmin Pages ── -->
   <div class="section-title">🔐 Admin / Superadmin Pages</div>
   <div class="cards">
-    <a class="screen-card todo" href="10-admin-dashboard.html">
-      <div class="screen-card-num">10</div>
-      <div class="screen-card-name">Admin Dashboard</div>
-      <div class="screen-card-ref">pasted-1777307634014-0</div>
-    </a>
-    <a class="screen-card todo" href="11-admin-manajemen-user.html">
-      <div class="screen-card-num">11</div>
-      <div class="screen-card-name">Manajemen User</div>
-      <div class="screen-card-ref">pasted-1777307649476-0 · -666097-0</div>
-    </a>
-    <a class="screen-card todo" href="12-admin-bank-soal.html">
-      <div class="screen-card-num">12</div>
-      <div class="screen-card-name">Bank Soal</div>
-      <div class="screen-card-ref">pasted-1777307680394-0</div>
-    </a>
-    <a class="screen-card todo" href="13-admin-tambah-jenis-tes.html">
-      <div class="screen-card-num">13</div>
-      <div class="screen-card-name">Tambah Jenis Tes</div>
-      <div class="screen-card-ref">pasted-1777307695605-0</div>
-    </a>
-    <a class="screen-card todo" href="14-admin-tambah-soal-wwq.html">
-      <div class="screen-card-num">14</div>
-      <div class="screen-card-name">Tambah Soal WWQ</div>
-      <div class="screen-card-ref">pasted-1777307760574-0</div>
-    </a>
-    <a class="screen-card todo" href="15-admin-tambah-soal-papikostick.html">
-      <div class="screen-card-num">15</div>
-      <div class="screen-card-name">Tambah Soal PAPIKOSTICK</div>
-      <div class="screen-card-ref">pasted-1777307739450-0</div>
-    </a>
-    <a class="screen-card todo" href="16-admin-tambah-soal-ist.html">
-      <div class="screen-card-num">16</div>
-      <div class="screen-card-name">Tambah Soal IST</div>
-      <div class="screen-card-ref">pasted-1777307782005-0</div>
-    </a>
-    <a class="screen-card todo" href="17-admin-tambah-lajur-kraepelin.html">
-      <div class="screen-card-num">17</div>
-      <div class="screen-card-name">Tambah Lajur Kraepelin</div>
-      <div class="screen-card-ref">pasted-1777307718285-0</div>
-    </a>
-    <a class="screen-card todo" href="18-admin-paket-asesmen.html">
-      <div class="screen-card-num">18</div>
-      <div class="screen-card-name">Tambah Paket Asesmen</div>
-      <div class="screen-card-ref">pasted-1777307807434-0</div>
-    </a>
-    <a class="screen-card todo" href="19-admin-biaya.html">
-      <div class="screen-card-num">19</div>
-      <div class="screen-card-name">Biaya Tambahan</div>
-      <div class="screen-card-ref">pasted-1777307821966-0</div>
-    </a>
-    <a class="screen-card todo" href="20-admin-voucher.html">
-      <div class="screen-card-num">20</div>
-      <div class="screen-card-name">Voucher / Diskon</div>
-      <div class="screen-card-ref">pasted-1777307840596-0</div>
-    </a>
-    <a class="screen-card todo" href="21-admin-template-laporan.html">
-      <div class="screen-card-num">21</div>
-      <div class="screen-card-name">Template Laporan</div>
-      <div class="screen-card-ref">pasted-1777307866351-0</div>
-    </a>
-    <a class="screen-card todo" href="22-admin-pesanan-b2b.html">
-      <div class="screen-card-num">22</div>
-      <div class="screen-card-name">Pesanan B2B (List)</div>
-      <div class="screen-card-ref">pasted-1777307877860-0</div>
-    </a>
-    <a class="screen-card todo" href="23-admin-pesanan-b2b-detail.html">
-      <div class="screen-card-num">23</div>
-      <div class="screen-card-name">Pesanan B2B Detail</div>
-      <div class="screen-card-ref">pasted-1777307890711-0</div>
-    </a>
-    <a class="screen-card todo" href="24-admin-pesanan-publik-detail.html">
-      <div class="screen-card-num">24</div>
-      <div class="screen-card-name">Pesanan Publik Detail</div>
-      <div class="screen-card-ref">pasted-1777307906012-0</div>
-    </a>
-    <a class="screen-card todo" href="25-admin-pembayaran.html">
-      <div class="screen-card-num">25</div>
-      <div class="screen-card-name">Manajemen Pembayaran</div>
-      <div class="screen-card-ref">pasted-1777307918867-0</div>
-    </a>
-    <a class="screen-card todo" href="26-admin-log-aktivitas.html">
-      <div class="screen-card-num">26</div>
-      <div class="screen-card-name">Log Aktivitas</div>
-      <div class="screen-card-ref">pasted-1777307931003-0</div>
-    </a>
-    <a class="screen-card todo" href="27-shared-profil.html">
-      <div class="screen-card-num">27</div>
-      <div class="screen-card-name">Profil Saya (Shared)</div>
-      <div class="screen-card-ref">pasted-1777307946451-0</div>
-    </a>
+
+    <div class="screen-card todo">
+      <div class="card-body">
+        <div class="screen-card-num">10</div>
+        <div class="screen-card-name">Admin Dashboard</div>
+        <div class="screen-card-status todo">Belum</div>
+      </div>
+      <div class="card-links">
+        <a class="card-link disabled" href="#" aria-disabled="true">Buka Mockup</a>
+        <a class="card-link" href="../uploads/pasted-1777307634014-0.png" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+          Referensi
+        </a>
+      </div>
+    </div>
+
+    <div class="screen-card todo">
+      <div class="card-body">
+        <div class="screen-card-num">11</div>
+        <div class="screen-card-name">Manajemen User</div>
+        <div class="screen-card-status todo">Belum</div>
+      </div>
+      <div class="card-links">
+        <a class="card-link disabled" href="#" aria-disabled="true">Buka Mockup</a>
+        <a class="card-link" href="../uploads/pasted-1777307649476-0.png" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+          Referensi
+        </a>
+      </div>
+    </div>
+
+    <div class="screen-card todo">
+      <div class="card-body">
+        <div class="screen-card-num">12</div>
+        <div class="screen-card-name">Bank Soal</div>
+        <div class="screen-card-status todo">Belum</div>
+      </div>
+      <div class="card-links">
+        <a class="card-link disabled" href="#" aria-disabled="true">Buka Mockup</a>
+        <a class="card-link" href="../uploads/pasted-1777307680394-0.png" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+          Referensi
+        </a>
+      </div>
+    </div>
+
+    <div class="screen-card todo">
+      <div class="card-body">
+        <div class="screen-card-num">13</div>
+        <div class="screen-card-name">Tambah Jenis Tes</div>
+        <div class="screen-card-status todo">Belum</div>
+      </div>
+      <div class="card-links">
+        <a class="card-link disabled" href="#" aria-disabled="true">Buka Mockup</a>
+        <a class="card-link" href="../uploads/pasted-1777307695605-0.png" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+          Referensi
+        </a>
+      </div>
+    </div>
+
+    <div class="screen-card todo">
+      <div class="card-body">
+        <div class="screen-card-num">14</div>
+        <div class="screen-card-name">Tambah Soal WWQ</div>
+        <div class="screen-card-status todo">Belum</div>
+      </div>
+      <div class="card-links">
+        <a class="card-link disabled" href="#" aria-disabled="true">Buka Mockup</a>
+        <a class="card-link" href="../uploads/pasted-1777307760574-0.png" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+          Referensi
+        </a>
+      </div>
+    </div>
+
+    <div class="screen-card todo">
+      <div class="card-body">
+        <div class="screen-card-num">15</div>
+        <div class="screen-card-name">Tambah Soal PAPIKOSTICK</div>
+        <div class="screen-card-status todo">Belum</div>
+      </div>
+      <div class="card-links">
+        <a class="card-link disabled" href="#" aria-disabled="true">Buka Mockup</a>
+        <a class="card-link" href="../uploads/pasted-1777307739450-0.png" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+          Referensi
+        </a>
+      </div>
+    </div>
+
+    <div class="screen-card todo">
+      <div class="card-body">
+        <div class="screen-card-num">16</div>
+        <div class="screen-card-name">Tambah Soal IST</div>
+        <div class="screen-card-status todo">Belum</div>
+      </div>
+      <div class="card-links">
+        <a class="card-link disabled" href="#" aria-disabled="true">Buka Mockup</a>
+        <a class="card-link" href="../uploads/pasted-1777307782005-0.png" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+          Referensi
+        </a>
+      </div>
+    </div>
+
+    <div class="screen-card todo">
+      <div class="card-body">
+        <div class="screen-card-num">17</div>
+        <div class="screen-card-name">Tambah Lajur Kraepelin</div>
+        <div class="screen-card-status todo">Belum</div>
+      </div>
+      <div class="card-links">
+        <a class="card-link disabled" href="#" aria-disabled="true">Buka Mockup</a>
+        <a class="card-link" href="../uploads/pasted-1777307718285-0.png" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+          Referensi
+        </a>
+      </div>
+    </div>
+
+    <div class="screen-card todo">
+      <div class="card-body">
+        <div class="screen-card-num">18</div>
+        <div class="screen-card-name">Tambah Paket Asesmen</div>
+        <div class="screen-card-status todo">Belum</div>
+      </div>
+      <div class="card-links">
+        <a class="card-link disabled" href="#" aria-disabled="true">Buka Mockup</a>
+        <a class="card-link" href="../uploads/pasted-1777307807434-0.png" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+          Referensi
+        </a>
+      </div>
+    </div>
+
+    <div class="screen-card todo">
+      <div class="card-body">
+        <div class="screen-card-num">19</div>
+        <div class="screen-card-name">Biaya Tambahan</div>
+        <div class="screen-card-status todo">Belum</div>
+      </div>
+      <div class="card-links">
+        <a class="card-link disabled" href="#" aria-disabled="true">Buka Mockup</a>
+        <a class="card-link" href="../uploads/pasted-1777307821966-0.png" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+          Referensi
+        </a>
+      </div>
+    </div>
+
+    <div class="screen-card todo">
+      <div class="card-body">
+        <div class="screen-card-num">20</div>
+        <div class="screen-card-name">Voucher / Diskon</div>
+        <div class="screen-card-status todo">Belum</div>
+      </div>
+      <div class="card-links">
+        <a class="card-link disabled" href="#" aria-disabled="true">Buka Mockup</a>
+        <a class="card-link" href="../uploads/pasted-1777307840596-0.png" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+          Referensi
+        </a>
+      </div>
+    </div>
+
+    <div class="screen-card todo">
+      <div class="card-body">
+        <div class="screen-card-num">21</div>
+        <div class="screen-card-name">Template Laporan</div>
+        <div class="screen-card-status todo">Belum</div>
+      </div>
+      <div class="card-links">
+        <a class="card-link disabled" href="#" aria-disabled="true">Buka Mockup</a>
+        <a class="card-link" href="../uploads/pasted-1777307866351-0.png" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+          Referensi
+        </a>
+      </div>
+    </div>
+
+    <div class="screen-card todo">
+      <div class="card-body">
+        <div class="screen-card-num">22</div>
+        <div class="screen-card-name">Pesanan B2B (List)</div>
+        <div class="screen-card-status todo">Belum</div>
+      </div>
+      <div class="card-links">
+        <a class="card-link disabled" href="#" aria-disabled="true">Buka Mockup</a>
+        <a class="card-link" href="../uploads/pasted-1777307877860-0.png" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+          Referensi
+        </a>
+      </div>
+    </div>
+
+    <div class="screen-card todo">
+      <div class="card-body">
+        <div class="screen-card-num">23</div>
+        <div class="screen-card-name">Pesanan B2B Detail</div>
+        <div class="screen-card-status todo">Belum</div>
+      </div>
+      <div class="card-links">
+        <a class="card-link disabled" href="#" aria-disabled="true">Buka Mockup</a>
+        <a class="card-link" href="../uploads/pasted-1777307890711-0.png" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+          Referensi
+        </a>
+      </div>
+    </div>
+
+    <div class="screen-card todo">
+      <div class="card-body">
+        <div class="screen-card-num">24</div>
+        <div class="screen-card-name">Pesanan Publik Detail</div>
+        <div class="screen-card-status todo">Belum</div>
+      </div>
+      <div class="card-links">
+        <a class="card-link disabled" href="#" aria-disabled="true">Buka Mockup</a>
+        <a class="card-link" href="../uploads/pasted-1777307906012-0.png" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+          Referensi
+        </a>
+      </div>
+    </div>
+
+    <div class="screen-card todo">
+      <div class="card-body">
+        <div class="screen-card-num">25</div>
+        <div class="screen-card-name">Manajemen Pembayaran</div>
+        <div class="screen-card-status todo">Belum</div>
+      </div>
+      <div class="card-links">
+        <a class="card-link disabled" href="#" aria-disabled="true">Buka Mockup</a>
+        <a class="card-link" href="../uploads/pasted-1777307918867-0.png" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+          Referensi
+        </a>
+      </div>
+    </div>
+
+    <div class="screen-card todo">
+      <div class="card-body">
+        <div class="screen-card-num">26</div>
+        <div class="screen-card-name">Log Aktivitas</div>
+        <div class="screen-card-status todo">Belum</div>
+      </div>
+      <div class="card-links">
+        <a class="card-link disabled" href="#" aria-disabled="true">Buka Mockup</a>
+        <a class="card-link" href="../uploads/pasted-1777307931003-0.png" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+          Referensi
+        </a>
+      </div>
+    </div>
+
+    <div class="screen-card todo">
+      <div class="card-body">
+        <div class="screen-card-num">27</div>
+        <div class="screen-card-name">Profil Saya (Shared)</div>
+        <div class="screen-card-status todo">Belum</div>
+      </div>
+      <div class="card-links">
+        <a class="card-link disabled" href="#" aria-disabled="true">Buka Mockup</a>
+        <a class="card-link" href="../uploads/pasted-1777307946451-0.png" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+          Referensi
+        </a>
+      </div>
+    </div>
+
   </div>
 
-  <!-- B2B Pages -->
+  <!-- ── B2B User Pages ── -->
   <div class="section-title">🏢 B2B User Pages</div>
   <div class="cards">
-    <a class="screen-card todo" href="30-b2b-dashboard.html">
-      <div class="screen-card-num">30</div>
-      <div class="screen-card-name">B2B Dashboard</div>
-      <div class="screen-card-ref">pasted-1777308120168-0</div>
-    </a>
-    <a class="screen-card todo" href="31-b2b-paket-asesmen.html">
-      <div class="screen-card-num">31</div>
-      <div class="screen-card-name">B2B Paket Asesmen</div>
-      <div class="screen-card-ref">pasted-1777308133591-0</div>
-    </a>
-    <a class="screen-card todo" href="32-b2b-buat-order.html">
-      <div class="screen-card-num">32</div>
-      <div class="screen-card-name">B2B Buat Order (Wizard)</div>
-      <div class="screen-card-ref">pasted-1777308150692-0</div>
-    </a>
-    <a class="screen-card todo" href="33-b2b-monitoring.html">
-      <div class="screen-card-num">33</div>
-      <div class="screen-card-name">B2B Monitoring Peserta</div>
-      <div class="screen-card-ref">pasted-1777308164971-0</div>
-    </a>
+
+    <div class="screen-card todo">
+      <div class="card-body"><div class="screen-card-num">30</div><div class="screen-card-name">B2B Dashboard</div><div class="screen-card-status todo">Belum</div></div>
+      <div class="card-links">
+        <a class="card-link disabled" href="#" aria-disabled="true">Buka Mockup</a>
+        <a class="card-link" href="../uploads/pasted-1777308120168-0.png" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>Referensi</a>
+      </div>
+    </div>
+
+    <div class="screen-card todo">
+      <div class="card-body"><div class="screen-card-num">31</div><div class="screen-card-name">B2B Paket Asesmen</div><div class="screen-card-status todo">Belum</div></div>
+      <div class="card-links">
+        <a class="card-link disabled" href="#" aria-disabled="true">Buka Mockup</a>
+        <a class="card-link" href="../uploads/pasted-1777308133591-0.png" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>Referensi</a>
+      </div>
+    </div>
+
+    <div class="screen-card todo">
+      <div class="card-body"><div class="screen-card-num">32</div><div class="screen-card-name">B2B Buat Order</div><div class="screen-card-status todo">Belum</div></div>
+      <div class="card-links">
+        <a class="card-link disabled" href="#" aria-disabled="true">Buka Mockup</a>
+        <a class="card-link" href="../uploads/pasted-1777308150692-0.png" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>Referensi</a>
+      </div>
+    </div>
+
+    <div class="screen-card todo">
+      <div class="card-body"><div class="screen-card-num">33</div><div class="screen-card-name">B2B Monitoring Peserta</div><div class="screen-card-status todo">Belum</div></div>
+      <div class="card-links">
+        <a class="card-link disabled" href="#" aria-disabled="true">Buka Mockup</a>
+        <a class="card-link" href="../uploads/pasted-1777308164971-0.png" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>Referensi</a>
+      </div>
+    </div>
+
   </div>
 
-  <!-- User Publik Pages -->
+  <!-- ── User Publik Pages ── -->
   <div class="section-title">👤 User Publik Pages</div>
   <div class="cards">
-    <a class="screen-card todo" href="40-publik-dashboard.html">
-      <div class="screen-card-num">40</div>
-      <div class="screen-card-name">Publik Dashboard</div>
-      <div class="screen-card-ref">pasted-1777308199399-0</div>
-    </a>
-    <a class="screen-card todo" href="41-publik-paket-asesmen.html">
-      <div class="screen-card-num">41</div>
-      <div class="screen-card-name">Paket Asesmen (Catalog)</div>
-      <div class="screen-card-ref">pasted-1777308216107-0</div>
-    </a>
-    <a class="screen-card todo" href="42-publik-paket-detail.html">
-      <div class="screen-card-num">42</div>
-      <div class="screen-card-name">Paket Detail</div>
-      <div class="screen-card-ref">pasted-1777308230415-0</div>
-    </a>
-    <a class="screen-card todo" href="43-publik-riwayat-asesmen.html">
-      <div class="screen-card-num">43</div>
-      <div class="screen-card-name">Riwayat Asesmen</div>
-      <div class="screen-card-ref">pasted-1777308242389-0</div>
-    </a>
-    <a class="screen-card todo" href="44-publik-sesi-tes.html">
-      <div class="screen-card-num">44</div>
-      <div class="screen-card-name">Sesi Tes Saya</div>
-      <div class="screen-card-ref">pasted-1777308463759-0</div>
-    </a>
-    <a class="screen-card todo" href="45-test-interface.html">
-      <div class="screen-card-num">45</div>
-      <div class="screen-card-name">Test Interface</div>
-      <div class="screen-card-ref">screens/test-interface.jsx</div>
-    </a>
+
+    <div class="screen-card todo">
+      <div class="card-body"><div class="screen-card-num">40</div><div class="screen-card-name">Publik Dashboard</div><div class="screen-card-status todo">Belum</div></div>
+      <div class="card-links">
+        <a class="card-link disabled" href="#" aria-disabled="true">Buka Mockup</a>
+        <a class="card-link" href="../uploads/pasted-1777308199399-0.png" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>Referensi</a>
+      </div>
+    </div>
+
+    <div class="screen-card todo">
+      <div class="card-body"><div class="screen-card-num">41</div><div class="screen-card-name">Paket Asesmen</div><div class="screen-card-status todo">Belum</div></div>
+      <div class="card-links">
+        <a class="card-link disabled" href="#" aria-disabled="true">Buka Mockup</a>
+        <a class="card-link" href="../uploads/pasted-1777308216107-0.png" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>Referensi</a>
+      </div>
+    </div>
+
+    <div class="screen-card todo">
+      <div class="card-body"><div class="screen-card-num">42</div><div class="screen-card-name">Paket Detail</div><div class="screen-card-status todo">Belum</div></div>
+      <div class="card-links">
+        <a class="card-link disabled" href="#" aria-disabled="true">Buka Mockup</a>
+        <a class="card-link" href="../uploads/pasted-1777308230415-0.png" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>Referensi</a>
+      </div>
+    </div>
+
+    <div class="screen-card todo">
+      <div class="card-body"><div class="screen-card-num">43</div><div class="screen-card-name">Riwayat Asesmen</div><div class="screen-card-status todo">Belum</div></div>
+      <div class="card-links">
+        <a class="card-link disabled" href="#" aria-disabled="true">Buka Mockup</a>
+        <a class="card-link" href="../uploads/pasted-1777308242389-0.png" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>Referensi</a>
+      </div>
+    </div>
+
+    <div class="screen-card todo">
+      <div class="card-body"><div class="screen-card-num">44</div><div class="screen-card-name">Sesi Tes Saya</div><div class="screen-card-status todo">Belum</div></div>
+      <div class="card-links">
+        <a class="card-link disabled" href="#" aria-disabled="true">Buka Mockup</a>
+        <a class="card-link" href="../uploads/pasted-1777308463759-0.png" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>Referensi</a>
+      </div>
+    </div>
+
+    <div class="screen-card todo">
+      <div class="card-body"><div class="screen-card-num">45</div><div class="screen-card-name">Test Interface</div><div class="screen-card-status todo">Belum</div></div>
+      <div class="card-links">
+        <a class="card-link disabled" href="#" aria-disabled="true">Buka Mockup</a>
+        <a class="card-link disabled" href="#" aria-disabled="true">JSX ref</a>
+      </div>
+    </div>
+
   </div>
 
-  <!-- Psikolog Pages -->
+  <!-- ── Psikolog Pages ── -->
   <div class="section-title">🧠 Psikolog Pages</div>
   <div class="cards">
-    <a class="screen-card todo" href="50-psikolog-antrian-review.html">
-      <div class="screen-card-num">50</div>
-      <div class="screen-card-name">Antrian Review</div>
-      <div class="screen-card-ref">pasted-1777307979392-0</div>
-    </a>
-    <a class="screen-card todo" href="51-psikolog-review-detail.html">
-      <div class="screen-card-num">51</div>
-      <div class="screen-card-name">Detail Review (Scoring)</div>
-      <div class="screen-card-ref">pasted-1777307995739-0</div>
-    </a>
-    <a class="screen-card todo" href="52-psikolog-summary-final.html">
-      <div class="screen-card-num">52</div>
-      <div class="screen-card-name">Summary Final / Klinis</div>
-      <div class="screen-card-ref">pasted-1777308008115-0</div>
-    </a>
+
+    <div class="screen-card todo">
+      <div class="card-body"><div class="screen-card-num">50</div><div class="screen-card-name">Antrian Review</div><div class="screen-card-status todo">Belum</div></div>
+      <div class="card-links">
+        <a class="card-link disabled" href="#" aria-disabled="true">Buka Mockup</a>
+        <a class="card-link" href="../uploads/pasted-1777307979392-0.png" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>Referensi</a>
+      </div>
+    </div>
+
+    <div class="screen-card todo">
+      <div class="card-body"><div class="screen-card-num">51</div><div class="screen-card-name">Detail Review (Scoring)</div><div class="screen-card-status todo">Belum</div></div>
+      <div class="card-links">
+        <a class="card-link disabled" href="#" aria-disabled="true">Buka Mockup</a>
+        <a class="card-link" href="../uploads/pasted-1777307995739-0.png" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>Referensi</a>
+      </div>
+    </div>
+
+    <div class="screen-card todo">
+      <div class="card-body"><div class="screen-card-num">52</div><div class="screen-card-name">Summary Final</div><div class="screen-card-status todo">Belum</div></div>
+      <div class="card-links">
+        <a class="card-link disabled" href="#" aria-disabled="true">Buka Mockup</a>
+        <a class="card-link" href="../uploads/pasted-1777308008115-0.png" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>Referensi</a>
+      </div>
+    </div>
+
   </div>
 
 </body>

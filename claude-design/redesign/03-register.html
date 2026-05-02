@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daftar — Psikometri</title>
+  <link rel="stylesheet" href="./_shared/styles.css">
+  <script src="./_shared/utils.js" defer></script>
+  <style>
+    body { margin: 0; background: var(--surface-lowest); height: 100vh; overflow: hidden; }
+
+    .auth-shell { display: flex; height: 100vh; }
+
+    /* Brand panel — same structure as login, different copy */
+    .auth-brand {
+      width: 420px; min-width: 420px;
+      background: var(--primary);
+      display: flex; flex-direction: column;
+      padding: 40px; position: relative; overflow: hidden;
+    }
+    .auth-brand::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle at 20% 80%, rgba(255,255,255,0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .brand-logo { display: flex; align-items: center; gap: 10px; margin-bottom: auto; }
+    .brand-logo-mark {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-size: 15px; font-weight: 700; color: white;
+    }
+    .brand-logo-text { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: white; }
+    .brand-body { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 48px 0; }
+    .brand-headline {
+      font-family: var(--font-display); font-size: 28px; font-weight: 700;
+      color: white; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 12px;
+    }
+    .brand-sub { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.6; margin-bottom: 36px; }
+    .brand-steps { display: flex; flex-direction: column; gap: 16px; }
+    .brand-step {
+      display: flex; align-items: flex-start; gap: 12px;
+    }
+    .step-num {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700; color: white; flex-shrink: 0;
+    }
+    .step-text { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.4; padding-top: 2px; }
+    .brand-footer {
+      font-size: 12px; color: rgba(255,255,255,0.3);
+      padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Form panel */
+    .auth-form {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+      padding: 40px; overflow-y: auto;
+    }
+    .form-wrap { width: 100%; max-width: 360px; }
+    .form-heading {
+      font-family: var(--font-display); font-size: 22px; font-weight: 700;
+      color: var(--on-surface); letter-spacing: -0.01em; margin-bottom: 4px;
+    }
+    .form-sub { font-size: 13px; color: var(--on-surface-muted); margin-bottom: 28px; }
+    .form-stack { display: flex; flex-direction: column; gap: 14px; }
+    .form-field { display: flex; flex-direction: column; gap: 5px; }
+    .form-label { font-size: 13px; font-weight: 500; color: var(--on-surface-variant); }
+
+    .pwd-req {
+      display: flex; flex-direction: column; gap: 4px;
+      margin-top: 6px; padding: 10px 12px;
+      background: var(--surface-low); border-radius: var(--r-sm);
+    }
+    .pwd-req-item {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 12px; color: var(--on-surface-faint);
+    }
+    .pwd-req-item.met { color: var(--success); }
+    .pwd-req-item svg { width: 12px; height: 12px; stroke-width: 2; flex-shrink: 0; }
+
+    .form-login {
+      text-align: center; font-size: 13px;
+      color: var(--on-surface-muted); margin-top: 20px;
+    }
+    .form-login a { color: var(--primary); font-weight: 500; text-decoration: none; }
+    .form-login a:hover { text-decoration: underline; }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .auth-brand { width: 360px; min-width: 360px; }
+    }
+
+    @media (max-width: 768px) {
+      body { height: auto; overflow: auto; }
+      .auth-shell { flex-direction: column; height: auto; min-height: 100dvh; }
+
+      .auth-brand {
+        width: 100%; min-width: unset;
+        height: 56px; padding: 0 20px;
+        flex-direction: row; align-items: center;
+      }
+      .brand-logo { margin-bottom: 0; }
+      .brand-body, .brand-footer { display: none; }
+
+      .auth-form { flex: 1; padding: 32px 20px 40px; align-items: flex-start; }
+      .form-wrap  { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="auth-shell">
+
+  <!-- Brand panel -->
+  <aside class="auth-brand">
+    <div class="brand-logo">
+      <div class="brand-logo-mark">P</div>
+      <span class="brand-logo-text">Psikometri</span>
+    </div>
+
+    <div class="brand-body">
+      <div class="brand-headline">Mulai dalam<br>3 Langkah Mudah</div>
+      <div class="brand-sub">
+        Buat akun gratis dan akses berbagai tes psikologi terstandar
+        kapan saja, dari mana saja.
+      </div>
+      <div class="brand-steps">
+        <div class="brand-step">
+          <div class="step-num">1</div>
+          <div class="step-text">Buat akun dengan email dan password</div>
+        </div>
+        <div class="brand-step">
+          <div class="step-num">2</div>
+          <div class="step-text">Pilih paket asesmen yang sesuai kebutuhan</div>
+        </div>
+        <div class="brand-step">
+          <div class="step-num">3</div>
+          <div class="step-text">Kerjakan tes dan dapatkan laporan profesional</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="brand-footer">© 2026 Psikometri</div>
+  </aside>
+
+  <!-- Form panel -->
+  <main class="auth-form">
+    <div class="form-wrap">
+      <div class="form-heading">Buat Akun Baru</div>
+      <div class="form-sub">Isi data di bawah untuk mendaftar sebagai pengguna.</div>
+
+      <form class="form-stack" onsubmit="return false;">
+        <div class="form-field">
+          <label class="form-label" for="fullname">Nama Lengkap</label>
+          <input class="input" type="text" id="fullname" placeholder="Masukkan nama lengkap" autocomplete="name">
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="email">Email</label>
+          <input class="input" type="email" id="email" placeholder="nama@email.com" autocomplete="email">
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="password">Password</label>
+          <div class="input-group suffix">
+            <input class="input" type="password" id="password" placeholder="Min. 8 karakter"
+              autocomplete="new-password" oninput="checkPwd(this.value)">
+            <div class="input-suffix">
+              <button type="button" onclick="togglePass('password')" title="Tampilkan">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:15px;height:15px;stroke-width:1.75;">
+                  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="pwd-req" id="pwd-reqs">
+            <div class="pwd-req-item" id="req-len">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/></svg>
+              Minimal 8 karakter
+            </div>
+            <div class="pwd-req-item" id="req-upper">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/></svg>
+              Mengandung huruf kapital
+            </div>
+            <div class="pwd-req-item" id="req-num">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/></svg>
+              Mengandung angka
+            </div>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="confirm">Konfirmasi Password</label>
+          <div class="input-group suffix">
+            <input class="input" type="password" id="confirm" placeholder="Ulangi password" autocomplete="new-password">
+            <div class="input-suffix">
+              <button type="button" onclick="togglePass('confirm')" title="Tampilkan">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:15px;height:15px;stroke-width:1.75;">
+                  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 4px;">
+          <button class="btn btn-primary btn-full" type="submit" style="height:40px;font-size:14px;"
+            onclick="location.href='04-otp.html'">
+            Daftar
+          </button>
+        </div>
+      </form>
+
+      <div class="form-login">
+        Sudah punya akun? <a href="02-login.html">Masuk di sini</a>
+      </div>
+    </div>
+  </main>
+
+</div>
+
+<script>
+  function togglePass(id) {
+    const input = document.getElementById(id);
+    input.type = input.type === 'password' ? 'text' : 'password';
+  }
+
+  const CHECK_SVG = '<path d="M20 6 9 17l-5-5"/>';
+  const CIRCLE_SVG = '<circle cx="12" cy="12" r="9"/>';
+
+  function setReq(id, met) {
+    const el = document.getElementById(id);
+    el.classList.toggle('met', met);
+    el.querySelector('svg').innerHTML = met ? CHECK_SVG : CIRCLE_SVG;
+  }
+
+  function checkPwd(val) {
+    setReq('req-len',   val.length >= 8);
+    setReq('req-upper', /[A-Z]/.test(val));
+    setReq('req-num',   /[0-9]/.test(val));
+  }
+</script>
+</body>
+</html>

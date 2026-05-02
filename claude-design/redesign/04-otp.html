@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verifikasi OTP — Psikometri</title>
+  <link rel="stylesheet" href="./_shared/styles.css">
+  <script src="./_shared/utils.js" defer></script>
+  <style>
+    body { margin: 0; background: var(--surface-lowest); height: 100vh; overflow: hidden; }
+
+    .auth-shell { display: flex; height: 100vh; }
+
+    /* Brand panel */
+    .auth-brand {
+      width: 420px; min-width: 420px;
+      background: var(--primary);
+      display: flex; flex-direction: column;
+      padding: 40px; position: relative; overflow: hidden;
+    }
+    .auth-brand::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.03) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .brand-logo { display: flex; align-items: center; gap: 10px; margin-bottom: auto; }
+    .brand-logo-mark {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-size: 15px; font-weight: 700; color: white;
+    }
+    .brand-logo-text { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: white; }
+
+    .brand-body { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 48px 0; }
+    .brand-icon-wrap {
+      width: 56px; height: 56px; border-radius: 12px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 24px;
+    }
+    .brand-icon-wrap svg { width: 26px; height: 26px; stroke-width: 1.5; color: white; }
+
+    .brand-headline {
+      font-family: var(--font-display); font-size: 26px; font-weight: 700;
+      color: white; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 12px;
+    }
+    .brand-sub { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+    .brand-note {
+      margin-top: 24px; padding: 14px 16px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--r-md);
+      font-size: 12px; color: rgba(255,255,255,0.65); line-height: 1.5;
+    }
+    .brand-footer {
+      font-size: 12px; color: rgba(255,255,255,0.3);
+      padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Form panel */
+    .auth-form {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+      padding: 40px; overflow-y: auto;
+    }
+    .form-wrap { width: 100%; max-width: 340px; }
+    .form-heading {
+      font-family: var(--font-display); font-size: 22px; font-weight: 700;
+      color: var(--on-surface); letter-spacing: -0.01em; margin-bottom: 4px;
+    }
+    .form-sub { font-size: 13px; color: var(--on-surface-muted); margin-bottom: 8px; line-height: 1.5; }
+    .form-email {
+      font-size: 13px; font-weight: 500; color: var(--primary);
+      margin-bottom: 28px;
+    }
+
+    .otp-section { margin-bottom: 24px; }
+    .otp-label { font-size: 13px; font-weight: 500; color: var(--on-surface-variant); margin-bottom: 10px; }
+
+    .otp-group {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+      width: 100%;
+    }
+    .otp-input {
+      width: 100%;
+      aspect-ratio: 1;
+      text-align: center;
+      font-family: var(--font-mono); font-size: 22px; font-weight: 600;
+      border: 1.5px solid var(--outline); border-radius: var(--r-md);
+      background: var(--surface-lowest); color: var(--on-surface);
+      outline: none; transition: border-color 0.12s, box-shadow 0.12s;
+      /* remove browser default sizing */
+      min-width: 0; padding: 0;
+    }
+    .otp-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(197,184,245,0.3);
+    }
+    .otp-input.filled {
+      border-color: var(--primary);
+      background: rgba(59,31,163,0.04);
+    }
+
+    .resend-row {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 12px;
+    }
+    .timer { font-size: 12px; color: var(--on-surface-faint); }
+    .resend-btn {
+      font-size: 12px; color: var(--primary); background: none; border: none;
+      padding: 0; cursor: pointer; font-weight: 500;
+      transition: opacity 0.1s;
+    }
+    .resend-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+    .resend-btn:not(:disabled):hover { opacity: 0.75; }
+
+    .back-link {
+      display: flex; align-items: center; gap: 4px;
+      font-size: 13px; color: var(--on-surface-muted);
+      text-decoration: none; margin-top: 20px; justify-content: center;
+      transition: color 0.1s;
+    }
+    .back-link:hover { color: var(--on-surface); }
+    .back-link svg { width: 14px; height: 14px; stroke-width: 1.75; }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .auth-brand { width: 360px; min-width: 360px; }
+    }
+
+    @media (max-width: 768px) {
+      body { height: auto; overflow: auto; }
+      .auth-shell { flex-direction: column; height: auto; min-height: 100dvh; }
+
+      .auth-brand {
+        width: 100%; min-width: unset;
+        height: 56px; padding: 0 20px;
+        flex-direction: row; align-items: center;
+      }
+      .brand-logo { margin-bottom: 0; }
+      .brand-body, .brand-footer { display: none; }
+
+      .auth-form { flex: 1; padding: 32px 20px 40px; align-items: flex-start; }
+      .form-wrap  { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="auth-shell">
+
+  <!-- Brand panel -->
+  <aside class="auth-brand">
+    <div class="brand-logo">
+      <div class="brand-logo-mark">P</div>
+      <span class="brand-logo-text">Psikometri</span>
+    </div>
+
+    <div class="brand-body">
+      <div class="brand-icon-wrap">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <rect width="16" height="13" x="6" y="4" rx="2"/>
+          <path d="M6 8H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-2"/>
+          <path d="M6 12h12"/>
+        </svg>
+      </div>
+      <div class="brand-headline">Verifikasi<br>Email Anda</div>
+      <div class="brand-sub">
+        Langkah terakhir untuk mengamankan akun Anda. Kode dikirim
+        ke alamat email yang sudah didaftarkan.
+      </div>
+      <div class="brand-note">
+        Periksa folder <strong style="color:rgba(255,255,255,0.85);">Inbox</strong> atau
+        <strong style="color:rgba(255,255,255,0.85);">Spam</strong> jika kode tidak muncul
+        dalam beberapa menit. Kode berlaku selama <strong style="color:rgba(255,255,255,0.85);">5 menit</strong>.
+      </div>
+    </div>
+
+    <div class="brand-footer">© 2026 Psikometri</div>
+  </aside>
+
+  <!-- Form panel -->
+  <main class="auth-form">
+    <div class="form-wrap">
+      <div class="form-heading">Kode Verifikasi</div>
+      <div class="form-sub">Kode 6 digit telah dikirim ke</div>
+      <div class="form-email">admin@psikometri.id</div>
+
+      <div class="otp-section">
+        <div class="otp-label">Masukkan kode</div>
+        <div class="otp-group" id="otp-group">
+          <input class="otp-input" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]">
+          <input class="otp-input" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]">
+          <input class="otp-input" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]">
+          <input class="otp-input" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]">
+          <input class="otp-input" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]">
+          <input class="otp-input" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]">
+        </div>
+        <div class="resend-row">
+          <span class="timer" id="timer">Kirim ulang dalam <strong id="countdown">4:58</strong></span>
+          <button class="resend-btn" id="resend-btn" disabled onclick="resetTimer()">
+            Kirim Ulang
+          </button>
+        </div>
+      </div>
+
+      <button class="btn btn-primary btn-full" style="height:40px;font-size:14px;"
+        onclick="location.href='10-admin-dashboard.html'">
+        Verifikasi
+      </button>
+
+      <a class="back-link" href="02-login.html">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="m15 18-6-6 6-6"/>
+        </svg>
+        Kembali ke halaman masuk
+      </a>
+    </div>
+  </main>
+
+</div>
+
+<script>
+  /* OTP input behaviour */
+  const inputs = document.querySelectorAll('.otp-input');
+  inputs.forEach((inp, i) => {
+    inp.addEventListener('input', e => {
+      const val = e.target.value.replace(/\D/g,'');
+      e.target.value = val.slice(-1);
+      e.target.classList.toggle('filled', !!val);
+      if (val && i < inputs.length - 1) inputs[i + 1].focus();
+    });
+    inp.addEventListener('keydown', e => {
+      if (e.key === 'Backspace' && !inp.value && i > 0) inputs[i - 1].focus();
+    });
+    inp.addEventListener('paste', e => {
+      e.preventDefault();
+      const text = (e.clipboardData || window.clipboardData).getData('text').replace(/\D/g,'');
+      text.split('').forEach((ch, j) => {
+        if (inputs[i + j]) { inputs[i + j].value = ch; inputs[i + j].classList.add('filled'); }
+      });
+      inputs[Math.min(i + text.length, inputs.length - 1)].focus();
+    });
+  });
+  inputs[0].focus();
+
+  /* Countdown timer */
+  let seconds = 298;
+  const countEl  = document.getElementById('countdown');
+  const timerEl  = document.getElementById('timer');
+  const resendBtn = document.getElementById('resend-btn');
+
+  const tick = setInterval(() => {
+    seconds--;
+    if (seconds <= 0) {
+      clearInterval(tick);
+      timerEl.style.display = 'none';
+      resendBtn.disabled = false;
+    } else {
+      const m = Math.floor(seconds / 60);
+      const s = seconds % 60;
+      countEl.textContent = `${m}:${s.toString().padStart(2,'0')}`;
+    }
+  }, 1000);
+
+  function resetTimer() {
+    seconds = 298;
+    timerEl.style.display = '';
+    resendBtn.disabled = true;
+    inputs.forEach(i => { i.value = ''; i.classList.remove('filled'); });
+    inputs[0].focus();
+  }
+</script>
+</body>
+</html>

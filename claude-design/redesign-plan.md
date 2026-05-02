@@ -194,24 +194,24 @@ berada dalam format yang sama dan dapat digunakan tanpa React.
 ### 🌐 PHASE 1 — Non-Login Pages
 *Halaman yang bisa diakses tanpa login*
 
-- [ ] **1.1** `01-landing.html`
+- [x] **1.1** `01-landing.html`
   - Ref: `pasted-1777307549577-0`
   - Sections: navbar sticky + hero (headline, 2 CTA) + 3 feature cards + 4 test type cards + footer
   - No shell (full-page layout)
 
-- [ ] **1.2** `02-login.html`
+- [x] **1.2** `02-login.html`
   - Ref: `pasted-1777307567756-0`
-  - Sections: card login (email input + password input + forgot password link + login button + register link)
+  - Layout: split — brand panel kiri (primary purple) + form kanan (white)
   - Shared untuk semua role, no shell
 
-- [ ] **1.3** `03-register.html`
+- [x] **1.3** `03-register.html`
   - Ref: `screens/auth.jsx` (RegisterPage component) — tidak ada di uploads
-  - Sections: card register (nama, email, password, confirm password + requirements checklist + submit)
+  - Layout: split — brand panel kiri (langkah 1-2-3) + form kanan (nama, email, password + strength checker)
   - No shell
 
-- [ ] **1.4** `04-otp.html`
+- [x] **1.4** `04-otp.html`
   - Ref: `pasted-1777307587001-0`
-  - Sections: card OTP (6-digit input boxes + timer countdown + resend link + back link)
+  - Layout: split — brand panel kiri + form kanan (6-digit OTP boxes + countdown timer + resend)
   - No shell
 
 ---
