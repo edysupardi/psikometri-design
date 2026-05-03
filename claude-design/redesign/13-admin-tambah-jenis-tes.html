@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tambah Jenis Tes — Psikometri Admin</title>
+  <link rel="stylesheet" href="./_shared/styles.css">
+</head>
+<body>
+
+<div class="breadcrumb" style="margin-bottom:16px;">
+  <a class="breadcrumb-item" href="12-admin-bank-soal.html">Bank Soal</a>
+  <span class="breadcrumb-sep">›</span>
+  <span class="breadcrumb-item active">Tambah Jenis Tes</span>
+</div>
+
+<div class="page-header" style="margin-bottom:20px;">
+  <div class="page-header-title">Tambah Jenis Tes</div>
+  <div class="page-header-desc">Daftarkan tipe asesmen baru ke dalam sistem.</div>
+</div>
+
+<div class="form-card">
+
+  <div class="form-card-section">
+    <div class="form-section-title">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+      Informasi Dasar
+    </div>
+
+    <div class="form-row form-row-2" style="margin-bottom:14px;">
+      <div class="form-group">
+        <label class="label">Nama Tes <span style="color:var(--error);">*</span></label>
+        <input class="input" type="text" placeholder="cth. Woodwards Word Questionnaire">
+      </div>
+      <div class="form-group" style="max-width:200px;">
+        <label class="label">Kode <span style="color:var(--error);">*</span></label>
+        <input class="input" type="text" placeholder="cth. WWQ" style="font-family:var(--font-mono);text-transform:uppercase;">
+        <div class="form-help">Singkatan unik, huruf kapital.</div>
+      </div>
+    </div>
+
+    <div class="form-group" style="margin-bottom:14px;">
+      <label class="label">Slug URL <span style="color:var(--error);">*</span></label>
+      <input class="input" type="text" placeholder="cth. wwq atau papikostick">
+      <div class="form-help">Digunakan di URL. Huruf kecil, tanpa spasi. Auto-generate dari kode jika dikosongkan.</div>
+    </div>
+
+    <div class="form-row form-row-2">
+      <div class="form-group">
+        <label class="label">Kategori <span style="color:var(--error);">*</span></label>
+        <select class="select">
+          <option value="">Pilih kategori...</option>
+          <option>Kepribadian</option>
+          <option>Kecerdasan</option>
+          <option>Psikometri</option>
+          <option>Minat & Bakat</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="label">Tipe Scoring <span style="color:var(--error);">*</span></label>
+        <select class="select">
+          <option value="">Pilih tipe scoring...</option>
+          <option>Skala (1–8)</option>
+          <option>Faktor (A/B)</option>
+          <option>Pilihan Ganda (A–E)</option>
+          <option>Penjumlahan Angka</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-card-section">
+    <div class="form-section-title">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      Konten
+    </div>
+
+    <div class="form-group" style="margin-bottom:14px;">
+      <label class="label">Deskripsi</label>
+      <textarea class="textarea" rows="3" placeholder="Deskripsi singkat tentang jenis tes ini..."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label class="label">Instruksi Tes</label>
+      <div class="richtext-toolbar">
+        <button class="richtext-btn" type="button" title="Bold"><strong>B</strong></button>
+        <button class="richtext-btn" type="button" title="Italic"><em>I</em></button>
+        <button class="richtext-btn" type="button" title="List">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="8" x2="21" y1="6" y2="6"/><line x1="8" x2="21" y1="12" y2="12"/><line x1="8" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></svg>
+        </button>
+      </div>
+      <textarea class="textarea richtext-area" rows="4" placeholder="Instruksi yang akan ditampilkan kepada peserta sebelum memulai tes..."></textarea>
+    </div>
+  </div>
+
+  <div class="form-card-section">
+    <div class="form-section-title">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Pengaturan
+    </div>
+
+    <div style="border:1px solid var(--outline);border-radius:var(--r-md);padding:12px 16px;margin-bottom:14px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;">
+        <div>
+          <div style="font-size:14px;font-weight:500;color:var(--on-surface);">Status Aktif</div>
+          <div style="font-size:12px;color:var(--on-surface-muted);margin-top:1px;">Jenis tes ini akan tersedia untuk digunakan dalam paket asesmen</div>
+        </div>
+        <div class="toggle-wrap" onclick="this.querySelector('.toggle').classList.toggle('on')">
+          <div class="toggle on"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group" style="max-width:280px;">
+      <label class="label">Estimasi Waktu (menit) <span style="color:var(--error);">*</span></label>
+      <input class="input" type="number" placeholder="cth. 20" min="1">
+      <div class="form-help">Waktu pengerjaan yang direkomendasikan.</div>
+    </div>
+  </div>
+
+  <div class="form-card-footer" style="justify-content:space-between;">
+    <span style="font-size:12px;color:var(--on-surface-faint);">* Field wajib diisi</span>
+    <div style="display:flex;gap:8px;">
+      <a href="12-admin-bank-soal.html" class="btn btn-outline">Batal</a>
+      <button class="btn btn-primary">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:14px;height:14px;stroke-width:1.75;"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/></svg>
+        Simpan
+      </button>
+    </div>
+  </div>
+</div>
+
+<script src="./_shared/shell.js"></script>
+<script src="./_shared/utils.js" defer></script>
+<script>
+  initShell({
+    role: 'admin',
+    activeHref: '12-admin-bank-soal.html',
+    user: { name: 'Superadmin', role: 'Superadmin', initials: 'AS' },
+    notifCount: 6
+  });
+</script>
+</body>
+</html>
